@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/mezcelbookmark-renderer.git",
+  "repository": "https://github.com/mezcel/bookmark-renderer.git",
   "keywords": [
     "welcome",
     "kiosk"
