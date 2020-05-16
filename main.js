@@ -10,15 +10,6 @@ const path = require('path')
 const url = require('url')
 
 Menu.setApplicationMenu(null); // null menu
-var envHome = process.env.homepath
-var homeDir = envHome.replace(/\\/g, '/');
-
-var githubPath = "file://" + homeDir + "/github/mezcel"
-console.log(githubPath);
-
-function openDir() {
-  shell.openItem('file:///C:/Users/mezcel/gist.github/mezcel')
-}
 
 function createWindow () {
   // Create the browser window.
@@ -84,6 +75,5 @@ app.on('window-all-closed', function () {
   ipcMain.on('synchronous-message', (event, arg) => {
     console.log(arg) // prints "pong msg"
     event.returnValue = 'from main.js synchronous-message'
-    openDir()
   })
 */
