@@ -1,12 +1,12 @@
 {
-  "name": "welcome-kiosk",
+  "name": "bookmark-renderer",
   "version": "1.0.0",
-  "description": "A welcome popup",
+  "description": "A welcome popup and bookmakrs container",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "",
+  "repository": "https://github.com/mezcelbookmark-renderer.git",
   "keywords": [
     "welcome",
     "kiosk"
