@@ -1,5 +1,10 @@
+/*
+    renderer.js
+*/
+
 const { shell } = require('electron');
-const { execFile } = require('child_process');
+const { execFile, spawn, exec } = require('child_process');
+const util = require('util');
 
 /*
     const { ipcRenderer } = require('electron');
@@ -35,30 +40,69 @@ function closeElectronApp() {
     window.close();
 }
 
+function launchBatScript( scriptPath ) {
+    const bat = spawn('cmd.exe', ['/c', scriptPath ]);
+
+    bat.stdout.on('data', (data) => {
+    console.log(data.toString());
+    });
+
+    bat.stderr.on('data', (data) => {
+    console.error(data.toString());
+    });
+
+    bat.on('exit', (code) => {
+    console.log(`Child exited with code ${code}`);
+    });
+}
+
 function domButtons() {
 
     const btnGistDir   = document.getElementById('btnGistDir');
     const btnGithubDir = document.getElementById('btnGithubDir');
     const btnClose     = document.getElementById('btnClose');
+
     const btnVSCode    = document.getElementById('btnVSCode');
+    const btnTaskMgr   = document.getElementById('btnTaskMgr');
     const btnWT        = document.getElementById('btnWT');
-    
+
     if ( btnGistDir ) {
         btnGistDir.addEventListener('click', function () {
             openFileExplorer("/gist.github/mezcel");
         });
     }
-    
+
     if ( btnGithubDir ) {
         btnGithubDir.addEventListener('click', function () {
             openFileExplorer("/github/mezcel");
         });
     }
 
-    if ( btnVSCode ) {
-        
+    if ( btnVSCode ) {/* Launch VS Code */
+
         btnVSCode.addEventListener('click', function () {
-            const child = execFile('code', (error, stdout, stderr) => {
+            var winExePath = process.env.userprofile + "\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe";
+            const childCode = execFile( winExePath, (error, stdout, stderr) => {
+                if (error) {
+                  throw error;
+                }
+                console.log(stdout);
+              });
+        });
+    }
+    if ( btnTaskMgr ) { /* Launch Windows Task Manager */
+
+        btnTaskMgr.addEventListener('click', function () {
+            var scriptPath = "batch\\launchTaskManager.bat"
+            launchBatScript( scriptPath );
+        });
+
+    }
+
+    if ( btnWT ) { /* launch Windows Terminal */
+
+        btnWT.addEventListener('click', function () {
+            const childWt = execFile('wt', (error, stdout, stderr) => {
                 if (error) {
                   throw error;
                 }
@@ -67,30 +111,6 @@ function domButtons() {
         });
     }
 
-    if ( btnWT ) {
-        
-        btnWT.addEventListener('click', function () {
-            const child = execFile('wt', (error, stdout, stderr) => {
-                if (error) {
-                  throw error;
-                }
-                console.log(stdout);
-              });
-        });
-        
-        /*var child = require('child_process').execFile;
-        //var executablePath = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe";
-        var executablePath ='C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_0.11.1333.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe'
-        child('wt', function(err, data) {
-            if(err){
-               console.error(err);
-               return;
-            }
-         
-            console.log(data.toString());
-        });*/
-    }
-    
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
             closeElectronApp();

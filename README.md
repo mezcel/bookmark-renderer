@@ -28,6 +28,9 @@ npm start
 ```ps1
 ## globally install electron-packager
 npm install -g electron-packager
+
+# perform the packager on my desired Electron App directory.
+electron-packager .
 ```
 
 ## community resources

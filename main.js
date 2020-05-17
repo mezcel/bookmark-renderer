@@ -1,8 +1,12 @@
+/**
+ * main.js
+ */
+
 // Modules to control application life and create native browser window
 const {
-  app, 
-  BrowserWindow, 
-  shell, 
+  app,
+  BrowserWindow,
+  shell,
   Menu
 } = require('electron')
 
@@ -40,7 +44,7 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-  
+
   app.applicationMenu = false
 
   app.on('activate', function () {
@@ -49,7 +53,7 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
-  
+
 })
 
 // Quit when all windows are closed.
