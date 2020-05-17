@@ -34,3 +34,20 @@ npm install -g electron-packager
 ## package app as an executable
 electron-packager .
 ```
+
+---
+
+# workarrounds
+
+This Electron App is intended to be packaged with ```electron-packager```. File paths to scripts are mapped locally as if it were packaged.
+
+Alternative script paths
+```js
+// Change
+var packagedRootDir = process.cwd() + "\\resources\\app\\";
+// To
+
+var packagedRootDir = process.cwd() + "";
+//or
+var packagedRootDir = "";
+```

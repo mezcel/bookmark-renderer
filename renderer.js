@@ -84,34 +84,36 @@ function domIndex() {
     if ( btnVSCode ) {/* Launch VS Code */
 
         btnVSCode.addEventListener('click', function () {
+            /*
             var winExePath = process.env.userprofile + "\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe";
             const childCode = execFile( winExePath, (error, stdout, stderr) => {
                 if (error) {
                   throw error;
                 }
                 console.log(stdout);
-              });
-        });
-    }
+            });
+            */
 
-    if ( btnTaskMgr ) { /* Launch Windows Task Manager */
-
-        btnTaskMgr.addEventListener('click', function () {
-            var scriptPath = "batch\\launchTaskManager.bat"
+            var packagedRootDir = process.cwd() + "\\resources\\app\\";
+            var scriptPath = packagedRootDir + "batch\\launchVSCode.bat"
             launchBatScript( scriptPath );
         });
-
     }
 
     if ( btnWT ) { /* launch Windows Terminal */
 
         btnWT.addEventListener('click', function () {
+            /*
             const childWt = execFile('wt', (error, stdout, stderr) => {
                 if (error) {
                   throw error;
                 }
                 console.log(stdout);
-              });
+            });
+            */
+            var packagedRootDir = process.cwd() + "\\resources\\app\\";
+            var scriptPath = packagedRootDir + "batch\\launchWT.bat"
+            launchBatScript( scriptPath );
         });
     }
 }
@@ -187,7 +189,7 @@ function domScripts() {
     if ( btnScript7 ) {
         btnScript7.addEventListener('click', function () {
             alert("Killing misc. processes. The log Console, (F11), will be toggled after pressing OK");
-            console.log("\n::::::::::::::\nKilling Processes\n::::::::::::::\n");
+            console.log("\n:::::::::::::::::\nKilling Processes\n:::::::::::::::::\n");
             require('electron').remote.getCurrentWindow().toggleDevTools();
             launchBatScript( scriptPath7 );
         });
