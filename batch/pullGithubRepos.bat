@@ -4,6 +4,14 @@
 
 @ECHO off
 
+:ps1Script
+    cd ..\powershell
+    start powershell -Command ".\clone-my-github.ps1"
+    GOTO:EOF
+
+
+:batScript
+
 set homeDir=%USERPROFILE%
 set homeGithub=%USERPROFILE%\github\mezcel
 set homeGist=%USERPROFILE%\gist.github\mezcel
@@ -57,3 +65,5 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://github.com/mezcel/terminal-profile.git "%homeGithub%\terminal-profile.git"
     git clone https://github.com/mezcel/keyboard-layout.git "%homeGithub%\keyboard-layout.git"
     ::git clone https://github.com/mezcel/bookmark-renderer.git "%homeGithub%\bookmark-renderer.git"
+
+:EOF

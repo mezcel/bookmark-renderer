@@ -10,5 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${type}-version`, process.versions[type])
   }
 
+  replaceText(`platform-arch`, process.platform)
+
 });
 

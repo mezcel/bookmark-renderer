@@ -44,12 +44,16 @@ function launchBatScript( scriptPath ) {
     const bat = spawn('cmd.exe', ['/c', scriptPath ]);
 
     bat.stdout.on('data', (data) => {
-        console.log(scriptPath, process.cwd(), data.toString());
+        console.log(
+            data.toString()
+        );
     });
 
     bat.stderr.on('data', (data) => {
-        console.error(data.toString());
-        console.log(scriptPath, process.cwd(), data.toString());
+        console.log(
+            "\n script path = "+scriptPath+" \n",
+            data.toString()
+        );
     });
 
     bat.on('exit', (code) => {
@@ -124,20 +128,19 @@ function domScripts() {
     const btnScript7 = document.getElementById('btnScript7');
     const btnScript8 = document.getElementById('btnScript8');
 
-    var packagedRootDir = "\\resources\\app\\batch"; // cd = process.cwd()
+    var packagedRootDir = process.cwd() + "\\resources\\app\\";
 
-    //var scriptPath0 = "batch\\launchTaskManager.bat";
-    var scriptPath0 = "resources\\app\\batch\\launchTaskManager.bat";
-    //var scriptPath1 = ".\\batch\\pullGithubRepos.bat";
-    var scriptPath1 = "resources\\app\\batch\\pullGithubRepos.bat";
-    var scriptPath2 = "";
-    var scriptPath3 = "";
-    var scriptPath4 = "";
-    var scriptPath5 = "";
-    var scriptPath6 = "";
-    var scriptPath7 = "";
-    var scriptPath8 = "";
-    var scriptPath9 = "";
+    var scriptPath0 = packagedRootDir + "batch\\launchTaskManager.bat";
+    var scriptPath1 = packagedRootDir + "batch\\pullGithubRepos.bat";
+    var scriptPath2 = packagedRootDir + "";
+
+    var scriptPath3 = packagedRootDir + "";
+    var scriptPath4 = packagedRootDir + "";
+    var scriptPath5 = packagedRootDir + "";
+
+    var scriptPath6 = packagedRootDir + "batch\\connmanScript.bat";
+    var scriptPath7 = packagedRootDir + "batch\\killProcessesScript.bat";
+    var scriptPath8 = packagedRootDir + "batch\\shutdownScript.bat";
 
     if ( btnScript0 ) {
         btnScript0.addEventListener('click', function () {
@@ -148,7 +151,6 @@ function domScripts() {
     if ( btnScript1 ) {
         btnScript1.addEventListener('click', function () {
             launchBatScript( scriptPath1 );
-            alert("Pulling and cloning git repos in the background.");
         });
     }
 
@@ -184,6 +186,9 @@ function domScripts() {
 
     if ( btnScript7 ) {
         btnScript7.addEventListener('click', function () {
+            alert("Killing misc. processes. The log Console, (F11), will be toggled after pressing OK");
+            console.log("\n::::::::::::::\nKilling Processes\n::::::::::::::\n");
+            require('electron').remote.getCurrentWindow().toggleDevTools();
             launchBatScript( scriptPath7 );
         });
     }
@@ -196,9 +201,9 @@ function domScripts() {
 
 }
 
-const btnClose     = document.getElementById('btnClose');
-const htmlIndex     = document.getElementById('htmlIndex');
-const htmlScripts   = document.getElementById('htmlScripts');
+const btnClose    = document.getElementById('btnClose');
+const htmlIndex   = document.getElementById('htmlIndex');
+const htmlScripts = document.getElementById('htmlScripts');
 
 if ( btnClose ) {
     btnClose.addEventListener('click', function () {
@@ -214,5 +219,16 @@ if ( htmlScripts ) {
     domScripts();
 }
 
+// DOM Keybindings
+document.addEventListener( "keydown", function (e) {
+    if (e.which === 122) {
+        console.log(e.which, "toggle dev tools");
+        require('electron').remote.getCurrentWindow().toggleDevTools();
+    } else if (e.which === 116) {
+        console.log(e.which, "reload dom");
+        location.reload();
+    }
+    console.log(e.which);
+})
 
 console.log("loaded renderer.js")
