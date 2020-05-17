@@ -6,6 +6,8 @@ const { shell } = require('electron');
 const { execFile, spawn, exec } = require('child_process');
 const util = require('util');
 
+const { BrowserWindow } = require('electron')
+
 /*
     const { ipcRenderer } = require('electron');
     console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // prints "pong"
@@ -56,12 +58,10 @@ function launchBatScript( scriptPath ) {
     });
 }
 
-function domButtons() {
+function domIndex() {
 
     const btnGistDir   = document.getElementById('btnGistDir');
     const btnGithubDir = document.getElementById('btnGithubDir');
-    const btnClose     = document.getElementById('btnClose');
-
     const btnVSCode    = document.getElementById('btnVSCode');
     const btnTaskMgr   = document.getElementById('btnTaskMgr');
     const btnWT        = document.getElementById('btnWT');
@@ -90,6 +90,7 @@ function domButtons() {
               });
         });
     }
+
     if ( btnTaskMgr ) { /* Launch Windows Task Manager */
 
         btnTaskMgr.addEventListener('click', function () {
@@ -110,14 +111,111 @@ function domButtons() {
               });
         });
     }
-
-    if ( btnClose ) {
-        btnClose.addEventListener('click', function () {
-            closeElectronApp();
-        });
-    }
 }
 
-domButtons();
+function domScripts() {
+
+    const btnScript0 = document.getElementById('btnScript0');
+    const btnScript1 = document.getElementById('btnScript1');
+    const btnScript2 = document.getElementById('btnScript2');
+    const btnScript3 = document.getElementById('btnScript3');
+    const btnScript4 = document.getElementById('btnScript4');
+    const btnScript5 = document.getElementById('btnScript5');
+    const btnScript6 = document.getElementById('btnScript6');
+    const btnScript7 = document.getElementById('btnScript7');
+    const btnScript8 = document.getElementById('btnScript8');
+
+    var scriptPath0 = "batch\\launchTaskManager.bat";
+    var scriptPath1 = "batch\\pullGithubRepos.bat";
+    var scriptPath2 = "";
+    var scriptPath3 = "";
+    var scriptPath4 = "";
+    var scriptPath5 = "";
+    var scriptPath6 = "";
+    var scriptPath7 = "";
+    var scriptPath8 = "";
+    var scriptPath9 = "";
+
+    if ( btnScript0 ) {
+        btnScript0.addEventListener('click', function () {
+            launchBatScript( scriptPath0 );
+        });
+    }
+
+    if ( btnScript1 ) {
+        btnScript1.addEventListener('click', function () {
+            launchBatScript( scriptPath1 );
+            alert("Pulling and cloning git repos in the background.");
+        });
+    }
+
+    if ( btnScript2 ) {
+        btnScript2.addEventListener('click', function () {
+            launchBatScript( scriptPath2 );
+        });
+    }
+
+    if ( btnScript3 ) {
+        btnScript3.addEventListener('click', function () {
+            launchBatScript( scriptPath3 );
+        });
+    }
+
+    if ( btnScript4 ) {
+        btnScript4.addEventListener('click', function () {
+            launchBatScript( scriptPath4 );
+        });
+    }
+
+    if ( btnScript5 ) {
+        btnScript5.addEventListener('click', function () {
+            launchBatScript( scriptPath5 );
+        });
+    }
+
+    if ( btnScript6 ) {
+        btnScript6.addEventListener('click', function () {
+            launchBatScript( scriptPath6 );
+        });
+    }
+
+    if ( btnScript7 ) {
+        btnScript7.addEventListener('click', function () {
+            launchBatScript( scriptPath7 );
+        });
+    }
+
+    if ( btnScript8 ) {
+        btnScript8.addEventListener('click', function () {
+            launchBatScript( scriptPath8 );
+        });
+    }
+
+    if ( btnScript9 ) {
+        btnScript9.addEventListener('click', function () {
+            launchBatScript( scriptPath9 );
+        });
+    }
+
+}
+
+const btnClose     = document.getElementById('btnClose');
+const htmlIndex     = document.getElementById('htmlIndex');
+const htmlScripts   = document.getElementById('htmlScripts');
+
+if ( btnClose ) {
+    btnClose.addEventListener('click', function () {
+        closeElectronApp();
+    });
+}
+
+if ( htmlIndex ) {
+    domIndex();
+}
+
+if ( htmlScripts ) {
+    domScripts();
+}
+
 
 console.log("loaded renderer.js")
