@@ -6,8 +6,6 @@ const { shell } = require('electron');
 const { execFile, spawn, exec } = require('child_process');
 const util = require('util');
 
-const { BrowserWindow } = require('electron')
-
 /*
     const { ipcRenderer } = require('electron');
     console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // prints "pong"
@@ -46,15 +44,16 @@ function launchBatScript( scriptPath ) {
     const bat = spawn('cmd.exe', ['/c', scriptPath ]);
 
     bat.stdout.on('data', (data) => {
-    console.log(data.toString());
+        console.log(scriptPath, process.cwd(), data.toString());
     });
 
     bat.stderr.on('data', (data) => {
-    console.error(data.toString());
+        console.error(data.toString());
+        console.log(scriptPath, process.cwd(), data.toString());
     });
 
     bat.on('exit', (code) => {
-    console.log(`Child exited with code ${code}`);
+        console.log(`Child exited with code ${code}`);
     });
 }
 
@@ -125,8 +124,12 @@ function domScripts() {
     const btnScript7 = document.getElementById('btnScript7');
     const btnScript8 = document.getElementById('btnScript8');
 
-    var scriptPath0 = "batch\\launchTaskManager.bat";
-    var scriptPath1 = "batch\\pullGithubRepos.bat";
+    var packagedRootDir = "\\resources\\app\\batch"; // cd = process.cwd()
+
+    //var scriptPath0 = "batch\\launchTaskManager.bat";
+    var scriptPath0 = "resources\\app\\batch\\launchTaskManager.bat";
+    //var scriptPath1 = ".\\batch\\pullGithubRepos.bat";
+    var scriptPath1 = "resources\\app\\batch\\pullGithubRepos.bat";
     var scriptPath2 = "";
     var scriptPath3 = "";
     var scriptPath4 = "";
@@ -188,12 +191,6 @@ function domScripts() {
     if ( btnScript8 ) {
         btnScript8.addEventListener('click', function () {
             launchBatScript( scriptPath8 );
-        });
-    }
-
-    if ( btnScript9 ) {
-        btnScript9.addEventListener('click', function () {
-            launchBatScript( scriptPath9 );
         });
     }
 
