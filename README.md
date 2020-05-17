@@ -1,15 +1,20 @@
-# welcome-kiosk
+# bookmark-renderer
 
 ## about
 
-a post login welcome popup.
-* target os is ```my``` win10, but it could apply to anyone's os.
+a welcome kiosk popup.
+* target os: win32
+* launches file explorer directories
+* runs custom shell scripts (```.bat```, ```.ps1```)
+* launches ```.exe``` apps
+* open web bookmarks
+* quick access to misc. other dev notes
 
 ## electron
 
-[download nodejs]( https://nodejs.org )
+* [download nodejs]( https://nodejs.org )
 
-### dependencies
+### npm dependencies
 ```ps1
 ## download and install electron
 npm install electron
@@ -18,26 +23,14 @@ npm install electron
 npm install
 ```
 
-### manually launch
-```ps1
-# launch the app from cli
-npm start
-```
-
 ### package app as an executable
 ```ps1
+## launch the app from cli
+npm start
+
 ## globally install electron-packager
 npm install -g electron-packager
 
-# perform the packager on my desired Electron App directory.
+## package app as an executable
 electron-packager .
 ```
-
-## community resources
-
-### jquery
-* [jquery.](https://jquery.com/)
-### css templates
-
-* [w3css]( https://www.w3schools.com/w3css/w3css_downloads.asp )
-* [w3css_color_themes]( https://www.w3schools.com/w3css/w3css_color_themes.asp )
