@@ -2,56 +2,33 @@
 
 > under construction
 
+## Text Editors
 
-## VS Code Plugins
+### VS Code
 
-### Spell Checking (spelling lint):
+#### VS Code Plugins
 
-* Install [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright)
-* Place ```*.aif``` and ```*.dic``` files, from the [Dictionaries](https://github.com/titoBouzout/Dictionaries) repo, into: ```%APPDATA%\Code\Dictionaries\```
+|Spell Checking|Syntax highlighting|Color themes|WLS|
+|:---:|:---:|:---:|:---:|
+|[Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright)|[.c](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)|[nineties](https://marketplace.visualstudio.com/items?itemName=jibjack.nineties)|[remote-wsl](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)|
+||[.ps1](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)|||
+||[.py](https://marketplace.visualstudio.com/items?itemName=ms-python.python)||
+||[.js](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)||
 
+#### Column Width Marker
 
-### Syntax highlighting:
-
-* [.c](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-* [.ps1](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
-* [.py](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-* [.js](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-### Color themes:
-
-* [nineties](https://marketplace.visualstudio.com/items?itemName=jibjack.nineties)
-* [dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)
-
-### WLS:
-
-* [remote-wsl](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
-
----
-
-## VS Code Editor
-
-### Column Width Lines
-
-settings.json
+settings.json | File → Preferences → Settings
 ```json
-/*
-    Show a vertical lines at column width
-    File → Preferences → Settings
-*/
+// Show a vertical lines at column width
 
 "editor.rulers": [80,120] // col 80 and col 120
 ```
 
-
----
-
-# notepad++-notes
+### Notepad++-notes
 
 Get Notepad++ Text Editor
 
 * [Download](https://notepad-plus-plus.org/downloads/)
-* [Github](https://github.com/notepad-plus-plus/notepad-plus-plus)
 
 Themes collected from the web
 

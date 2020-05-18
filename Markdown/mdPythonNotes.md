@@ -13,25 +13,6 @@
 
 There are some differences between Python v2.x and Python v3.x regarding parsing ```.json```, so I included both techniques within the code.
 
-### Debian & WLS
-
-```sh
-## Linux package
-sudo apt-get install python-pip python3 python3-pip
-
-## python package
-pip install term
-```
-
-### Arch
-
-```sh
-## Linux package
-sudo pacman -S --needed python python2
-
-## python package
-pip install term
-```
 
 ### Win10
 
@@ -56,7 +37,9 @@ python -m pip install windows-curses
 
 * [py2exe](https://pypi.org/project/py2exe/), win10
 
-## Code Examples
+---
+
+# Code Examples
 
 while loop
 ```py
