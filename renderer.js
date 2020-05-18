@@ -191,6 +191,18 @@ function domScripts() { // event buttons for view\html\scripts.html
 
 }
 
+function domBookmarks() {  // open web links in a non-electron browser
+
+    let shell = require('electron').shell
+    document.addEventListener('click', function (event) {
+        if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
+            event.preventDefault()
+            shell.openExternal(event.target.href)
+        }
+    })
+
+}
+
 function domNotes() {   // event buttons for view\html\notes.html
 
     const btnWin10Notes      = document.getElementById('btnWin10Notes');
@@ -255,6 +267,8 @@ function domNotes() {   // event buttons for view\html\notes.html
         });
     }
 
+    domBookmarks(); // open web links in a non-electron browser
+
 }
 
 function customKeybindings() {
@@ -264,19 +278,13 @@ function customKeybindings() {
             case 122: // F11
                 console.log(e.which, "toggle dev tools");
                 require('electron').remote.getCurrentWindow().toggleDevTools();
-                // code block
                 break;
             case 116: // F5
                 console.log(e.which, "reload dom");
                 location.reload();
-                // code block
-                break;
-            case 37: // back arrow
-                //window.history.back()
                 break;
             default:
                 console.log(e.which);
-                // code block
         }
 
     });
@@ -289,6 +297,7 @@ function main() {
     const htmlIndex   = document.getElementById('htmlIndex');
     const htmlScripts = document.getElementById('htmlScripts');
     const htmlNotes   = document.getElementById('htmlNotes');
+    const htmlBookmarks   = document.getElementById('htmlBookmarks');
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
@@ -306,6 +315,10 @@ function main() {
 
     if ( htmlNotes ) {
         domNotes();     // event buttons for view\html\notes.html
+    }
+
+    if ( htmlBookmarks ) {
+        domBookmarks();     // event buttons for view\html\bookmarks.html
     }
 
     customKeybindings(); // DOM Keybindings
