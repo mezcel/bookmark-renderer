@@ -1,10 +1,8 @@
 # about
 
-## Tabs
+This feature is a cheat sheet reference for working on or relearning a development platform.
 
-Select a tab button to view my notes on that subject. This is used as a quick reminder and link reference while working on or relearning a development platform.
-
-> Notes, ramblings, and links.
+Select a tab button to view notes on that subject.
 
 ## Markdown Reader
 

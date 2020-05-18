@@ -40,22 +40,7 @@ electron-packager .
 
 ---
 
-# Community Themes
+# community themes
 
 * [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css )
-* w3.css
-
-# workarrounds
-
-This Electron App is intended to be packaged with ```electron-packager```. File paths to scripts are mapped locally as if it were packaged.
-
-Alternative script paths. Used within ```renderer.js```
-```js
-// Change
-var packagedRootDir = process.cwd() + "\\resources\\app\\";
-// To
-
-var packagedRootDir = process.cwd() + "";
-//or
-var packagedRootDir = "";
-```
+* [w3.css](https://www.w3schools.com/w3css/w3css_color_themes.asp)
