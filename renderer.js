@@ -210,7 +210,7 @@ function domScripts() {
 
 function domNotes() {
 
-    const btnAbout           = document.getElementById('btnAbout');
+    const btnWin10Notes      = document.getElementById('btnWin10Notes');
     const btnPowershellNotes = document.getElementById('btnPowershellNotes');
     const btnPythonNotes     = document.getElementById('btnPythonNotes');
     const btnNodeNotes       = document.getElementById('btnNodeNotes');
@@ -223,10 +223,14 @@ function domNotes() {
     var mdPowershellNotes = "Markdown/mdPowershellNotes.md";
     var mdPythonNotes     = "Markdown/mdPythonNotes.md";
     var mdWslNotes        = "Markdown/mdWslNotes.md";
+    var mdWin10Notes      = "Markdown/mdWin10Notes.md";
 
-    if ( btnAbout ) {
-        btnAbout.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdAbout );
+    var mdFile = fs.readFileSync( mdAbout );
+    document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+
+    if ( btnWin10Notes ) {
+        btnWin10Notes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdWin10Notes );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
@@ -267,7 +271,6 @@ function domNotes() {
     }
 
 }
-
 
 function main() {
 

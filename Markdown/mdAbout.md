@@ -1,8 +1,15 @@
 # about
 
-## Select notes to view
+## Tabs
 
-* Toggle notes by selecting a number button above
-* Markdown wiles will be rendered into html using the github css
+Select a tab button to view my notes on that subject. This is used as a quick reminder and link refference while working on or relearning a development platform.
 
-> I only use 1 - 6 options
+> Notes, ramblings, and links.
+
+## Markdown Reader
+
+This is a Markdown reader using [marked]( https://www.npmjs.com/package/marked ) and [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css ).
+
+```sh
+npm i marked
+```

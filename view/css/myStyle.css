@@ -1,5 +1,5 @@
-/* 
-    myStyles.css 
+/*
+    myStyles.css
 */
 
 /* style a column of links in a row as w3-btn */
@@ -9,4 +9,21 @@
 
 .w3-row > .w3-col > p a:hover {
     color:#fff !important; background-color:#607d8b !important; /* .w3-hover-theme:hover */
+}
+
+
+/* guithub style for npm marked generated html */
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
 }

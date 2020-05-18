@@ -8,7 +8,7 @@ a welcome kiosk popup.
 * runs custom shell scripts (```.bat```, ```.ps1```)
 * launches ```.exe``` apps
 * open web bookmarks
-* quick access to misc. other dev notes
+* markdown reader
 
 ## electron
 
@@ -32,10 +32,16 @@ npm start
 npm install -g electron-packager
 
 ## package app as an executable
+Remove-Item -Recurse -Force .\bookmark-renderer-win32-x64
 electron-packager .
 ```
 
 ---
+
+# Community Themes
+
+* [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css )
+* w3.css
 
 # workarrounds
 
