@@ -2,9 +2,14 @@
     renderer.js
 */
 
-const { shell } = require('electron');
+const { shell, BrowserWindow } = require('electron');
 const { execFile, spawn, exec } = require('child_process');
 const util = require('util');
+
+/////////////////////////////// START
+const fs = require('fs');
+const marked = require('marked');
+/////////////////////////////// END
 
 /*
     const { ipcRenderer } = require('electron');
@@ -203,34 +208,104 @@ function domScripts() {
 
 }
 
-const btnClose    = document.getElementById('btnClose');
-const htmlIndex   = document.getElementById('htmlIndex');
-const htmlScripts = document.getElementById('htmlScripts');
+function domNotes() {
 
-if ( btnClose ) {
-    btnClose.addEventListener('click', function () {
-        closeElectronApp();
-    });
-}
+    const btnAbout           = document.getElementById('btnAbout');
+    const btnPowershellNotes = document.getElementById('btnPowershellNotes');
+    const btnPythonNotes     = document.getElementById('btnPythonNotes');
+    const btnNodeNotes       = document.getElementById('btnNodeNotes');
+    const btnCNotes          = document.getElementById('btnCNotes');
+    const btnWslNotes        = document.getElementById('btnWslNotes');
 
-if ( htmlIndex ) {
-    domIndex();
-}
+    var mdAbout           = "Markdown/mdAbout.md";
+    var mdCNotes          = "Markdown/mdCNotes.md";
+    var mdNodeNotes       = "Markdown/mdNodeNotes.md";
+    var mdPowershellNotes = "Markdown/mdPowershellNotes.md";
+    var mdPythonNotes     = "Markdown/mdPythonNotes.md";
+    var mdWslNotes        = "Markdown/mdWslNotes.md";
 
-if ( htmlScripts ) {
-    domScripts();
-}
-
-// DOM Keybindings
-document.addEventListener( "keydown", function (e) {
-    if (e.which === 122) {
-        console.log(e.which, "toggle dev tools");
-        require('electron').remote.getCurrentWindow().toggleDevTools();
-    } else if (e.which === 116) {
-        console.log(e.which, "reload dom");
-        location.reload();
+    if ( btnAbout ) {
+        btnAbout.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdAbout );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
     }
-    console.log(e.which);
-})
 
-console.log("loaded renderer.js")
+    if ( btnPowershellNotes ) {
+        btnPowershellNotes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdPowershellNotes );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
+    }
+
+    if ( btnPythonNotes ) {
+        btnPythonNotes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdPythonNotes );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
+    }
+
+    if ( btnNodeNotes ) {
+        btnNodeNotes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdNodeNotes );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
+    }
+
+    if ( btnCNotes ) {
+        btnCNotes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdCNotes );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
+    }
+
+    if ( btnWslNotes ) {
+        btnWslNotes.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdWslNotes );
+            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+        });
+    }
+
+}
+
+
+function main() {
+
+    const btnClose      = document.getElementById('btnClose');
+    const htmlIndex     = document.getElementById('htmlIndex');
+    const htmlScripts   = document.getElementById('htmlScripts');
+    const htmlNotes     = document.getElementById('htmlNotes');
+
+    if ( btnClose ) {
+        btnClose.addEventListener('click', function () {
+            closeElectronApp();
+        });
+    }
+
+    if ( htmlIndex ) {
+        domIndex();
+    }
+
+    if ( htmlScripts ) {
+        domScripts();
+    }
+
+    if ( htmlNotes ) {
+        domNotes();
+    }
+
+    // DOM Keybindings
+    document.addEventListener( "keydown", function (e) {
+        if (e.which === 122) {
+            console.log(e.which, "toggle dev tools");
+            require('electron').remote.getCurrentWindow().toggleDevTools();
+        } else if (e.which === 116) {
+            console.log(e.which, "reload dom");
+            location.reload();
+        }
+        console.log(e.which);
+    })
+}
+
+main();
+console.log("loaded renderer.js");
