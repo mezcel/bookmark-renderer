@@ -65,7 +65,7 @@ function returnPackageDir( processCwd ) {
     return parentDir;
 }
 
-function domIndex() { // event buttons for view\index.html
+function domIndex() {   // event buttons for view\index.html
 
     const btnGistDir   = document.getElementById('btnGistDir');
     const btnGithubDir = document.getElementById('btnGithubDir');
@@ -173,9 +173,12 @@ function domScripts() { // event buttons for view\html\scripts.html
 
     if ( btnScript7 ) {
         btnScript7.addEventListener('click', function () {
-            alert("Killing misc. processes. The log Console, (F11), will be toggled after pressing OK");
-            console.log("\n:::::::::::::::::\nKilling Processes\n:::::::::::::::::\n");
+            alert("Killing processes. The log Console, (F11), will be toggled after pressing OK");
+            console.clear();
+            console.log("\n:::::::::::::::::\nKill status\n:::::::::::::::::\n");
+
             require('electron').remote.getCurrentWindow().toggleDevTools();
+
             launchBatScript( scriptPath7 );
         });
     }
@@ -188,7 +191,7 @@ function domScripts() { // event buttons for view\html\scripts.html
 
 }
 
-function domNotes() { // event buttons for view\html\notes.html
+function domNotes() {   // event buttons for view\html\notes.html
 
     const btnWin10Notes      = document.getElementById('btnWin10Notes');
     const btnPowershellNotes = document.getElementById('btnPowershellNotes');
@@ -254,12 +257,38 @@ function domNotes() { // event buttons for view\html\notes.html
 
 }
 
+function customKeybindings() {
+    document.addEventListener( "keydown", function (e) {
+
+        switch( e.which ) {
+            case 122: // F11
+                console.log(e.which, "toggle dev tools");
+                require('electron').remote.getCurrentWindow().toggleDevTools();
+                // code block
+                break;
+            case 116: // F5
+                console.log(e.which, "reload dom");
+                location.reload();
+                // code block
+                break;
+            case 37: // back arrow
+                //window.history.back()
+                break;
+            default:
+                console.log(e.which);
+                // code block
+        }
+
+    });
+
+}
+
 function main() {
 
-    const btnClose      = document.getElementById('btnClose');
-    const htmlIndex     = document.getElementById('htmlIndex');
-    const htmlScripts   = document.getElementById('htmlScripts');
-    const htmlNotes     = document.getElementById('htmlNotes');
+    const btnClose    = document.getElementById('btnClose');
+    const htmlIndex   = document.getElementById('htmlIndex');
+    const htmlScripts = document.getElementById('htmlScripts');
+    const htmlNotes   = document.getElementById('htmlNotes');
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
@@ -279,18 +308,8 @@ function main() {
         domNotes();     // event buttons for view\html\notes.html
     }
 
-    // DOM Keybindings
+    customKeybindings(); // DOM Keybindings
 
-    document.addEventListener( "keydown", function (e) {
-        if (e.which === 122) {
-            console.log(e.which, "toggle dev tools");
-            require('electron').remote.getCurrentWindow().toggleDevTools();
-        } else if (e.which === 116) {
-            console.log(e.which, "reload dom");
-            location.reload();
-        }
-        console.log(e.which);
-    })
 }
 
 //////////////////////////

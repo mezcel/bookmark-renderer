@@ -1,20 +1,21 @@
 ::
 :: killProcessesScript.bat
 ::
-:: Kill known background process and turn off computer
-::
+
+@ECHO off
 
 :::: Kill steam
-taskkill /f /im "C:\Program Files (x86)\Steam\Steam.exe"
+set appExe="C:\Program Files (x86)\Steam\Steam.exe"
+taskkill /f /im %appExe% 2> nul
 
 :::: Kill gamebar
-::cmd /k taskkill /f /im GameBar.exe
-taskkill /f /im RuntimeBarker.exe
+set appExe="GameBar.exe"
+taskkill /f /im %appExe% 2> nul
 
 :::: Kill ms-edge
-::cmd /k taskkill /f /im  MicrosoftEdge.exe /t
-taskkill /f /im  MicrosoftEdge.exe /t
+set appExe="MicrosoftEdge.exe"
+taskkill /f /im %appExe% /t 2> nul
 
 :: Kill Cortana
-::cmd /k taskkill /f /im  SearchUI.exe /t
-taskkill /f /im  SearchUI.exe /t
+set appExe="SearchUI.exe"
+taskkill /f /im %appExe% /t 2> nul
