@@ -11,6 +11,11 @@
     color:#fff !important; background-color:#607d8b !important; /* .w3-hover-theme:hover */
 }
 
+/* grid buttons */
+
+div.w3-col > p > a {
+    width: 95%;
+}
 
 /* guithub style for npm marked generated html */
 
