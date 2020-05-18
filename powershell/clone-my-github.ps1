@@ -63,7 +63,7 @@ function cloneGists {
 function cloneGithub {
     ## Make gist dir if needed
     $myGistDir = "C:$env:HOMEPATH\github\mezcel"
-    #$myGistDir = "~\github\mezcel"
+
     New-Item -ItemType Directory -Force -Path $myGistDir
     Start-Sleep 1
 
@@ -81,7 +81,7 @@ function cloneGithub {
     git clone https://github.com/mezcel/simple-respin.git "$myGistDir\simple-respin.git"
     git clone https://github.com/mezcel/terminal-profile.git "$myGistDir\terminal-profile.git"
     git clone https://github.com/mezcel/keyboard-layout.git "$myGistDir\keyboard-layout.git"
-    #git clone https://github.com/mezcel/bookmark-renderer.git "$myGistDir\bookmark-renderer.git"
+    git clone https://github.com/mezcel/bookmark-renderer.git "$myGistDir\bookmark-renderer.git"
 
     Write-Host "`nDone cloneing github." -ForegroundColor Cyan
 }
@@ -112,6 +112,7 @@ function pullRepos ( [string] $myGistDir ) {
 function pullGists {
     ## Make gist dir if needed
     $myGistDir = "C:$env:HOMEPATH\gist.github\mezcel"
+
     New-Item -ItemType Directory -Force -Path $myGistDir
     Start-Sleep 1
 
@@ -126,6 +127,7 @@ function pullGists {
 function pullGithub {
     ## Make gist dir if needed
     $myGithubDir = "C:$env:HOMEPATH\github\mezcel"
+
     New-Item -ItemType Directory -Force -Path $myGithubDir
     Start-Sleep 1
 
