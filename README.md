@@ -36,6 +36,8 @@ Remove-Item -Recurse -Force .\bookmark-renderer-win32-x64
 electron-packager .
 ```
 
+> Rebuild an executable package application. [script]( package-electron-app.ps1 )
+
 ---
 
 # Community Themes
@@ -47,7 +49,7 @@ electron-packager .
 
 This Electron App is intended to be packaged with ```electron-packager```. File paths to scripts are mapped locally as if it were packaged.
 
-Alternative script paths
+Alternative script paths. Used within ```renderer.js```
 ```js
 // Change
 var packagedRootDir = process.cwd() + "\\resources\\app\\";

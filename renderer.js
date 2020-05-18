@@ -217,15 +217,17 @@ function domNotes() {
     const btnCNotes          = document.getElementById('btnCNotes');
     const btnWslNotes        = document.getElementById('btnWslNotes');
 
-    var mdAbout           = "Markdown/mdAbout.md";
-    var mdCNotes          = "Markdown/mdCNotes.md";
-    var mdNodeNotes       = "Markdown/mdNodeNotes.md";
-    var mdPowershellNotes = "Markdown/mdPowershellNotes.md";
-    var mdPythonNotes     = "Markdown/mdPythonNotes.md";
-    var mdWslNotes        = "Markdown/mdWslNotes.md";
-    var mdWin10Notes      = "Markdown/mdWin10Notes.md";
+    var packagedRootDir   = process.cwd() + "\\resources\\app\\";
 
-    var mdFile = fs.readFileSync( mdAbout );
+    var mdAbout           = packagedRootDir + "\\Markdown/mdAbout.md";
+    var mdCNotes          = packagedRootDir + "\\Markdown/mdCNotes.md";
+    var mdNodeNotes       = packagedRootDir + "\\Markdown/mdNodeNotes.md";
+    var mdPowershellNotes = packagedRootDir + "\\Markdown/mdPowershellNotes.md";
+    var mdPythonNotes     = packagedRootDir + "\\Markdown/mdPythonNotes.md";
+    var mdWslNotes        = packagedRootDir + "\\Markdown/mdWslNotes.md";
+    var mdWin10Notes      = packagedRootDir + "\\Markdown/mdWin10Notes.md";
+
+    var mdFile            = fs.readFileSync( mdAbout );
     document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
 
     if ( btnWin10Notes ) {
