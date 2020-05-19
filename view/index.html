@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html id="htmlIndex">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Welcome</title>
+        <title>Welcome</title>
 
-    <link rel="stylesheet" href="css/w3.css">
-    <link rel="stylesheet" href="css/w3-theme-blue-grey.css">
-    <link rel="stylesheet" href="css/myStyle.css">
+        <link rel="stylesheet" href="css/w3.css">
+        <link rel="stylesheet" href="css/w3-theme-blue-grey.css">
+        <link rel="stylesheet" href="css/myStyle.css">
 
-    <script src="js/jquery.min.js"></script>
-  </head>
+        <script src="js/jquery.min.js"></script>
+    </head>
 
+    <body>
+        <div class="w3-card w3-center">
+            <h3>kiosk</h3>
+            <div class="w3-theme-l5">
+                Node <sub id="node-version"></sub> <sup id="platform-arch" class="w3-text-theme"></sup> | Chromium <sub id="chrome-version"></sub> | Electron <sub id="electron-version"></sub>
+            </div>
+            <p></p>
+        </div>
 
+        <div class="w3-row w3-card w3-theme-l4 w3-center">
+            <a class="w3-col s4 w3-btn w3-hover-theme" href="html/bookmarks.html">
+                <p>Bookmarks</p>
+            </a>
+            <a class="w3-col s4 w3-btn w3-hover-theme" href="html/scripts.html">
+                <p>Scripts</p>
+            </a>
+            <a class="w3-col s4 w3-btn w3-hover-theme" href="html/notes.html" target="_blank">
+                <p>Notes</p>
+            </a>
+        </div>
 
-  <body>
-      <div class="w3-card w3-center">
-        <h3>kiosk</h3>
-        <div class="w3-theme-l5">Node <sub id="node-version"></sub> <sup id="platform-arch" class="w3-text-theme"></sup> | Chromium <sub id="chrome-version"></sub> | Electron <sub id="electron-version"></sub></div>
         <p></p>
-      </div>
 
-      <div class="w3-row w3-card w3-theme-l4 w3-center">
+        <div class="w3-row w3-card w3-theme-l3 w3-border-theme w3-center">
+            <a id="btnGistDir" class="w3-col s6 w3-btn w3-hover-theme"><p>Gist Directory</p></a>
+            <a id="btnGithubDir" class="w3-col s6 w3-btn w3-hover-theme"><p>Github Directory</p></a>
+        </div>
 
-        <a class="w3-col s4 w3-btn w3-hover-theme" href="html/bookmarks.html">
-          <p>Bookmarks</p>
-        </a>
+        <div class="w3-row w3-card w3-theme-l2 w3-border-theme w3-border-top w3-center">
+            <a id="btnVSCode" class="w3-col s6 w3-btn w3-hover-theme"><p>VS Code</p></a>
+            <a id="btnWT" class="w3-col s6 w3-btn w3-hover-theme"><p>Windows Terminal</p></a>
+        </div>
 
-        <a class="w3-col s4 w3-btn w3-hover-theme" href="html/scripts.html">
-          <p>Scripts</p>
-        </a>
+        <div class="w3-display-bottomright w3-theme-light">
+            <a id="btnClose" class="w3-button w3-hover-theme">close</a>
+        </div>
 
-        <a class="w3-col s4 w3-btn w3-hover-theme" href="html/notes.html" target="_blank">
-          <p>Notes</p>
-        </a>
-
-      </div>
-
-      <p></p>
-
-      <div class="w3-row w3-card w3-theme-l3 w3-border-theme w3-center">
-        <a id="btnGistDir" class="w3-col s6 w3-btn w3-hover-theme"><p>Gist Directory</p></a>
-        <a id="btnGithubDir" class="w3-col s6 w3-btn w3-hover-theme"><p>Github Directory</p></a>
-      </div>
-
-      <div class="w3-row w3-card w3-theme-l2 w3-border-theme w3-border-top w3-center">
-        <a id="btnVSCode" class="w3-col s6 w3-btn w3-hover-theme"><p>VS Code</p></a>
-        <a id="btnWT" class="w3-col s6 w3-btn w3-hover-theme"><p>Windows Terminal</p></a>
-      </div>
-
-      <div class="w3-display-bottomright w3-theme-light">
-        <a id="btnClose" class="w3-button w3-hover-theme">close</a>
-      </div>
-
-      <script src="js/index.js"></script>
-  </body>
+        <script src="js/index.js"></script>
+    </body>
 
 </html>

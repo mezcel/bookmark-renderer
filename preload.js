@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   replaceText(`platform-arch`, process.platform)
+  replaceText(`cd`, process.cwd() )
 
 });
 

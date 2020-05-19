@@ -17,6 +17,7 @@
 | ```echo``` "text to add" ```>>``` < your file > | ```Add-Content``` "text to add" < your file > | append text to file |
 | echo " " | ```Write-Host``` " " | echo|
 | less | ```Get-Content -Path``` < file path > | view text file contents |
+| grep | ```Select-String -Pattern``` < search chars > | return records containing strings|
 | \n | `n | new line|
 | \t | `t | tab|
 | && |-and | and |
