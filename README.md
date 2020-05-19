@@ -23,7 +23,7 @@
 
 ### package app as an executable
 
-* > Rebuild an executable package application. [script]( package-electron-app.ps1 )
+* > Rebuild an executable package application. [script]( build-executable-app.ps1 )
     ```ps1
     ## launch the app from cli
     npm start

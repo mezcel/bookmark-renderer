@@ -3,14 +3,11 @@
     remove previous build and package a new build
 #>
 
-function set-shortcut( [string]$SourceLnk, [string]$DestinationPath ) {
-    <#
-    $SourceLnk = path of the shortcut link we want to make
-    $DestinationPath = the source file we want to make a shortcut for
-    #>
-    $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut($SourceLnk)
-    $Shortcut.TargetPath = $DestinationPath
+function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$TargetFile ) {
+    $WScriptShell = New-Object -ComObject WScript.Shell
+    $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
+    $Shortcut.TargetPath = $TargetFile
+    $Shortcut.WorkingDirectory = $WorkingDir
     $Shortcut.Save()
 }
 
@@ -32,12 +29,19 @@ Start-Sleep 3
 ## build new package
 Write-Host "Build a new package ..." -ForegroundColor Cyan
 electron-packager .
-Start-Sleep 1
+Start-Sleep 3
 
 ## Make a shortcut link
-#Write-Host "Create a shortcut ..." -ForegroundColor Cyan
-#cd bookmark-renderer*
-#$verbosePath = Get-Location
-#set-shortcut "Shortcut_Name.lnk" "$verbosePath\bookmark-renderer.exe"
+Write-Host "Create a shortcut ..." -ForegroundColor Cyan
+Set-Location -Path bookmark-renderer*
+$verbosePath = Get-Location
+$ShortcutFile1 = "$env:UserProfile\Desktop\bookmark-renderer.lnk"
+$ShortcutFile2 = "$env:AppData\Microsoft\Windows\Start Menu\Programs\Startup\bookmark-renderer.lnk"
+$WorkingDir = "$verbosePath"
+$TargetFile = "$verbosePath\bookmark-renderer.exe"
 
+set-shortcut $ShortcutFile1 $WorkingDir $TargetFile
+set-shortcut $ShortcutFile2 $WorkingDir $TargetFile
+
+Set-Location -Path ..\
 Write-Host "Done.`n"-ForegroundColor Yellow
