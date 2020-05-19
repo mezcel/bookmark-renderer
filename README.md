@@ -2,19 +2,18 @@
 
 ## about
 
-a welcome kiosk popup.
-* target os: win32
-* launches file explorer directories
-* runs custom shell scripts (```.bat```, ```.ps1```)
-* launches ```.exe``` apps
-* open web bookmarks
-* markdown reader
+a welcome kiosk popup for win10
 
-## electron
+* launch file explorer directories
+* run shell scripts (```.bat```, ```.ps1```)
+* launch ```.exe``` apps
+* open web bookmarks
+* markdown reader (github style display)
+
+## npm dependencies
 
 * [download nodejs]( https://nodejs.org )
 
-### npm dependencies
 ```ps1
 ## download and install electron
 npm install electron

@@ -59,7 +59,6 @@ function returnPackageDir( processCwd ) {
     var appDir = processCwd.split('\\').pop();
     var isRelativeMatch = /bookmark-renderer-/.test(appDir);
 
-    /*if ( appDir == "bookmark-renderer-win32-x64" ) {*/
     if ( isRelativeMatch ) {
         parentDir = process.cwd() + "\\resources\\app\\";
     }
