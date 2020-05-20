@@ -1,10 +1,10 @@
 # Git Notes
 
-1. [Git Server](#10-Git-Server)
-2. [Sharing A Git Repo Within A Private Network](#20-Sharing-A-Git-Repo-Within-A-Private-Network)
-3. [Git daemon Service](#30-Git-daemon-Service)
-4. [Common Git Tasks](#40-Common-Git-Tasks)
-5. [Use git between computers in the same LAN](#50-Use-git-between-computers-in-the-same-LAN)
+1. [Git Server](#10-git-server)
+2. [Sharing A Git Repo Within A Private Network](#20-sharing-a-git-repo-within-a-private-network)
+3. [Git daemon Service](#30-git-daemon-service)
+4. [Common Git Tasks](#40-common-git-tasks)
+5. [Use git between computers in the same LAN](#50-use-git-between-computers-in-the-same-lan)
 
 ---
 

@@ -1,6 +1,18 @@
 # Powershell Notes
 
-## bash equivalents
+Menu:
+
+1. [Aliases](#aliases)
+2. [Processes](#processes)
+3. [System](#system)
+    * [Enable PS scripts](#enable-ps-scripts)
+    * [Settings browser](#settings-browser)
+4. [Extras](#extras)
+    * [Curl Weather](#curl-weather)
+
+---
+
+## Aliases
 
 | bash | Powershell | About |
 | --- | --- | --- |
@@ -23,6 +35,10 @@
 | && |-and | and |
 | \|\| | -or | or |
 
+---
+
+## Processes
+
 | bash | Powershell | About |
 | --- | --- | --- |
 | command -v < prgm name > | Get-Command "< prgm name >" | is the command recognized by the terminal |
@@ -30,8 +46,49 @@
 | shutdown now | ```shutdown``` /s /f /t 0 | shutdown |
 | shutdown now | ```Stop-Computer``` | shutdown |
 
+---
+
+## System
+
 | bash | Powershell | About |
 | --- | --- | --- |
 | ifconfig | ipconfig ||
 | systemctl con up | ```Enable-NetAdapter -Name``` "< my adapter >" -Confirm:$false ||
 | systemctl con down | ```Disable-NetAdapter -Name``` "< my adapter >" -Confirm:$false ||
+
+---
+
+### Enable PS scripts
+```ps1
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Settings browser
+[guidance](https://ss64.com/nt/syntax-settings.html)
+```ps1
+## wifi configs
+Start-Process "ms-settings:network-wifi"
+
+## developers configs
+Start-Process "ms-settings:developers"
+
+## win10 update
+Start-Process "ms-settings:windowsupdate"
+```
+
+---
+
+# Extras
+
+## Curl Weather
+
+```ps1
+## Region
+(curl http://wttr.in/NewYork -UserAgent "curl" ).Content
+
+## city
+(curl http://wttr.in/"my_city,my_state" -UserAgent "curl" ).Content
+
+## Moon
+(curl wttr.in/Moon -UserAgent "curl" ).Content
+```

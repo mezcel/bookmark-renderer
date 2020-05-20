@@ -24,7 +24,9 @@ settings.json | File → Preferences → Settings
 "editor.rulers": [80,120] // col 80 and col 120
 ```
 
-### Notepad++-notes
+---
+
+### Notepad++ Text Editor
 
 Get Notepad++ Text Editor
 
