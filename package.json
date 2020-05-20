@@ -1,7 +1,7 @@
 {
   "name": "bookmark-renderer",
   "version": "1.0.0",
-  "description": "A welcome popup and bookmakrs container",
+  "description": "A welcome popup, markdown reader, taskbar, bookmark container.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
