@@ -1,14 +1,21 @@
 /* renderer.js */
 
-const { shell, BrowserWindow } = require('electron');
+const {
+    shell,
+    BrowserWindow } = require('electron');
 
 // Launch Exe related
-const { execFile, spawn, exec } = require('child_process');
+const {
+    execFile,
+    spawn,
+    exec } = require('child_process');
 const util = require('util');
 
 // Markdown relates
-const { getCurrentWindow, dialog } = require('electron').remote;
-const fs = require('fs');
+const {
+    getCurrentWindow,
+    dialog } = require('electron').remote;
+const fs     = require('fs');
 const marked = require('marked');
 
 //////////////////////////////////////////////
@@ -205,7 +212,7 @@ function domBookmarks() {  // open web links in a non-electron browser
 
 }
 
-function domNotes() {   // event buttons for view\html\notes.html
+function domMarkdown() {   // event buttons for view\html\notes.html
 
     const btn0 = document.getElementById('btn0');
     const btn1 = document.getElementById('btn1');
@@ -224,6 +231,7 @@ function domNotes() {   // event buttons for view\html\notes.html
     var mdPythonNotes     = parentDir + "Markdown/mdPythonNotes.md";
     var mdWslNotes        = parentDir + "Markdown/mdWslNotes.md";
     var mdWin10Notes      = parentDir + "Markdown/mdWin10Notes.md";
+    var README            = parentDir + "README.md";
 
     var mdFile            = fs.readFileSync( mdAbout );
     document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
@@ -265,14 +273,14 @@ function domNotes() {   // event buttons for view\html\notes.html
 
     if ( btn4 ) {
         btn4.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdAbout );
+            var mdFile = fs.readFileSync( README );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
 
     if ( btn5 ) {
         btn5.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdAbout );
+            var mdFile = fs.readFileSync( README );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
 
@@ -332,10 +340,10 @@ function main() {
 
     if ( htmlMarkdown ) {
         const window = getCurrentWindow();
-        window.setSize(950, 700);
+        window.setSize(950, 700, true);
         window.center();
 
-        domNotes();     // event buttons for view\html\notes.html
+        domMarkdown();     // event buttons for view\html\notes.html
         domBookmarks(); // open web links in a non-electron browser
     }
 

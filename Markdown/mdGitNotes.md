@@ -1,6 +1,14 @@
 # Git Notes
 
-## Cheat Sheet
+1. [Git Server](#10-Git-Server)
+2. [Sharing A Git Repo Within A Private Network](#20-Sharing-A-Git-Repo-Within-A-Private-Network)
+3. [Git daemon Service](#30-Git-daemon-Service)
+4. [Common Git Tasks](#40-Common-Git-Tasks)
+5. [Use git between computers in the same LAN](#50-Use-git-between-computers-in-the-same-LAN)
+
+---
+
+## 1.0 Git Server
 
 ### server:
 
@@ -31,35 +39,18 @@ git clone git://192.168.xxx.x/ my-whatever-dir-folder
 
 ---
 
-## win10 GitBash workarounds
+## 2.0 Sharing A Git Repo Within A Private Network
 
-Not real a workaround, it's just stuff you need to do with LAN/Ad-Hoc peer-to-peer share (push, fetch, pull)
+### Identify available Server/Client IP's within the same network hub
 
-### push from win10
-
-```sh
-# Win10 has default firewall security settings.
-# Make sure TCP port: 9418 is accessable at the time when you want GitBash to perform Daemon Services
-
-# Make sure your do this or the 'transfer' will hang when you push
-# do this on both client and server, but most relevant for the client. The client is going to need it push back to its server.
-git config --global sendpack.sideband false
-```
-
----
-
-# Sharing A Git Repo Within A Private Network
-
-#### Identify available Server/Client IP's within the same network hub
-
-CMD
+#### CMD
 
 ```bat
 REM View IP's on network hub from a Win10 CMD
 arp -a
 ```
 
-Bash
+#### Bash
 
 ```sh
 # View IP's on network hub from a Linux Terminal
@@ -67,7 +58,7 @@ nmap sP 192.168.0.*
 ```
 ---
 
-## Git daemon Service
+## 3.0 Git daemon Service
 
 Task | Git Script | Guidance
 --- | --- | ---
@@ -78,7 +69,7 @@ Resolve push/pull conflicts | ```git reset --hard HEAD``` | reorient path mismat
 Convenient daemon Alias | ```git config --global alias.serve 'daemon --base-path=. --export-all --enable=receive-pack --reuseaddr --informative-errors --verbose'``` | define alias variable
 . | ```git serve``` | start daemon service from the **serve** alias
 
-## Common Git Tasks
+## 4.0 Common Git Tasks
 
 #### Variable Related
 
@@ -170,11 +161,11 @@ A safe thing to do is just merge in a temporary branch and if the temp is good..
 
 ---
 
-## Use git between computers in the same LAN
+## 5.0 Use git between computers in the same LAN
 
 With Git i dont need to mess arround with personalizing ```ssh``` and ```sftp``` configurations with new computers on the same network.
 
-_Note_: Recomended for peer to peer. Outsiders can still tamper. But... outsiders are always tampering. With read-only mode for both parties, some measure of security piece of mind can be established.
+_Note_: Recommended for peer to peer. Outsiders can still tamper. But... outsiders are always tampering. With read-only mode for both parties, some measure of security piece of mind can be established.
 
 ### guidance:
 

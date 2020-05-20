@@ -1,41 +1,53 @@
 # bookmark-renderer
 
-## about
+## About
+A startup welcome kiosk for Win10.
 
-> a welcome kiosk popup for win10
+> It is basically a bulky taskbar, but setup to do the things I care about most. It is just a virtual paperweight.
 
-* launch file explorer directories
-* run shell scripts (```.bat```, ```.ps1```)
+Electron features:
+* file explorer
+* launch shell scripts (```.bat```, ```.ps1```)
 * launch ```.exe``` apps
-* open web bookmarks
-* markdown reader (github style display)
+* web bookmarks
+* markdown reader
 
-## npm dependencies
+## Npm Dependencies
 
-* [download nodejs]( https://nodejs.org )
-    ```ps1
-    ## download and install electron
-    npm install electron
+* NodeJS [download]( https://nodejs.org )
+* Electron
+* marked [download]( https://www.npmjs.com/package/marked )
+* electron-packager [download](https://www.npmjs.com/package/electron-packager)
 
-    # download and install other dependencies
-    npm install
-    ```
+## Install
+
+```ps1
+## download and install electron
+npm install electron
+
+## download and install other dependencies
+npm install
+
+## globally install electron-packager
+npm install -g electron-packager
+```
+## Build
+
+[script]( build-executable-app.ps1 )
+```PS1
+## Build app into an executable package, make a desktop shortcut, and set it to autostart when the user logs on.
+
+.\build-executable-app.ps1
+```
 
 ### package app as an executable
 
 * > Rebuild an executable package application. [script]( build-executable-app.ps1 )
     ```ps1
-    ## launch the app from cli
-    npm start
-
-    ## globally install electron-packager
-    npm install -g electron-packager
-
     ## package app as an executable
-    Remove-Item -Recurse -Force .\bookmark-renderer-win32-x64
     electron-packager .
     ```
-* Launch app at startup
+* > Launch app at startup with shortcuts [script]( build-executable-app.ps1 )
     ```ps1
     Copy-Item -Path "<shortcut-link.lnk>" -Destination "$env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
     ```
