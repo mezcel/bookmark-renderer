@@ -284,6 +284,12 @@ function customKeybindings() {
                 console.log(e.which, "reload dom");
                 location.reload();
                 break;
+            case 37: // Lt Arrow
+                history.back();
+                break;
+            case 39: // Rt Arrow
+                history.forward();
+                break;
             default:
                 console.log(e.which);
         }
