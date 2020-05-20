@@ -7,6 +7,7 @@ const { execFile, spawn, exec } = require('child_process');
 const util = require('util');
 
 // Markdown relates
+const { getCurrentWindow, dialog } = require('electron').remote;
 const fs = require('fs');
 const marked = require('marked');
 
@@ -206,12 +207,12 @@ function domBookmarks() {  // open web links in a non-electron browser
 
 function domNotes() {   // event buttons for view\html\notes.html
 
-    const btnWin10Notes      = document.getElementById('btnWin10Notes');
-    const btnPowershellNotes = document.getElementById('btnPowershellNotes');
-    const btnPythonNotes     = document.getElementById('btnPythonNotes');
-    const btnNodeNotes       = document.getElementById('btnNodeNotes');
-    const btnCNotes          = document.getElementById('btnCNotes');
-    const btnWslNotes        = document.getElementById('btnWslNotes');
+    const btn0 = document.getElementById('btn0');
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const btn3 = document.getElementById('btn3');
+    const btn4 = document.getElementById('btn4');
+    const btn5 = document.getElementById('btn5');
 
     var parentDir = returnPackageDir( process.cwd() );
 
@@ -219,6 +220,7 @@ function domNotes() {   // event buttons for view\html\notes.html
     var mdCNotes          = parentDir + "Markdown/mdCNotes.md";
     var mdNodeNotes       = parentDir + "Markdown/mdNodeNotes.md";
     var mdPowershellNotes = parentDir + "Markdown/mdPowershellNotes.md";
+    var mdGitNotes        = parentDir + "Markdown/mdGitNotes.md";
     var mdPythonNotes     = parentDir + "Markdown/mdPythonNotes.md";
     var mdWslNotes        = parentDir + "Markdown/mdWslNotes.md";
     var mdWin10Notes      = parentDir + "Markdown/mdWin10Notes.md";
@@ -226,50 +228,55 @@ function domNotes() {   // event buttons for view\html\notes.html
     var mdFile            = fs.readFileSync( mdAbout );
     document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
 
-    if ( btnWin10Notes ) {
-        btnWin10Notes.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdWin10Notes );
-            document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+    if ( btn0 ) {
+
+        btn0.addEventListener('click', function () {
+            const filters = { filters: [{ name: 'Markdown', extensions: ['md', 'markdown'], properties: ['openFile'] }] }
+
+            dialog.showOpenDialog(filters).then(result => {
+                var mdFile = fs.readFileSync( result.filePaths[0] );
+                document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+            }).catch(err => {
+                console.log("err", err)
+            });
         });
     }
 
-    if ( btnPowershellNotes ) {
-        btnPowershellNotes.addEventListener('click', function () {
+    if ( btn1 ) {
+        btn1.addEventListener('click', function () {
             var mdFile = fs.readFileSync( mdPowershellNotes );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
 
-    if ( btnPythonNotes ) {
-        btnPythonNotes.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdPythonNotes );
+    if ( btn2 ) {
+        btn2.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdGitNotes );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
 
-    if ( btnNodeNotes ) {
-        btnNodeNotes.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdNodeNotes );
+    if ( btn3 ) {
+        btn3.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdWin10Notes );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
 
-    if ( btnCNotes ) {
-        btnCNotes.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdCNotes );
+    if ( btn4 ) {
+        btn4.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdAbout );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
 
-    if ( btnWslNotes ) {
-        btnWslNotes.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdWslNotes );
+    if ( btn5 ) {
+        btn5.addEventListener('click', function () {
+            var mdFile = fs.readFileSync( mdAbout );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
+
     }
-
-    domBookmarks(); // open web links in a non-electron browser
-
 }
 
 function customKeybindings() {
@@ -277,11 +284,11 @@ function customKeybindings() {
 
         switch( e.which ) {
             case 122: // F11
-                console.log(e.which, "toggle dev tools");
-                require('electron').remote.getCurrentWindow().toggleDevTools();
+                console.log( e.which, "toggle dev tools" );
+                require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
                 break;
             case 116: // F5
-                console.log(e.which, "reload dom");
+                console.log( e.which, "reload dom" );
                 location.reload();
                 break;
             case 37: // Lt Arrow
@@ -290,8 +297,11 @@ function customKeybindings() {
             case 39: // Rt Arrow
                 history.forward();
                 break;
+            case 27: // ESC
+                window.close(); // closes DOM
+                break;
             default:
-                console.log(e.which);
+                console.log( e.which );
         }
 
     });
@@ -300,11 +310,11 @@ function customKeybindings() {
 
 function main() {
 
-    const btnClose    = document.getElementById('btnClose');
-    const htmlIndex   = document.getElementById('htmlIndex');
-    const htmlScripts = document.getElementById('htmlScripts');
-    const htmlNotes   = document.getElementById('htmlNotes');
-    const htmlBookmarks   = document.getElementById('htmlBookmarks');
+    const btnClose      = document.getElementById('btnClose');
+    const htmlIndex     = document.getElementById('htmlIndex');
+    const htmlScripts   = document.getElementById('htmlScripts');
+    const htmlMarkdown  = document.getElementById('htmlMarkdown');
+    const htmlBookmarks = document.getElementById('htmlBookmarks');
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
@@ -320,8 +330,13 @@ function main() {
         domScripts();   // event buttons for view\html\scripts.html
     }
 
-    if ( htmlNotes ) {
+    if ( htmlMarkdown ) {
+        const window = getCurrentWindow();
+        window.setSize(950, 700);
+        window.center();
+
         domNotes();     // event buttons for view\html\notes.html
+        domBookmarks(); // open web links in a non-electron browser
     }
 
     if ( htmlBookmarks ) {

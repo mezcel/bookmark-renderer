@@ -6,10 +6,10 @@ const {
     BrowserWindow,
     shell,
     Menu
-} = require('electron')
+} = require('electron');
 
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
 
 Menu.setApplicationMenu(null); // null menu
 
