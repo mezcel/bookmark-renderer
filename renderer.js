@@ -266,7 +266,7 @@ function domMarkdown() {   // event buttons for view\html\notes.html
 
     if ( btn3 ) {
         btn3.addEventListener('click', function () {
-            var mdFile = fs.readFileSync( mdWin10Notes );
+            var mdFile = fs.readFileSync( README );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
     }
@@ -306,7 +306,11 @@ function customKeybindings() {
                 history.forward();
                 break;
             case 27: // ESC
+            case 81: // q
                 window.close(); // closes DOM
+                break;
+            case 71: // g
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 break;
             default:
                 console.log( e.which );
