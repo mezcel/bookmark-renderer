@@ -15,7 +15,6 @@ $flagArg=""
 $ssidArg=""
 
 function testPing {
-    Start-Sleep 2
     $pingAddr = "google.com"
 
     Write-Host "##" -ForegroundColor Cyan
@@ -58,7 +57,6 @@ function ssidPicker {
 
         netsh wlan connect name=$selectedSsid
         testPing
-
     }
 }
 
@@ -158,4 +156,4 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
 
 $scriptName = $MyInvocation.MyCommand.Name
 main $flagArg $ssidArg $scriptName
-Start-Sleep 1
+Start-Sleep 2

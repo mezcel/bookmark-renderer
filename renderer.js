@@ -185,11 +185,12 @@ function domScripts() { // event buttons for view\html\scripts.html
 
     if ( btnScript7 ) {
         btnScript7.addEventListener( 'click', function () {
-            alert( "Killing processes. The log Console, (F11), will be toggled after pressing OK" );
+            //alert( "Killing processes. The log Console, (F11), will be toggled after pressing OK" );
             console.clear();
             console.log( "\n:::::::::::::::::\nKill status\n:::::::::::::::::\n" );
 
-            require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
+            // Display Dev Tools in order to read the console log
+            //require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
 
             launchBatScript( scriptPath7 );
         });
