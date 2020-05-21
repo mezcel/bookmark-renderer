@@ -11,7 +11,7 @@ const {
 const path = require( 'path' );
 const url = require( 'url' );
 
-Menu.setApplicationMenu(null); // null menu
+Menu.setApplicationMenu( null ); // null menu
 
 function createWindow () {
     // Create the browser window.
@@ -23,6 +23,8 @@ function createWindow () {
             nodeIntegration: true, /* enable renderer.js script */
         }
     })
+
+    //mainWindow.setMenu( null );
 
     // and load the index.html of the app.
     mainWindow.loadURL(

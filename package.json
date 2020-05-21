@@ -1,6 +1,6 @@
 {
   "name": "bookmark-renderer",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "A welcome popup, markdown reader, taskbar, bookmark container.",
   "main": "main.js",
   "scripts": {

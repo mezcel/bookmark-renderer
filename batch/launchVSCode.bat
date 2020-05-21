@@ -1,1 +1,3 @@
-start code
+::start code
+code --verbose
+exit

@@ -6,6 +6,8 @@
 
 ### VS Code
 
+* [documentation](https://code.visualstudio.com/docs/editor/command-line)
+
 #### VS Code Plugins
 
 |Spell Checking|Syntax highlighting|Color themes|WLS|
