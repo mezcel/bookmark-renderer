@@ -6,10 +6,10 @@ const {
     BrowserWindow,
     shell,
     Menu
-} = require('electron');
+} = require( 'electron' );
 
-const path = require('path');
-const url = require('url');
+const path = require( 'path' );
+const url = require( 'url' );
 
 Menu.setApplicationMenu(null); // null menu
 
@@ -19,17 +19,17 @@ function createWindow () {
         width: 800,
         height: 400,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
+            preload: path.join( __dirname, 'preload.js' ),
             nodeIntegration: true, /* enable renderer.js script */
         }
     })
 
     // and load the index.html of the app.
     mainWindow.loadURL(
-      url.format({
-        pathname: path.join(__dirname, 'view/index.html'),
-        protocol: 'file:'
-      })
+        url.format({
+            pathname: path.join( __dirname, 'view/index.html' ),
+            protocol: 'file:'
+        })
     )
 
     // Open the DevTools.
@@ -44,10 +44,10 @@ app.whenReady().then(() => {
 
     app.applicationMenu = false
 
-    app.on('activate', function () {
+    app.on( 'activate', function () {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+        if ( BrowserWindow.getAllWindows().length === 0 ) createWindow()
     })
 })
 
@@ -55,5 +55,5 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') app.quit()
+    if ( process.platform !== 'darwin' ) app.quit()
 })
