@@ -6,11 +6,12 @@ A startup welcome kiosk for Win10.
 > It is basically a bulky taskbar, but setup to do the things I care about most. It is just a virtual paperweight.
 
 Electron features:
-* file explorer
-* launch shell scripts (```.bat```, ```.ps1```)
-* launch ```.exe``` apps
-* web bookmarks
-* markdown reader
+
+* File Explorer
+* Markdown Reader
+* Launch shell scripts (```.bat```, ```.ps1```)
+* Launch ```.exe``` apps
+* Web bookmarks
 
 ## Npm Dependencies
 
