@@ -74,7 +74,7 @@ function returnPackageDir( processCwd ) {
     return parentDir;
 }
 
-function domIndex() {   // event buttons for view\index.html
+function domIndex() {       // event buttons for view\index.html
 
     const btnGistDir   = document.getElementById( 'btnGistDir' );
     const btnGithubDir = document.getElementById( 'btnGithubDir' );
@@ -115,7 +115,7 @@ function domIndex() {   // event buttons for view\index.html
     }
 }
 
-function domScripts() { // event buttons for view\html\scripts.html
+function domScripts() {     // event buttons for view\html\scripts.html
 
     const btnScript0 = document.getElementById( 'btnScript0' );
     const btnScript1 = document.getElementById( 'btnScript1' );
@@ -193,6 +193,7 @@ function domScripts() { // event buttons for view\html\scripts.html
             //require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
 
             launchBatScript( scriptPath7 );
+            alert( "Killed processes. Check the log Console, (F12), to view kill status." );
         });
     }
 
@@ -204,7 +205,7 @@ function domScripts() { // event buttons for view\html\scripts.html
 
 }
 
-function domBookmarks() {  // open web links in a non-electron browser
+function domBookmarks() {   // open web links in a non-electron browser
 
     let shell = require( 'electron' ).shell
     document.addEventListener( 'click', function ( event ) {
@@ -223,7 +224,7 @@ function markdownWindowSize() {
 
 }
 
-function domMarkdown() {   // event buttons for view\html\notes.html
+function domMarkdown() {    // event buttons for view\html\notes.html
 
     const btn0 = document.getElementById( 'btn0' );
     const btn1 = document.getElementById( 'btn1' );
@@ -317,12 +318,12 @@ function customKeybindings() {
     document.addEventListener( "keydown", function (e) {
 
         switch( e.which ) {
-            case 122: // F11
+            case 123: // F13
                 console.log( e.which, "toggle dev tools" );
                 require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
                 break;
             case 116: // F5
-                console.log( e.which, "reload dom" );
+                console.log( e.which, "reload browser" );
                 location.reload();
                 break;
             case 37: // Lt Arrow
