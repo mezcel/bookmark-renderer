@@ -2,17 +2,17 @@
 
 Menu:
 
-1. [Aliases](#aliases)
-2. [Processes](#processes)
-3. [System](#system)
-    * [Enable PS scripts](#enable-ps-scripts)
-    * [Settings browser](#settings-browser)
-4. [Extras](#extras)
-    * [Curl Weather](#curl-weather)
+1. [Aliases](#10-aliases)
+2. [Processes](#20-processes)
+3. [System](#30-system)
+    * [Enable PS scripts](#31-enable-ps-scripts)
+    * [Settings browser](#32-settings-browser)
+4. [Extras](#40-extras)
+    * [Curl Weather](#41-curl-weather)
 
 ---
 
-## Aliases
+## 1.0 Aliases
 
 | bash | Powershell | About |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ Menu:
 
 ---
 
-## Processes
+## 2.0 Processes
 
 | bash | Powershell | About |
 | --- | --- | --- |
@@ -48,7 +48,7 @@ Menu:
 
 ---
 
-## System
+## 3.0 System
 
 | bash | Powershell | About |
 | --- | --- | --- |
@@ -58,12 +58,12 @@ Menu:
 
 ---
 
-### Enable PS scripts
+### 3.1 Enable PS scripts
 ```ps1
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-### Settings browser
+### 3.2 Settings browser
 [guidance](https://ss64.com/nt/syntax-settings.html)
 ```ps1
 ## wifi configs
@@ -78,9 +78,9 @@ Start-Process "ms-settings:windowsupdate"
 
 ---
 
-# Extras
+# 4.0 Extras
 
-## Curl Weather
+## 4.1 Curl Weather
 
 ```ps1
 ## Region
