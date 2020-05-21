@@ -215,6 +215,13 @@ function domBookmarks() {  // open web links in a non-electron browser
 
 }
 
+function markdownWindowSize() {
+    const window = getCurrentWindow();
+    window.setSize( 1020, 700 );
+    window.center();
+
+}
+
 function domMarkdown() {   // event buttons for view\html\notes.html
 
     const btn0 = document.getElementById( 'btn0' );
@@ -224,6 +231,7 @@ function domMarkdown() {   // event buttons for view\html\notes.html
     const btn4 = document.getElementById( 'btn4' );
     const btn5 = document.getElementById( 'btn5' );
     const btnWidth = document.getElementById( 'btnWidth' );
+    const btnTop = document.getElementById( 'btnTop' );
 
     var parentDir = returnPackageDir( process.cwd() );
 
@@ -243,9 +251,13 @@ function domMarkdown() {   // event buttons for view\html\notes.html
     if ( btnWidth ) {
 
         btnWidth.addEventListener( 'click', function () {
-            const window = getCurrentWindow();
-            window.setSize(1020, 700);
-            window.center();
+            markdownWindowSize();
+        });
+    }
+    if ( btnTop ) {
+
+        btnTop.addEventListener( 'click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
@@ -254,7 +266,7 @@ function domMarkdown() {   // event buttons for view\html\notes.html
         btn0.addEventListener( 'click', function () {
             const filters = { filters: [{ name: 'Markdown', extensions: ['md', 'markdown'], properties: ['openFile'] }] }
 
-            dialog.showOpenDialog(filters).then(result => {
+            dialog.showOpenDialog( filters ).then( result => {
                 var mdFile = fs.readFileSync( result.filePaths[0] );
                 document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
             }).catch( err => {
@@ -320,10 +332,14 @@ function customKeybindings() {
                 break;
             case 27: // ESC
             case 81: // q
+            case 88: // x
                 window.close(); // closes DOM
                 break;
             case 71: // g
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                break;
+            case 32: // spacebar
+                markdownWindowSize();
                 break;
             default:
                 console.log( e.which );
@@ -348,26 +364,26 @@ function main() {
     }
 
     if ( htmlIndex ) {
-        domIndex();     // event buttons for view\index.html
+        domIndex();         // event buttons for view\index.html
     }
 
     if ( htmlScripts ) {
-        domScripts();   // event buttons for view\html\scripts.html
+        domScripts();       // event buttons for view\html\scripts.html
     }
 
     if ( htmlMarkdown ) {
         const window = getCurrentWindow();
         window.center();
 
-        domMarkdown();     // event buttons for view\html\notes.html
-        domBookmarks(); // open web links in a non-electron browser
+        domMarkdown();      // event buttons for view\html\notes.html
+        domBookmarks();     // open web links in a non-electron browser
     }
 
     if ( htmlBookmarks ) {
         domBookmarks();     // event buttons for view\html\bookmarks.html
     }
 
-    customKeybindings(); // DOM Keybindings
+    customKeybindings();    // DOM Key bindings
 
 }
 
