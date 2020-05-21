@@ -5,6 +5,7 @@
 3. [Git daemon Service](#30-git-daemon-service)
 4. [Common Git Tasks](#40-common-git-tasks)
 5. [Use git between computers in the same LAN](#50-use-git-between-computers-in-the-same-lan)
+6. [Cleaning Repo](#60-cleaning-repo)
 
 ---
 
@@ -199,3 +200,24 @@ _Note_: Recommended for peer to peer. Outsiders can still tamper. But... outside
 4. Pull server repo into the client via ip and make a brach. The brach will help keep all forked user organized.
 
 5. Work within your branch and from here on out it is just like using Github. Just remember who your Server is. Your server is the host computer. That is partly why it is best practice to work within your custom branches.
+
+----
+
+## 6.0 Cleaning Repo
+
+[guidance](http://bogdan.org.ua/2011/03/28/how-to-truncate-git-history-sample-script-included.html)
+```sh
+#!/bin/bash
+
+git checkout --orphan temp $1 		# create a new branch without parent history
+git commit -m "Truncated history" 	# create a first commit on this branch
+git rebase --onto temp $1 master 	# now rebase the part of master branch that we want to keep onto this branch
+
+git branch -D temp 					# delete the temp branch
+
+## The following 2 commands are optional - they keep your git repo in good shape.
+
+git prune --progress 				# delete all the objects w/o references
+
+git gc --aggressive 				# aggressively collect garbage
+```
