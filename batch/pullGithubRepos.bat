@@ -5,7 +5,7 @@
 @ECHO off
 
 :ps1Script
-    cd ..\powershell
+    cd ..\Powershell
     start powershell -Command ".\clone-my-github.ps1"
     GOTO:EOF
 

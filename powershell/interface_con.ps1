@@ -4,6 +4,7 @@
     About:
         Turn on wifi and connect to an SSID for internet.
         Or Turn off wifi
+        interface_con.ps1 --ssid <ssid name>
     Git:
         https://gist.github.com/mezcel/34895a5ae768873a26e762e068394a84#file-interface_con-ps1
 #>
@@ -16,13 +17,17 @@ $ssidArg=""
 function testPing {
     Start-Sleep 2
     $pingAddr = "google.com"
-    Write-Host "`nPinging $pingAddr ...`n" -ForegroundColor Cyan
+
+    Write-Host "##" -ForegroundColor Cyan
+    Write-Host "## Pinging $pingAddr ..." -ForegroundColor Cyan
+    Write-Host "##" -ForegroundColor Cyan
+
     $pingPass = Test-Connection -ComputerName $pingAddr -Count 3 -Quiet
 
     if ( $pingPass ) {
-        Write-Host " Ping Pass`n" -ForegroundColor Green
+        Write-Host "## Ping Pass`n" -ForegroundColor Green
     } else {
-        Write-Host " Ping Fail`n" -ForegroundColor Red
+        Write-Host "## Ping Fail`n" -ForegroundColor Red
     }
 
     return $pingPass
@@ -30,7 +35,7 @@ function testPing {
 
 function ssidPicker {
     ## grep and select a deteted ssid
-    Write-Host "Available SSID's:" -ForegroundColor DarkYellow
+    Write-Host "## Available SSID's:" -ForegroundColor DarkYellow
     $ssidList = netsh wlan show network | Select-String "SSID"
     $listLength = $ssidList.length
 
@@ -38,17 +43,18 @@ function ssidPicker {
 
         for ($i=1; $i -le $listLength; $i++) {
             $ssidString = $ssidList[$i-1]
-            Write-Host "`t$ssidString"  -ForegroundColor Yellow
+            Write-Host "##`t$ssidString"  -ForegroundColor Yellow
         }
 
-        $idx = Read-Host "`nSelect an SSID No [ 1 - $listLength ] "
+        Write-Host "##`n" -ForegroundColor DarkYellow
+        $idx = Read-Host "`tSelect an SSID No [ 1 - $listLength ] "
         $idx=$idx-1
 
         $selectedSsid = $ssidList[$idx]
         $selectedSsid = ($selectedSsid -split ": ")[1]
-
-        Write-Host "`nYou selected: $selectedSsid" -ForegroundColor Green
-        Write-Host " Connecting ...`n" -ForegroundColor Cyan
+        Write-Host "##" -ForegroundColor DarkYellow
+        Write-Host "## You selected: $selectedSsid" -ForegroundColor Green
+        Write-Host "## Connecting ...`n" -ForegroundColor Cyan
 
         netsh wlan connect name=$selectedSsid
         testPing
@@ -72,22 +78,23 @@ function wifiStatus {
         $statusQuery = Get-NetAdapter | SELECT Name, Status | WHERE Name -eq Wi-Fi
         $statusString = $statusQuery.Status
         if ( $statusString -ne "Up" ) {
-            Write-Host "NetAdapter status is $statusString" -ForegroundColor Red
-            Write-Host "`tManually turn on the Wireles NIC and try this script again." -ForegroundColor Red
-            Write-Host "Tip:`n`tNavigate to Settings --> Wi-Fi settings`n" -ForegroundColor Red
+            Write-Host "## NetAdapter status is $statusString" -ForegroundColor Red
+            Write-Host "## `tManually turn on the Wireles NIC and try this script again." -ForegroundColor Red
+            Write-Host "## Tip:" -ForegroundColor Red
+            Write-Host "##`tNavigate to Settings --> Wi-Fi settings`n" -ForegroundColor Red
 
-            $yn = Read-Host "Do you want to automatically navigate to and open the Wi-Fi Setting now? [ y/N ]"
+            $yn = Read-Host " Do you want to automatically navigate to and open the Wi-Fi Setting now? [ y/N ]"
             if ( $yn -eq "y" ) {
                 ## guidance: https://ss64.com/nt/syntax-settings.html
                 Start-Process "ms-settings:network-wifi"
             }
 
-            Write-Host "Exiting script now.`n" -ForegroundColor Green
+            Write-Host "## Exiting script now.`n" -ForegroundColor Green
 
             Exit
         }
     } else {
-        Write-Host "NetAdapter status is $statusString `n" -ForegroundColor DarkYellow
+        Write-Host "## NetAdapter status is $statusString `n" -ForegroundColor DarkYellow
     }
 }
 
@@ -97,12 +104,20 @@ function connman () {
 }
 
 function greeting ( [string] $scriptName ) {
-    Write-Host "About:`n`tConnect or disconnect to/from Wifi internet."  -ForegroundColor Magenta
-    Write-Host "Flags:`n`tIf you know the SSID you want to connect to."  -ForegroundColor Magenta
-    Write-Host "`tNext time use the --ssid flag to skip prompts"  -ForegroundColor Magenta
-    Write-Host "`tExample:"  -ForegroundColor Magenta
-    Write-Host "`t`t.\$scriptName --ssid KnownSSIDName"  -ForegroundColor Magenta
-    Write-Host "Source code:`n`thttps://gist.github.com/mezcel/34895a5ae768873a26e762e068394a84#file-interface_con-ps1"  -ForegroundColor Magenta
+    Write-Host "## -------------------------------------------------------------------------------------------" -ForegroundColor Magenta
+    Write-Host "## $scriptName" -ForegroundColor Magenta
+    Write-Host "##" -ForegroundColor Magenta
+    Write-Host "## About:" -ForegroundColor Magenta
+    Write-Host "##`tConnect or disconnect to/from Wifi internet." -ForegroundColor Magenta
+    Write-Host "## Flags:" -ForegroundColor Magenta
+    Write-Host "##`tIf you know the SSID you want to connect to, then" -ForegroundColor Magenta
+    Write-Host "##`tnext time use the --ssid flag to skip prompts"  -ForegroundColor Magenta
+    Write-Host "##`tExample:"  -ForegroundColor Magenta
+    Write-Host "##`t`t.\$scriptName --ssid KnownSSIDName"  -ForegroundColor Magenta
+    Write-Host "## Source code:"  -ForegroundColor Magenta
+    Write-Host "##  https://gist.github.com/mezcel/34895a5ae768873a26e762e068394a84#file-interface_con-ps1" -ForegroundColor Magenta
+    Write-Host "## -------------------------------------------------------------------------------------------" -ForegroundColor Magenta
+    Start-Sleep 1
 }
 
 function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
@@ -143,3 +158,4 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
 
 $scriptName = $MyInvocation.MyCommand.Name
 main $flagArg $ssidArg $scriptName
+Start-Sleep 1

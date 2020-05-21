@@ -37,7 +37,7 @@ function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$Targ
 }
 function createShortcutLinks() {
     ## Make a shortcut link
-    Write-Host "Create a shortcut ..." -ForegroundColor Cyan
+    Write-Host "Creating shortcut links..." -ForegroundColor Cyan
     Set-Location -Path bookmark-renderer*
 
     $verbosePath = Get-Location
@@ -49,8 +49,10 @@ function createShortcutLinks() {
 
     ## desktop
     set-shortcut $ShortcutFile1 $WorkingDir $TargetFile
+    Write-Host "Created a desktop shortcut ..." -ForegroundColor Cyan
     ## startup
     set-shortcut $ShortcutFile2 $WorkingDir $TargetFile
+    Write-Host "Created a startup link ..." -ForegroundColor Cyan
 
     Set-Location -Path ..\
 

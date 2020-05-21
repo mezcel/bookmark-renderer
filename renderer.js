@@ -100,7 +100,7 @@ function domIndex() {   // event buttons for view\index.html
 
         btnVSCode.addEventListener( 'click', function () {
             var parentDir = returnPackageDir( process.cwd() );
-            var scriptPath = parentDir + "batch\\launchVSCode.bat"
+            var scriptPath = parentDir + "Batch\\launchVSCode.bat"
             launchBatScript( scriptPath );
         });
     }
@@ -109,7 +109,7 @@ function domIndex() {   // event buttons for view\index.html
 
         btnWT.addEventListener( 'click', function () {
             var parentDir = returnPackageDir( process.cwd() );
-            var scriptPath = parentDir + "batch\\launchWT.bat"
+            var scriptPath = parentDir + "Batch\\launchWT.bat"
             launchBatScript( scriptPath );
         });
     }
@@ -129,17 +129,17 @@ function domScripts() { // event buttons for view\html\scripts.html
 
     var parentDir = returnPackageDir( process.cwd() );
 
-    var scriptPath0 = parentDir + "batch\\launchTaskManager.bat";
-    var scriptPath1 = parentDir + "batch\\pullGithubRepos.bat";
+    var scriptPath0 = parentDir + "Batch\\launchTaskManager.bat";
+    var scriptPath1 = parentDir + "Batch\\pullGithubRepos.bat";
     var scriptPath2 = parentDir + "";
 
     var scriptPath3 = parentDir + "";
     var scriptPath4 = parentDir + "";
     var scriptPath5 = parentDir + "";
 
-    var scriptPath6 = parentDir + "batch\\connmanScript.bat";
-    var scriptPath7 = parentDir + "batch\\killProcessesScript.bat";
-    var scriptPath8 = parentDir + "batch\\shutdownScript.bat";
+    var scriptPath6 = parentDir + "Batch\\connmanScript.bat";
+    var scriptPath7 = parentDir + "Batch\\killProcessesScript.bat";
+    var scriptPath8 = parentDir + "Batch\\shutdownScript.bat";
 
     if ( btnScript0 ) {
         btnScript0.addEventListener( 'click', function () {
