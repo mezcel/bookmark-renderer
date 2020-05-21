@@ -6,6 +6,7 @@
 4. [Common Git Tasks](#40-common-git-tasks)
 5. [Use git between computers in the same LAN](#50-use-git-between-computers-in-the-same-lan)
 6. [Cleaning Repo](#60-cleaning-repo)
+7. [Online Resources](#70-online-resources)
 
 ---
 
@@ -221,3 +222,12 @@ git prune --progress 				# delete all the objects w/o references
 
 git gc --aggressive 				# aggressively collect garbage
 ```
+
+---
+
+## 7.0 Online Resources
+
+### 7.1 Links
+
+* [Git](https://git-scm.com/)
+* [removing-files-from-a-repositorys-history](https://help.github.com/en/github/managing-large-files/removing-files-from-a-repositorys-history)

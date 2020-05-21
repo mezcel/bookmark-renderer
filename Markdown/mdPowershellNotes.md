@@ -9,6 +9,7 @@ Menu:
     * [Settings browser](#32-settings-browser)
 4. [Extras](#40-extras)
     * [Curl Weather](#41-curl-weather)
+5. [Online Resources](#50-online-resources)
 
 ---
 
@@ -92,3 +93,12 @@ Start-Process "ms-settings:windowsupdate"
 ## Moon
 (curl wttr.in/Moon -UserAgent "curl" ).Content
 ```
+
+---
+
+## 5.0 Online Resources
+
+### 5.1 Links
+
+* [powershell](https://docs.microsoft.com/en-us/powershell/)
+* [powershellgallery](https://www.powershellgallery.com/)
