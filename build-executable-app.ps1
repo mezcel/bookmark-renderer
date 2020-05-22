@@ -13,9 +13,9 @@ function killRunningProcess() {
 function removePreviousBuild() {
     ## rm old build
     Write-Host "Remove previous build ..." -ForegroundColor Cyan
-    Remove-Item -Recurse -Force ".\bookmark-renderer-win32-x64" -ErrorAction Ignore
-    Remove-Item -Recurse -Force ".\bookmark-renderer-win32-ia32" -ErrorAction Ignore
-    Remove-Item -Recurse -Force ".\bookmark-renderer*" -ErrorAction Ignore
+    #Remove-Item -Recurse -Force ".\bookmark-renderer-win32-x64" -ErrorAction Ignore
+    #Remove-Item -Recurse -Force ".\bookmark-renderer-win32-ia32" -ErrorAction Ignore
+    Remove-Item -Recurse -Force ".\bookmark-renderer-win32-*" -ErrorAction Ignore
     Start-Sleep 3
 
 }
