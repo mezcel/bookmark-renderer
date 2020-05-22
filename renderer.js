@@ -128,13 +128,12 @@ function domScripts() {     // event buttons for view\html\scripts.html
     const btnScript8 = document.getElementById( 'btnScript8' );
 
     var parentDir   = returnPackageDir( process.cwd() );
-    var userProfile = process.env.USERPROFILE;
 
     var scriptPath0 = parentDir + "Batch\\launchTaskManager.bat";
     var scriptPath1 = parentDir + "Batch\\pullGithubRepos.bat";
     var scriptPath2 = parentDir + "";
 
-    var scriptPath3 = process.env.USERPROFILE + "\\github\\mezcel\\electron-container.git\\electron-rosary-win32-x64\\electron-rosary.exe";
+    var scriptPath3 = parentDir + "Batch\\electron-rosary.bat";
     var scriptPath4 = parentDir + "";
     var scriptPath5 = parentDir + "";
 
