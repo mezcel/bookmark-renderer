@@ -14,7 +14,7 @@ const util = require( 'util' );
 // Markdown relates
 const {
     getCurrentWindow,
-    dialog } = require( 'electron' ).remote;
+    dialog } = require( 'electron' ).remote; /* dialog for Electron "^8.2.5" */
 const fs     = require( 'fs' );
 const marked = require( 'marked' );
 
@@ -221,7 +221,6 @@ function markdownWindowSize() {
     const window = getCurrentWindow();
     window.setSize( 1020, 700 );
     window.center();
-
 }
 
 function domMarkdown() {    // event buttons for view\html\notes.html
