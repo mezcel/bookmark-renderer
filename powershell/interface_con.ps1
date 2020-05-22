@@ -37,12 +37,14 @@ function ssidPicker {
     Write-Host "## Available SSID's:" -ForegroundColor DarkYellow
     $ssidList = netsh wlan show network | Select-String "SSID"
     $listLength = $ssidList.length
+    Start-Sleep 3
 
     if ( $listLength -gt 0 ) {
 
         for ($i=1; $i -le $listLength; $i++) {
             $ssidString = $ssidList[$i-1]
             Write-Host "##`t$ssidString"  -ForegroundColor Yellow
+            Start-Sleep 3
         }
 
         Write-Host "##`n" -ForegroundColor DarkYellow
@@ -54,6 +56,7 @@ function ssidPicker {
         Write-Host "##" -ForegroundColor DarkYellow
         Write-Host "## You selected: $selectedSsid" -ForegroundColor Green
         Write-Host "## Connecting ...`n" -ForegroundColor Cyan
+        Start-Sleep 3
 
         netsh wlan connect name=$selectedSsid
         testPing
@@ -80,6 +83,7 @@ function wifiStatus {
             Write-Host "## `tManually turn on the Wireles NIC and try this script again." -ForegroundColor Red
             Write-Host "## Tip:" -ForegroundColor Red
             Write-Host "##`tNavigate to Settings --> Wi-Fi settings`n" -ForegroundColor Red
+            Start-Sleep 3
 
             $yn = Read-Host " Do you want to automatically navigate to and open the Wi-Fi Setting now? [ y/N ]"
             if ( $yn -eq "y" ) {
@@ -94,7 +98,7 @@ function wifiStatus {
         }
     } else {
         Write-Host "## NetAdapter status is $statusString `n" -ForegroundColor DarkYellow
-        Start-Sleep 1
+        Start-Sleep 3
     }
 }
 
@@ -131,6 +135,7 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
             Write-Host "Attempt to connect to $ssidArg ..." -ForegroundColor Cyan
             Enable-NetAdapter -Name "Wi-Fi" -Confirm:$false
             netsh wlan connect name=$ssidArg
+            Start-Sleep 3
             testPing
         } else {
             ## find an ssid to connect to
@@ -138,6 +143,7 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
         }
     } else {
         Write-Host "You should already be connected to wifi internet." -ForegroundColor DarkYellow
+        Start-Sleep 3
         $yn = Read-Host "Disconnect from wifi? [ y/N ]"
 
         if ( $yn -eq "y" ) {
