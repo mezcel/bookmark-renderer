@@ -11,8 +11,8 @@
 
 ## External argument inputs
 #param( $flagArg, $ssidArg )
-$flagArg=""
-$ssidArg=""
+$flagArg=""     ## --ssid
+$ssidArg=""     ## Linksys1234
 
 function testPing {
     $pingAddr = "google.com"
@@ -88,11 +88,13 @@ function wifiStatus {
             }
 
             Write-Host "## Exiting script now.`n" -ForegroundColor Green
+            Start-Sleep 3
 
             Exit
         }
     } else {
         Write-Host "## NetAdapter status is $statusString `n" -ForegroundColor DarkYellow
+        Start-Sleep 1
     }
 }
 
@@ -102,7 +104,7 @@ function connman () {
 }
 
 function greeting ( [string] $scriptName ) {
-    Write-Host "## -------------------------------------------------------------------------------------------" -ForegroundColor Magenta
+    Write-Host "## =========================================================================================== " -ForegroundColor Magenta
     Write-Host "## $scriptName" -ForegroundColor Magenta
     Write-Host "##" -ForegroundColor Magenta
     Write-Host "## About:" -ForegroundColor Magenta
@@ -114,7 +116,7 @@ function greeting ( [string] $scriptName ) {
     Write-Host "##`t`t.\$scriptName --ssid KnownSSIDName"  -ForegroundColor Magenta
     Write-Host "## Source code:"  -ForegroundColor Magenta
     Write-Host "##  https://gist.github.com/mezcel/34895a5ae768873a26e762e068394a84#file-interface_con-ps1" -ForegroundColor Magenta
-    Write-Host "## -------------------------------------------------------------------------------------------" -ForegroundColor Magenta
+    Write-Host "## =========================================================================================== " -ForegroundColor Magenta
     Start-Sleep 1
 }
 
@@ -141,13 +143,14 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
         if ( $yn -eq "y" ) {
             ## disconnect
             netsh wlan disconnect interface="Wi-Fi"
-            #Disable-NetAdapter -Name "Wi-Fi" -Confirm:$false
-
             Write-Host "`nWi-fi should be off now.`n" -ForegroundColor Green
+            Start-Sleep 3
         } else {
             Write-Host "You entered $yn, nothing will be done.`n" -ForegroundColor Red
+            Start-Sleep 2
         }
     }
+
 }
 
 ##############
@@ -156,4 +159,3 @@ function main ([string] $flagArg, [string] $ssidArg, [string] $scriptName) {
 
 $scriptName = $MyInvocation.MyCommand.Name
 main $flagArg $ssidArg $scriptName
-Start-Sleep 2

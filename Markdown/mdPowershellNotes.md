@@ -102,3 +102,4 @@ Start-Process "ms-settings:windowsupdate"
 
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [powershellgallery](https://www.powershellgallery.com/)
+* [ss64.com/ps](https://ss64.com/ps/)
