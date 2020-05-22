@@ -60,7 +60,9 @@ function createShortcutLinks() {
 
 function main() {
     ## Install npm package
-    #npm install -g electron-packager
+    npm install
+    npm install -g electron-packager
+    Start-Sleep 3
 
     killRunningProcess
     removePreviousBuild
