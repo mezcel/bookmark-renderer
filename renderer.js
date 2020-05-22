@@ -133,7 +133,7 @@ function domScripts() {     // event buttons for view\html\scripts.html
     var scriptPath1 = parentDir + "Batch\\pullGithubRepos.bat";
     var scriptPath2 = parentDir + "";
 
-    var scriptPath3 = parentDir + "";
+    var scriptPath3 = process.env.USERPROFILE + "\\github\\mezcel\\electron-container*\\electron-rosary-win32-x64\\electron-rosary.exe";
     var scriptPath4 = parentDir + "";
     var scriptPath5 = parentDir + "";
 
@@ -206,15 +206,14 @@ function domScripts() {     // event buttons for view\html\scripts.html
 }
 
 function domBookmarks() {   // open web links in a non-electron browser
+    let shell = require( 'electron' ).shell;
 
-    let shell = require( 'electron' ).shell
     document.addEventListener( 'click', function ( event ) {
         if ( event.target.tagName === 'A' && event.target.href.startsWith( 'http' )) {
-            event.preventDefault()
-            shell.openExternal(event.target.href)
+            event.preventDefault();
+            shell.openExternal(event.target.href);
         }
     })
-
 }
 
 function markdownWindowSize() {
