@@ -44,7 +44,6 @@ function ssidPicker {
         for ($i=1; $i -le $listLength; $i++) {
             $ssidString = $ssidList[$i-1]
             Write-Host "##`t$ssidString"  -ForegroundColor Yellow
-            Start-Sleep 3
         }
 
         Write-Host "##`n" -ForegroundColor DarkYellow
