@@ -20,8 +20,11 @@ function removePreviousBuild() {
 
     if ( $archNo = "64" ) {
         Remove-Item -Recurse -Force ".\bookmark-renderer-win32-x64" -ErrorAction Ignore
-    } else {
+    } elseif ( $archNo = "86" ) {
         Remove-Item -Recurse -Force ".\bookmark-renderer-win32-ia32" -ErrorAction Ignore
+    } else {
+        Write-Host "Processer arch was not detected.`n`tExiting script." -ForegroundColor Red
+        exit
     }
 
     Start-Sleep 3
