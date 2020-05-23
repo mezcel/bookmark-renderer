@@ -24,9 +24,9 @@ function testPing {
     $pingPass = Test-Connection -ComputerName $pingAddr -Count 3 -Quiet
 
     if ( $pingPass ) {
-        Write-Host "## Ping Pass`n" -ForegroundColor Green
+        Write-Host "## Ping Pass: $pingPass`n" -ForegroundColor Green
     } else {
-        Write-Host "## Ping Fail`n" -ForegroundColor Red
+        Write-Host "## Ping Pass: $pingPass`n" -ForegroundColor Red
     }
 
     return $pingPass
