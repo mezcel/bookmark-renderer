@@ -19,22 +19,29 @@ function removePreviousBuild() {
     $archNo = $arch.substring($length -2)
 
     if ( $archNo = "64" ) {
-        Remove-Item -Recurse -Force ".\bookmark-renderer-win32-x64" -ErrorAction Ignore
+        $packagePath = ".\bookmark-renderer-win32-x64"
     } elseif ( $archNo = "86" ) {
-        Remove-Item -Recurse -Force ".\bookmark-renderer-win32-ia32" -ErrorAction Ignore
-    } else {
-        Write-Host "Processer arch was not detected.`n`tExiting script." -ForegroundColor Red
-        exit
+        $packagePath = ".\bookmark-renderer-win32-ia32"
     }
 
-    Start-Sleep 3
+    if ( Test-Path $packagePath ) {
+        Remove-Item -Recurse -Force $packagePath -ErrorAction Ignore
+
+        Start-Sleep 3
+    }
 }
 
 function buildNewPackage() {
     ## build new package
+
+    $packagePath1 = ".\bookmark-renderer-win32-x64"
+    $packagePath2 = ".\bookmark-renderer-win32-ia32"
+
     Write-Host "Build a new package ..." -ForegroundColor Cyan
-    electron-packager .
-    Start-Sleep 3
+    if ( ( !Test-Path $packagePath2 ) -and ( !Test-Path $packagePath1 ) ) {
+        electron-packager .
+        Start-Sleep 3
+    }
 
 }
 
@@ -46,6 +53,7 @@ function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$Targ
     $Shortcut.Save()
 }
 function createShortcutLinks() {
+
     ## Make a shortcut link
     Write-Host "Creating shortcut links..." -ForegroundColor Cyan
     Set-Location -Path bookmark-renderer*
