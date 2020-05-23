@@ -38,7 +38,7 @@ function buildNewPackage() {
     $packagePath2 = ".\bookmark-renderer-win32-ia32"
 
     Write-Host "Build a new package ..." -ForegroundColor Cyan
-    if ( ( !Test-Path $packagePath2 ) -and ( !Test-Path $packagePath1 ) ) {
+    if ( -Not ( Test-Path $packagePath2 ) -and -Not ( Test-Path $packagePath1 ) ) {
         electron-packager .
         Start-Sleep 3
     }
