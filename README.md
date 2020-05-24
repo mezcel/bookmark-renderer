@@ -3,7 +3,7 @@
 ## About
 A startup welcome kiosk for Win10.
 
-> It is basically a bulky taskbar, but setup to do the things I care about most. It is just a virtual paperweight.
+> It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
 
 Electron features:
 
@@ -16,7 +16,7 @@ Electron features:
 ## Npm Dependencies
 
 * NodeJS [download]( https://nodejs.org )
-* Electron
+* Electron [download]( https://www.electronjs.org/ )
 * marked [download]( https://www.npmjs.com/package/marked )
 * electron-packager [download](https://www.npmjs.com/package/electron-packager)
 
