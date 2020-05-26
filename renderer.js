@@ -217,9 +217,8 @@ function domBookmarks() {   // open web links in a non-electron browser
 }
 
 function markdownWindowSize() {
-    const window = getCurrentWindow();
-    window.setSize( 1020, 700 );
-    window.center();
+    require( 'electron' ).remote.getCurrentWindow().setSize( 1020, 700 );
+    require( 'electron' ).remote.getCurrentWindow().center();
 }
 
 function domMarkdown() {    // event buttons for view\html\notes.html
@@ -338,7 +337,7 @@ function customKeybindings() {
             case 27: // ESC
             case 81: // q
             case 88: // x
-                window.close(); // closes DOM
+                require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM
                 break;
             case 71: // g
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -364,7 +363,7 @@ function main() {
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
-            window.close(); // closes DOM
+            require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM
         });
     }
 
@@ -377,8 +376,7 @@ function main() {
     }
 
     if ( htmlMarkdown ) {
-        const window = getCurrentWindow();
-        window.center();
+        getCurrentWindow().center();
 
         domMarkdown();      // event buttons for view\html\notes.html
         domBookmarks();     // open web links in a non-electron browser
