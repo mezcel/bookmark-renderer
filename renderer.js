@@ -316,9 +316,14 @@ function customKeybindings() {
     document.addEventListener( "keydown", function (e) {
 
         switch( e.which ) {
-            case 123: // F13
+            case 123: // F12
                 console.log( e.which, "toggle dev tools" );
                 require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
+                break;
+            case 122: // F11
+                console.log( e.which, "toggle fullscreen" );
+                var isFullScreen = require( 'electron' ).remote.getCurrentWindow().isFullScreen();
+                require( 'electron' ).remote.getCurrentWindow().setFullScreen(!isFullScreen);
                 break;
             case 116: // F5
                 console.log( e.which, "reload browser" );
