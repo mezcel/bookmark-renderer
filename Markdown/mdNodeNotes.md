@@ -14,3 +14,4 @@
 * [Writing Your First Electron App](https://www.electronjs.org/docs/tutorial/first-app)
 * [Electron Documentation](https://www.electronjs.org/docs)
 * [tutorial guides](https://www.electronjs.org/docs/tutorial)
+* [boilerplates](https://www.electronjs.org/community#boilerplates)
