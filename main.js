@@ -81,7 +81,7 @@ function createWindow () {
 app.whenReady().then(() => {
 
     createWindow();
-    notificaitionArea();
+    //notificaitionArea();
 
     app.applicationMenu = false
 
