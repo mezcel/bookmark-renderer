@@ -5,15 +5,55 @@ const {
     app,
     BrowserWindow,
     shell,
-    Menu
+    Menu,
+    Tray
 } = require( 'electron' );
 
+const fs   = require('fs');
 const path = require( 'path' );
-const url = require( 'url' );
+const url  = require( 'url' );
 
-Menu.setApplicationMenu( null ); // null menu
+function returnPackageDir( processCwd ) {
+    //var processCwd = process.cwd();
+
+    var parentDir = "";
+    var appDir = processCwd.split( '\\' ).pop();
+    var isRelativeMatch = /bookmark-renderer-/.test(appDir);
+
+    if ( isRelativeMatch ) {
+        parentDir = process.cwd() + "\\resources\\app\\";
+    }
+    console.log(processCwd);
+
+    return parentDir;
+}
+
+function notificaitionArea() {
+
+    var processCwd = process.cwd();
+
+    var icoPath = returnPackageDir( processCwd ) + 'view\\img\\electron_light.ico';
+
+    let tray = null;
+        tray = new Tray( icoPath );
+
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'https://github.com/mezcel/bookmark-renderer.git',
+            click () {
+                shell.openExternal( 'https://github.com/mezcel/bookmark-renderer' );
+            }
+        }
+    ]);
+
+    tray.setToolTip( 'kiosk' );
+    tray.setContextMenu( contextMenu );
+}
 
 function createWindow () {
+
+    Menu.setApplicationMenu( null ); // null menu
+
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 800,
@@ -22,9 +62,7 @@ function createWindow () {
             preload: path.join( __dirname, 'preload.js' ),
             nodeIntegration: true, /* enable renderer.js script */
         }
-    })
-
-    //mainWindow.setMenu( null );
+    });
 
     // and load the index.html of the app.
     mainWindow.loadURL(
@@ -32,7 +70,7 @@ function createWindow () {
             pathname: path.join( __dirname, 'view/index.html' ),
             protocol: 'file:'
         })
-    )
+    );
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
@@ -42,7 +80,9 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-    createWindow()
+
+    createWindow();
+    notificaitionArea();
 
     app.applicationMenu = false
 
