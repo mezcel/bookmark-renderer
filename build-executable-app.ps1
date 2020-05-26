@@ -76,13 +76,17 @@ function createShortcutLinks() {
 
 }
 
-function main() {
-    ## Install npm package
+function getNpms() {
     npm install
     Start-Sleep 3
 
     npm install -g electron-packager
     Start-Sleep 3
+}
+
+function main() {
+    ## Install npm package
+    getNpms
 
     killRunningProcess
     removePreviousBuild
