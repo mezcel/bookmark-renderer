@@ -12,6 +12,7 @@ const {
 const path = require( 'path' );
 const url  = require( 'url' );
 
+/*
 function returnPackageDir( processCwd ) {
     //var processCwd = process.cwd();
 
@@ -48,6 +49,7 @@ function notificaitionArea() {
     tray.setToolTip( 'kiosk' );
     tray.setContextMenu( contextMenu );
 }
+*/
 
 function createWindow () {
 
