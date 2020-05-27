@@ -9,13 +9,15 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 //////////////////////////////////////////////
 
 function returnEnvHome() {
-    var myOS = process.platform
+    var myOS = process.platform;
 
-    if ( myOS = "win32" ) {
+    if ( myOS === "win32" ) {
         var systemDrive = process.env.systemdrive;
         var home = ( process.env.homepath ).replace( /\\/g, '/' );
 
-        homeDir = "file:///" + systemDrive + home
+        homeDir = "file:///" + systemDrive + home;
+    } else if ( myOS === "linux" ) {
+        homeDir = "file:///" + process.env.HOME;
     }
 
     return homeDir
@@ -49,16 +51,24 @@ function launchBatScript( scriptPath ) {
 }
 
 function manualFilePath( localPath ) {
-    var processCwd = process.cwd();
-    var osFlag = process.platform === "win32";
+    var processCwd      = process.cwd();
+    var myOS            = process.platform;
 
-    var parentDir = "";
-    if ( osFlag ) {
-        var appDir = processCwd.split( '\\' ).pop();
-        var isRelativeMatch = /bookmark-renderer-/.test(appDir);
+    var appDir          = "",
+        isRelativeMatch = "",
+        parentDir       = "";
 
+    if ( myOS === "win32" ) {
+        appDir          = processCwd.split( '\\' ).pop();
+        isRelativeMatch = /bookmark-renderer-/.test(appDir);
         if ( isRelativeMatch ) {
-            parentDir = processCwd + "\\resources\\app\\";
+            parentDir   = processCwd + "\\resources\\app\\";
+        }
+    } else if ( myOS === "linux" ) {
+        appDir          = processCwd.split( '/' ).pop();
+        isRelativeMatch = /bookmark-renderer-*/.test(appDir);
+        if ( isRelativeMatch ) {
+            parentDir   = processCwd + "/resources/app/";
         }
     }
 
@@ -68,6 +78,9 @@ function manualFilePath( localPath ) {
 }
 
 function domIndex() {       // event buttons for view\index.html
+
+    var myOS           = process.platform;
+
     const btnGistDir   = document.getElementById( 'btnGistDir' );
     const btnGithubDir = document.getElementById( 'btnGithubDir' );
     const btnVSCode    = document.getElementById( 'btnVSCode' );
@@ -90,7 +103,12 @@ function domIndex() {       // event buttons for view\index.html
     if ( btnVSCode ) {/* Launch VS Code */
 
         btnVSCode.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( "Batch\\launchVSCode.bat" );
+            var scriptPath = "";
+            if ( myOS === "win32" ) {
+                scriptPath = manualFilePath( "Batch\\launchVSCode.bat" );
+            } else if ( myOS === "linux" ) {
+                scriptPath = manualFilePath( "Bash/launchGeany.sh" );
+            }
             launchBatScript( scriptPath );
         });
     }
@@ -98,7 +116,12 @@ function domIndex() {       // event buttons for view\index.html
     if ( btnWT ) { /* launch Windows Terminal */
 
         btnWT.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( "Batch\\launchWT.bat" );
+            var scriptPath = "";
+            if ( myOS === "win32" ) {
+                scriptPath = manualFilePath( "Batch\\launchWT.bat" );
+            } else if ( myOS === "linux" ) {
+                scriptPath = manualFilePath( "Bash/launchXterm.sh" );
+            }
             launchBatScript( scriptPath );
         });
     }
@@ -116,11 +139,11 @@ function domScripts() {     // event buttons for view\html\scripts.html
     const btnScript7 = document.getElementById( 'btnScript7' );
     const btnScript8 = document.getElementById( 'btnScript8' );
 
-    var osFlag = process.platform === "win32";
+    var myOS = process.platform;
     var scriptPath0, scriptPath2, scriptPath3, scriptPath4,
         scriptPath5, scriptPath6, scriptPath7, scriptPath8;
 
-    if ( osFlag ) {
+    if ( myOS === "win32" ) {
         scriptPath0 = "Batch\\launchTaskManager.bat";
         scriptPath1 = "Batch\\pullGithubRepos.bat";
         scriptPath2 = "";
@@ -132,6 +155,18 @@ function domScripts() {     // event buttons for view\html\scripts.html
         scriptPath6 = "Batch\\connmanScript.bat";
         scriptPath7 = "Batch\\killProcessesScript.bat";
         scriptPath8 = "Batch\\shutdownScript.bat";
+    } else if ( myOS === "linux" ) {
+        scriptPath0 = "Batch/launchTaskManager.bat";
+        scriptPath1 = "Batch/pullGithubRepos.bat";
+        scriptPath2 = "";
+
+        scriptPath3 = "Batch/electron-rosary.bat";
+        scriptPath4 = "";
+        scriptPath5 = "";
+
+        scriptPath6 = "Batch/connmanScript.bat";
+        scriptPath7 = "Batch/killProcessesScript.bat";
+        scriptPath8 = "Batch/shutdownScript.bat";
     }
 
     if ( btnScript0 ) {
@@ -239,21 +274,18 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     var parentDir = manualFilePath( process.cwd() );
 
-    var osFlag = process.platform === "win32";
     var mdAbout, mdCNotes, mdNodeNotes, mdPowershellNotes, mdGitNotes,
         mdPythonNotes, mdWslNotes, mdWin10Notes, README;
 
-    if ( osFlag ) {
-        mdAbout           = "Markdown/mdAbout.md";
-        mdCNotes          = "Markdown/mdCNotes.md";
-        mdNodeNotes       = "Markdown/mdNodeNotes.md";
-        mdPowershellNotes = "Markdown/mdPowershellNotes.md";
-        mdGitNotes        = "Markdown/mdGitNotes.md";
-        mdPythonNotes     = "Markdown/mdPythonNotes.md";
-        mdWslNotes        = "Markdown/mdWslNotes.md";
-        mdWin10Notes      = "Markdown/mdWin10Notes.md";
-        README            = "README.md";
-    }
+    mdAbout           = "Markdown/mdAbout.md";
+    mdCNotes          = "Markdown/mdCNotes.md";
+    mdNodeNotes       = "Markdown/mdNodeNotes.md";
+    mdPowershellNotes = "Markdown/mdPowershellNotes.md";
+    mdGitNotes        = "Markdown/mdGitNotes.md";
+    mdPythonNotes     = "Markdown/mdPythonNotes.md";
+    mdWslNotes        = "Markdown/mdWslNotes.md";
+    mdWin10Notes      = "Markdown/mdWin10Notes.md";
+    README            = "README.md";
 
     var mdPath = manualFilePath( mdAbout );
     var mdFile = fs.readFileSync( mdPath );
