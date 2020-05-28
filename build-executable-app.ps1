@@ -79,11 +79,15 @@ function createShortcutLinks() {
 }
 
 function getNpms() {
+
+    Write-Host "Installing packages listed in package.json ..." -ForegroundColor Cyan
     npm install
+    Write-Host "Pause to allow new package.json installations to settle in ..." -ForegroundColor DarkYellow
     Start-Sleep 3
 
+    Write-Host "Installing electron-packager ..." -ForegroundColor Cyan
     npm install -g electron-packager
-    Write-Host "Pause to allow new installation to settle in ..." -ForegroundColor DarkYellow
+    Write-Host "Pause to allow new electron-packager installation to settle in ..." -ForegroundColor DarkYellow
     Start-Sleep 3
 }
 
