@@ -7,6 +7,7 @@ function killRunningProcess() {
     ## kill any running  processes
     Write-Host "kill any running bookmark-renderer* processes ..." -ForegroundColor Cyan
     Stop-Process -Name "bookmark-renderer*"
+    Write-Host "Pause to allow killed process to settle ..." -ForegroundColor DarkYellow
     Start-Sleep 3
 }
 
@@ -26,7 +27,7 @@ function removePreviousBuild() {
 
     if ( Test-Path $packagePath ) {
         Remove-Item -Recurse -Force $packagePath -ErrorAction Ignore
-
+        Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
     }
 }
@@ -40,6 +41,7 @@ function buildNewPackage() {
     Write-Host "Build a new package ..." -ForegroundColor Cyan
     if ( -Not ( Test-Path $packagePath2 ) -and -Not ( Test-Path $packagePath1 ) ) {
         electron-packager .
+        Write-Host "Pause to allow built package to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
     }
 
@@ -81,6 +83,7 @@ function getNpms() {
     Start-Sleep 3
 
     npm install -g electron-packager
+    Write-Host "Pause to allow new installation to settle in ..." -ForegroundColor DarkYellow
     Start-Sleep 3
 }
 
