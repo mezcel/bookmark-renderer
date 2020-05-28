@@ -439,7 +439,8 @@ function customKeybindings() {
                 document.getElementById("btn9").click();
                 break;
 
-            case 58: // 0
+            case 48: // 0
+                document.getElementById("btn0").click();
                 break;
 
             default:

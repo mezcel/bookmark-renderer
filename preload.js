@@ -10,16 +10,19 @@ window.addEventListener('DOMContentLoaded', () => {
 		replaceText(`${type}-version`, process.versions[type])
 	}
 
-	replaceText(`platform-arch`, process.platform)
-	replaceText(`cd`, process.cwd() )
+	const archString = process.platform;
+	const cwdString = process.cwd();
 
-	require('dns').resolve('www.google.com', function(err) {
-		if (err) {
-			//console.log("No connection"); 
-			replaceText(`isOnline`, "offline" );
+	replaceText( `platform-arch`, archString );
+	replaceText( `cd`, cwdString );
+
+	require( 'dns' ).resolve( 'www.google.com', function( err ) {
+		if ( err ) {
+			//console.log("No connection");
+			replaceText( `isOnline`, "offline" );
 		} else {
 			//console.log("Connected");
-			replaceText(`isOnline`, "online" );
+			replaceText( `isOnline`, "online" );
 		}
 	});
 
