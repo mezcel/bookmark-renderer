@@ -17,6 +17,8 @@ Electron features:
 
 * NodeJS [download]( https://nodejs.org )
 * Electron [download]( https://www.electronjs.org/ )
+    * "electron": "^8.2.5" ```win10```
+    * "electron": "^3.0.13" ```Debian 32bit``` (n/a)
 * marked [download]( https://www.npmjs.com/package/marked )
 * electron-packager [download](https://www.npmjs.com/package/electron-packager)
 
