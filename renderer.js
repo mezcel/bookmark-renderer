@@ -382,10 +382,14 @@ function customKeybindings() {
                 break;
 
             case 37: // Lt Arrow
+            case 72: // h
+            case 66: // b
                 history.back();
                 break;
 
             case 39: // Rt Arrow
+            case 76: // l
+            case 70: // f
                 history.forward();
                 break;
 
@@ -404,43 +408,53 @@ function customKeybindings() {
                 break;
 
             case 49: // 1
-                document.getElementById("btn1").click();
+            case 97:
+                document.getElementById( "btn1" ).click();
                 break;
 
             case 50: // 2
-                document.getElementById("btn2").click();
+            case 98:
+                document.getElementById( "btn2" ).click();
                 break;
 
             case 51: // 3
-                document.getElementById("btn3").click();
+            case 99:
+                document.getElementById( "btn3" ).click();
                 break;
 
             case 52: // 4
-                document.getElementById("btn4").click();
+            case 100:
+                document.getElementById( "btn4" ).click();
                 break;
 
             case 53: // 5
-                document.getElementById("btn5").click();
+            case 101:
+                document.getElementById( "btn5" ).click();
                 break;
 
             case 54: // 6
-                document.getElementById("btn6").click();
+            case 102:
+                document.getElementById( "btn6" ).click();
                 break;
 
             case 55: // 7
-                document.getElementById("btn7").click();
+            case 103:
+                document.getElementById( "btn7" ).click();
                 break;
 
             case 56: // 8
-                document.getElementById("btn8").click();
+            case 104:
+                document.getElementById( "btn8" ).click();
                 break;
 
             case 57: // 9
-                document.getElementById("btn9").click();
+            case 105:
+                document.getElementById( "btn9" ).click();
                 break;
 
             case 48: // 0
-                document.getElementById("btn0").click();
+            case 96:
+                document.getElementById( "btn0" ).click();
                 break;
 
             default:
