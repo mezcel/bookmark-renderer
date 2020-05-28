@@ -18,20 +18,19 @@ function returnPackageDir( processCwd ) {
 
     var parentDir = "";
     var appDir = processCwd.split( '\\' ).pop();
-    var isRelativeMatch = /bookmark-renderer-/.test(appDir);
+    var isRelativeMatch = /bookmark-renderer-win32-x64/.test(appDir);
 
     if ( isRelativeMatch ) {
         parentDir = process.cwd() + "\\resources\\app\\";
     }
-    console.log(processCwd);
 
     return parentDir;
 }
-
+*/
+/*
 function notificaitionArea() {
 
     var processCwd = process.cwd();
-
     var icoPath = returnPackageDir( processCwd ) + 'view\\img\\electron_light.ico';
 
     let tray = null;
@@ -61,9 +60,9 @@ function createWindow () {
         height: 400,
         webPreferences: {
             preload: path.join( __dirname, 'preload.js' ),
-            nodeIntegration: true, /* enable renderer.js script */
+            nodeIntegration: true
         }
-    });
+    });  /* nodeIntegration: true will enable renderer.js script */
 
     // and load the index.html of the app.
     mainWindow.loadURL(
@@ -82,8 +81,8 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
 
-    createWindow();
     //notificaitionArea();
+    createWindow();
 
     app.applicationMenu = false
 
