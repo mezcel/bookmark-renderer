@@ -1,30 +1,12 @@
 {
-  "name": "bookmark-renderer",
-  "version": "0.1.1",
-  "description": "A welcome popup, markdown reader, taskbar, bookmark container.",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "repository": "https://github.com/mezcel/bookmark-renderer.git",
-  "keywords": [
-    "welcome",
-    "kiosk"
-  ],
-  "author": "Mezcel",
-  "devDependencies": {
-    "electron": "^8.2.5"
-  },
-  "dependencies": {
-    "marked": "^1.1.0"
-  },
-  "overrides": {
-    "os": {
-      "linux": {
-        "dependencies": {
-          "electron": "^3.0.13"
-        }
-      }
-    }
-  }
+    "name": "bookmark-renderer",
+    "version": "0.1.1",
+    "description": "A welcome popup, markdown reader, taskbar, bookmark container.",
+    "main": "main.js",
+    "scripts": { "start": "electron ." },
+    "repository": "https://github.com/mezcel/bookmark-renderer.git",
+    "keywords": [ "welcome", "kiosk" ],
+    "author": "Mezcel",
+    "devDependencies": { "electron": "^8.2.5" },
+    "dependencies": { "marked": "^1.1.0" }
 }

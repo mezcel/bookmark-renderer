@@ -1,7 +1,7 @@
 # bookmark-renderer
 
 ## About
-A startup welcome kiosk for Win10.
+A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 
 > It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
 
@@ -16,6 +16,7 @@ Electron features:
 ## Npm Dependencies
 
 * NodeJS [download]( https://nodejs.org )
+    * Work around for: *"npm does not support Node.js vXX.XX.X"* ```npm install npm@latest -g```
 * Electron [download]( https://www.electronjs.org/ )
     * "electron": "^8.2.5" ```win10```
     * "electron": "^3.0.13" ```Debian 32bit``` (n/a)
