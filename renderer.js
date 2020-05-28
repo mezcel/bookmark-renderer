@@ -81,28 +81,28 @@ function domIndex() {       // event buttons for view\index.html
 
     var myOS           = process.platform;
 
-    const btnGistDir   = document.getElementById( 'btnGistDir' );
-    const btnGithubDir = document.getElementById( 'btnGithubDir' );
-    const btnVSCode    = document.getElementById( 'btnVSCode' );
-    const btnWT        = document.getElementById( 'btnWT' );
+    const btn4 = document.getElementById( 'btn4' );
+    const btn5 = document.getElementById( 'btn5' );
+    const btn6 = document.getElementById( 'btn6' );
+    const btn7 = document.getElementById( 'btn7' );
 
-    if ( btnGistDir ) {
-        btnGistDir.addEventListener( 'click', function () {
+    if ( btn4 ) {
+        btn4.addEventListener( 'click', function () {
             var gistDir = "/gist.github/mezcel";
             openFileExplorer( gistDir );
         });
     }
 
-    if ( btnGithubDir ) {
-        btnGithubDir.addEventListener( 'click', function () {
+    if ( btn5 ) {
+        btn5.addEventListener( 'click', function () {
             var githubDir = "/github/mezcel";
             openFileExplorer( githubDir );
         });
     }
 
-    if ( btnVSCode ) {/* Launch VS Code */
+    if ( btn6 ) {/* Launch VS Code */
 
-        btnVSCode.addEventListener( 'click', function () {
+        btn6.addEventListener( 'click', function () {
             var scriptPath = "";
             if ( myOS === "win32" ) {
                 scriptPath = manualFilePath( "Batch\\launchVSCode.bat" );
@@ -113,9 +113,9 @@ function domIndex() {       // event buttons for view\index.html
         });
     }
 
-    if ( btnWT ) { /* launch Windows Terminal */
+    if ( btn7 ) { /* launch Windows Terminal */
 
-        btnWT.addEventListener( 'click', function () {
+        btn7.addEventListener( 'click', function () {
             var scriptPath = "";
             if ( myOS === "win32" ) {
                 scriptPath = manualFilePath( "Batch\\launchWT.bat" );
@@ -129,15 +129,14 @@ function domIndex() {       // event buttons for view\index.html
 
 function domScripts() {     // event buttons for view\html\scripts.html
 
-    const btnScript0 = document.getElementById( 'btnScript0' );
-    const btnScript1 = document.getElementById( 'btnScript1' );
-    const btnScript2 = document.getElementById( 'btnScript2' );
-    const btnScript3 = document.getElementById( 'btnScript3' );
-    const btnScript4 = document.getElementById( 'btnScript4' );
-    const btnScript5 = document.getElementById( 'btnScript5' );
-    const btnScript6 = document.getElementById( 'btnScript6' );
-    const btnScript7 = document.getElementById( 'btnScript7' );
-    const btnScript8 = document.getElementById( 'btnScript8' );
+    const btn1 = document.getElementById( 'btn1' );
+    const btn2 = document.getElementById( 'btn2' );
+    const btn3 = document.getElementById( 'btn3' );
+    const btn4 = document.getElementById( 'btn4' );
+    const btn5 = document.getElementById( 'btn5' );
+    const btn6 = document.getElementById( 'btn6' );
+    const btn7 = document.getElementById( 'btn7' );
+    const btn8 = document.getElementById( 'btn8' );
 
     var myOS = process.platform;
     var scriptPath0, scriptPath2, scriptPath3, scriptPath4,
@@ -156,69 +155,69 @@ function domScripts() {     // event buttons for view\html\scripts.html
         scriptPath7 = "Batch\\killProcessesScript.bat";
         scriptPath8 = "Batch\\shutdownScript.bat";
     } else if ( myOS === "linux" ) {
-        scriptPath0 = "Batch/launchTaskManager.bat";
-        scriptPath1 = "Batch/pullGithubRepos.bat";
+        scriptPath0 = "";
+        scriptPath1 = "";
         scriptPath2 = "";
 
-        scriptPath3 = "Batch/electron-rosary.bat";
+        scriptPath3 = "";
         scriptPath4 = "";
         scriptPath5 = "";
 
-        scriptPath6 = "Batch/connmanScript.bat";
-        scriptPath7 = "Batch/killProcessesScript.bat";
-        scriptPath8 = "Batch/shutdownScript.bat";
+        scriptPath6 = "";
+        scriptPath7 = "";
+        scriptPath8 = "";
     }
 
-    if ( btnScript0 ) {
-        btnScript0.addEventListener( 'click', function () {
+    if ( btn1 ) {
+        btn1.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath0 );
             launchBatScript( scriptPath );
         });
     }
 
-    if ( btnScript1 ) {
-        btnScript1.addEventListener( 'click', function () {
+    if ( btn2 ) {
+        btn2.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath2 );
             launchBatScript( scriptPath );
         });
     }
 
-    if ( btnScript2 ) {
-        btnScript2.addEventListener( 'click', function () {
+    if ( btn3 ) {
+        btn3.addEventListener( 'click', function () {
             launchBatScript( scriptPath2 );
         });
     }
 
-    if ( btnScript3 ) {
-        btnScript3.addEventListener( 'click', function () {
+    if ( btn4 ) {
+        btn4.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath3 );
             launchBatScript( scriptPath );
         });
     }
 
-    if ( btnScript4 ) {
-        btnScript4.addEventListener( 'click', function () {
+    if ( btn5 ) {
+        btn5.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath4 );
             launchBatScript( scriptPath4 );
         });
     }
 
-    if ( btnScript5 ) {
-        btnScript5.addEventListener( 'click', function () {
+    if ( btn6 ) {
+        btn6.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath5 );
             launchBatScript( scriptPath5 );
         });
     }
 
-    if ( btnScript6 ) {
-        btnScript6.addEventListener( 'click', function () {
+    if ( btn7 ) {
+        btn7.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath6 );
             launchBatScript( scriptPath );
         });
     }
 
-    if ( btnScript7 ) {
-        btnScript7.addEventListener( 'click', function () {
+    if ( btn8 ) {
+        btn8.addEventListener( 'click', function () {
 
             //alert( "Killing processes. The log Console, (F11), will be toggled after pressing OK" );
             console.clear();
@@ -233,8 +232,8 @@ function domScripts() {     // event buttons for view\html\scripts.html
         });
     }
 
-    if ( btnScript8 ) {
-        btnScript8.addEventListener( 'click', function () {
+    if ( btn9 ) {
+        btn9.addEventListener( 'click', function () {
             var scriptPath = manualFilePath( scriptPath8 );
             launchBatScript( scriptPath );
         });
@@ -363,40 +362,88 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 function customKeybindings() {
 
     document.addEventListener( "keydown", function (e) {
+        var keyboardKey = e.which;
 
-        switch( e.which ) {
+        switch( keyboardKey ) {
             case 123: // F12
                 console.log( e.which, "toggle dev tools" );
                 require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
                 break;
+
             case 122: // F11
                 console.log( e.which, "toggle fullscreen" );
                 var isFullScreen = require( 'electron' ).remote.getCurrentWindow().isFullScreen();
                 require( 'electron' ).remote.getCurrentWindow().setFullScreen(!isFullScreen);
                 break;
+
             case 116: // F5
                 console.log( e.which, "reload browser" );
                 location.reload();
                 break;
+
             case 37: // Lt Arrow
                 history.back();
                 break;
+
             case 39: // Rt Arrow
                 history.forward();
                 break;
+
             case 27: // ESC
             case 81: // q
             case 88: // x
                 require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM
                 break;
+
             case 71: // g
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 break;
+
             case 32: // spacebar
                 markdownWindowSize();
                 break;
+
+            case 49: // 1
+                document.getElementById("btn1").click();
+                break;
+
+            case 50: // 2
+                document.getElementById("btn2").click();
+                break;
+
+            case 51: // 3
+                document.getElementById("btn3").click();
+                break;
+
+            case 52: // 4
+                document.getElementById("btn4").click();
+                break;
+
+            case 53: // 5
+                document.getElementById("btn5").click();
+                break;
+
+            case 54: // 6
+                document.getElementById("btn6").click();
+                break;
+
+            case 55: // 7
+                document.getElementById("btn7").click();
+                break;
+
+            case 56: // 8
+                document.getElementById("btn8").click();
+                break;
+
+            case 57: // 9
+                document.getElementById("btn9").click();
+                break;
+
+            case 58: // 0
+                break;
+
             default:
-                console.log( e.which );
+                console.log( keyboardKey );
         }
 
     });
