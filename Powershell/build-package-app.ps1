@@ -51,10 +51,13 @@ function removePreviousBuild() {
     $length = $arch.length
     $archNo = $arch.substring($length -2)
 
+    $packagePath1 = "bookmark-renderer-win32-x64"
+    $packagePath1 = "bookmark-renderer-win32-ia32"
+
     if ( $archNo = "64" ) {
-        $packagePath = "bookmark-renderer-win32-x64"
-    } elseif ( $archNo = "86" ) {
-        $packagePath = "bookmark-renderer-win32-ia32"
+        $packagePath = $packagePath1
+    } elseif ( $archNo = "x86" ) {
+        $packagePath = $packagePath2
     }
 
     Write-Host "Deleting $packagePath ..." -ForegroundColor Cyan
@@ -66,7 +69,7 @@ function removePreviousBuild() {
         Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
     } else {
-        Write-Host "Exiting $packagePath1 and $packagePath2 was not detected by this script." -ForegroundColor Red
+        Write-Host "Exiting because $packagePath1 and $packagePath2 was not detected by this script." -ForegroundColor Red
         Start-Sleep 3
     }
 }
