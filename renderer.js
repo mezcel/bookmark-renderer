@@ -10,7 +10,8 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 /* -------------------------------------------------------------------------- */
 
 function openFileExplorer( dirPath ) {
-    var filePath = path.join( __dirname, dirPath );
+    var UserProfile = process.env.USERPROFILE;
+    var filePath = path.join( UserProfile, dirPath );
     console.log( "Opening the " + filePath + " Directory." );
     shell.openItem( filePath );
 }
@@ -40,14 +41,14 @@ function domIndex() {       // event buttons for view\index.html
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
-            var gistDir = "/gist.github/mezcel";
+            var gistDir = "gist.github/mezcel";
             openFileExplorer( gistDir );
         });
     }
 
     if ( btn5 ) {
         btn5.addEventListener( 'click', function () {
-            var githubDir = "/github/mezcel";
+            var githubDir = "github/mezcel";
             openFileExplorer( githubDir );
         });
     }
