@@ -384,6 +384,8 @@ function customKeybindings() {
                 break;
 
             case 32: // spacebar
+            case 74: // j
+            case 75: // k
                 markdownWindowSize();
                 break;
 

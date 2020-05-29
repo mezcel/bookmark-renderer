@@ -73,6 +73,7 @@ function removePreviousBuild() {
     } else {
         Write-Host "Exiting because $packagePath1 and $packagePath2 was not detected by this script." -ForegroundColor Red
         Start-Sleep 3
+        Exit
     }
 }
 
