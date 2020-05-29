@@ -88,7 +88,7 @@ function buildNewPackage() {
         Start-Sleep 3
     } else {
         Write-Host "Overwriting existing build" -ForegroundColor DarkYellow
-        electron-packager . --force
+        electron-packager . --overwrite
 
         Start-Sleep 3
     }
