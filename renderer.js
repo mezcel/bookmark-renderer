@@ -2,29 +2,15 @@
 
 // Launch Exe related
 const { execFile, spawn } = require( 'child_process' );
+const path = require( 'path' );
 
 // Markdown related // dialog for Electron "^8.2.5"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 
-//////////////////////////////////////////////
-
-function returnEnvHome() {
-    var myOS = process.platform;
-
-    if ( myOS === "win32" ) {
-        var systemDrive = process.env.systemdrive;
-        var home = ( process.env.homepath ).replace( /\\/g, '/' );
-
-        homeDir = "file:///" + systemDrive + home;
-    } else if ( myOS === "linux" ) {
-        homeDir = "file:///" + process.env.HOME;
-    }
-
-    return homeDir
-}
+/* -------------------------------------------------------------------------- */
 
 function openFileExplorer( dirPath ) {
-    var filePath = returnEnvHome() + dirPath
+    var filePath = path.join( __dirname, dirPath );
     console.log( "Opening the " + filePath + " Directory." );
     shell.openItem( filePath );
 }
@@ -33,16 +19,11 @@ function launchBatScript( scriptPath ) {
     const bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
 
     bat.stdout.on( 'data', ( data ) => {
-        console.log(
-            data.toString()
-        );
+        console.log( data.toString() );
     });
 
     bat.stderr.on( 'data', ( data ) => {
-        console.log(
-            "\n script path = " + scriptPath + " \n",
-            data.toString()
-        );
+        console.log( "\n script path = " + scriptPath + " \n", data.toString() );
     });
 
     bat.on( 'exit', ( code ) => {
@@ -50,41 +31,12 @@ function launchBatScript( scriptPath ) {
     });
 }
 
-function manualFilePath( localPath ) {
-    var processCwd      = process.cwd();
-    var myOS            = process.platform;
-
-    var appDir          = "",
-        isRelativeMatch = "",
-        parentDir       = "";
-
-    if ( myOS === "win32" ) {
-        appDir          = processCwd.split( '\\' ).pop();
-        isRelativeMatch = /bookmark-renderer-/.test(appDir);
-        if ( isRelativeMatch ) {
-            parentDir   = processCwd + "\\resources\\app\\";
-        }
-    } else if ( myOS === "linux" ) {
-        appDir          = processCwd.split( '/' ).pop();
-        isRelativeMatch = /bookmark-renderer-*/.test(appDir);
-        if ( isRelativeMatch ) {
-            parentDir   = processCwd + "/resources/app/";
-        }
-    }
-
-    var scriptPath = parentDir + localPath;
-
-    return scriptPath;
-}
-
 function domIndex() {       // event buttons for view\index.html
 
-    var myOS           = process.platform;
-
-    const btn4 = document.getElementById( 'btn4' );
-    const btn5 = document.getElementById( 'btn5' );
-    const btn6 = document.getElementById( 'btn6' );
-    const btn7 = document.getElementById( 'btn7' );
+    const   btn4 = document.getElementById( 'btn4' ),
+            btn5 = document.getElementById( 'btn5' ),
+            btn6 = document.getElementById( 'btn6' ),
+            btn7 = document.getElementById( 'btn7' );
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
@@ -100,118 +52,90 @@ function domIndex() {       // event buttons for view\index.html
         });
     }
 
-    if ( btn6 ) {/* Launch VS Code */
+    if ( btn6 ) {   // Launch VS Code
 
         btn6.addEventListener( 'click', function () {
-            var scriptPath = "";
-            if ( myOS === "win32" ) {
-                scriptPath = manualFilePath( "Batch\\launchVSCode.bat" );
-            } else if ( myOS === "linux" ) {
-                scriptPath = manualFilePath( "Bash/launchGeany.sh" );
-            }
+            scriptPath = path.join( __dirname, 'Batch/launchVSCode.bat' );
             launchBatScript( scriptPath );
         });
     }
 
-    if ( btn7 ) { /* launch Windows Terminal */
+    if ( btn7 ) {   // launch Windows Terminal
 
         btn7.addEventListener( 'click', function () {
-            var scriptPath = "";
-            if ( myOS === "win32" ) {
-                scriptPath = manualFilePath( "Batch\\launchWT.bat" );
-            } else if ( myOS === "linux" ) {
-                scriptPath = manualFilePath( "Bash/launchXterm.sh" );
-            }
+            scriptPath = path.join( __dirname, 'Batch/launchWT.bat' );
             launchBatScript( scriptPath );
         });
     }
 }
 
-function domScripts() {     // event buttons for view\html\scripts.html
+function domScripts() { // event buttons for view\html\scripts.html
 
-    const btn1 = document.getElementById( 'btn1' );
-    const btn2 = document.getElementById( 'btn2' );
-    const btn3 = document.getElementById( 'btn3' );
-    const btn4 = document.getElementById( 'btn4' );
-    const btn5 = document.getElementById( 'btn5' );
-    const btn6 = document.getElementById( 'btn6' );
-    const btn7 = document.getElementById( 'btn7' );
-    const btn8 = document.getElementById( 'btn8' );
+    const   btn1 = document.getElementById( 'btn1' ),
+            btn2 = document.getElementById( 'btn2' ),
+            btn3 = document.getElementById( 'btn3' ),
+            btn4 = document.getElementById( 'btn4' ),
+            btn5 = document.getElementById( 'btn5' ),
+            btn6 = document.getElementById( 'btn6' ),
+            btn7 = document.getElementById( 'btn7' ),
+            btn8 = document.getElementById( 'btn8' ),
+            btn9 = document.getElementById( 'btn9' );
 
-    var myOS = process.platform;
-    var scriptPath0, scriptPath2, scriptPath3, scriptPath4,
-        scriptPath5, scriptPath6, scriptPath7, scriptPath8;
-
-    if ( myOS === "win32" ) {
-        scriptPath0 = "Batch\\launchTaskManager.bat";
-        scriptPath1 = "Batch\\pullGithubRepos.bat";
-        scriptPath2 = "";
-
-        scriptPath3 = "Batch\\electron-rosary.bat";
-        scriptPath4 = "";
-        scriptPath5 = "";
-
-        scriptPath6 = "Batch\\connmanScript.bat";
-        scriptPath7 = "Batch\\killProcessesScript.bat";
-        scriptPath8 = "Batch\\shutdownScript.bat";
-    } else if ( myOS === "linux" ) {
-        scriptPath0 = "";
-        scriptPath1 = "";
-        scriptPath2 = "";
-
-        scriptPath3 = "";
-        scriptPath4 = "";
-        scriptPath5 = "";
-
-        scriptPath6 = "";
-        scriptPath7 = "";
-        scriptPath8 = "";
-    }
+    var scriptPath1 = "Batch/launchTaskManager.bat",
+        scriptPath2 = "Batch/pullGithubRepos.bat",
+        scriptPath3 = "",
+        scriptPath4 = "Batch/electron-rosary.bat",
+        scriptPath5 = "",
+        scriptPath6 = "",
+        scriptPath7 = "Batch/connmanScript.bat",
+        scriptPath8 = "Batch/killProcessesScript.bat",
+        scriptPath9 = "Batch/shutdownScript.bat";
 
     if ( btn1 ) {
         btn1.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath0 );
+            var scriptPath = path.join( __dirname, scriptPath1 );
             launchBatScript( scriptPath );
         });
     }
 
     if ( btn2 ) {
         btn2.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath2 );
+            var scriptPath = path.join( __dirname, scriptPath2 );
             launchBatScript( scriptPath );
         });
     }
 
     if ( btn3 ) {
         btn3.addEventListener( 'click', function () {
-            launchBatScript( scriptPath2 );
+            var scriptPath = path.join( __dirname, scriptPath3 );
+            launchBatScript( scriptPath );
         });
     }
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath3 );
+            var scriptPath = path.join( __dirname, scriptPath4 );
             launchBatScript( scriptPath );
         });
     }
 
     if ( btn5 ) {
         btn5.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath4 );
+            var scriptPath = path.join( __dirname, scriptPath5 );
             launchBatScript( scriptPath4 );
         });
     }
 
     if ( btn6 ) {
         btn6.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath5 );
+            var scriptPath = path.join( __dirname, scriptPath6 );
             launchBatScript( scriptPath5 );
         });
     }
 
     if ( btn7 ) {
         btn7.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath6 );
+            var scriptPath = path.join( __dirname, scriptPath7 );
             launchBatScript( scriptPath );
         });
     }
@@ -219,14 +143,10 @@ function domScripts() {     // event buttons for view\html\scripts.html
     if ( btn8 ) {
         btn8.addEventListener( 'click', function () {
 
-            //alert( "Killing processes. The log Console, (F11), will be toggled after pressing OK" );
             console.clear();
             console.log( "\n:::::::::::::::::\nKill status\n:::::::::::::::::\n" );
 
-            // Display Dev Tools in order to read the console log
-            //require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
-
-            var scriptPath = manualFilePath( scriptPath7 );
+            var scriptPath = path.join( __dirname, scriptPath8 );
             launchBatScript( scriptPath );
             alert( "Killed processes. Check the log Console, (F12), to view kill status." );
         });
@@ -234,7 +154,7 @@ function domScripts() {     // event buttons for view\html\scripts.html
 
     if ( btn9 ) {
         btn9.addEventListener( 'click', function () {
-            var scriptPath = manualFilePath( scriptPath8 );
+            var scriptPath = path.join( __dirname, scriptPath9 );
             launchBatScript( scriptPath );
         });
     }
@@ -271,22 +191,17 @@ function domMarkdown() {    // event buttons for view\html\notes.html
     const btnWidth = document.getElementById( 'btnWidth' );
     const btnTop   = document.getElementById( 'btnTop' );
 
-    var parentDir = manualFilePath( process.cwd() );
+    var mdAbout           = "Markdown/mdAbout.md",
+        mdCNotes          = "Markdown/mdCNotes.md",
+        mdNodeNotes       = "Markdown/mdNodeNotes.md",
+        mdPowershellNotes = "Markdown/mdPowershellNotes.md",
+        mdGitNotes        = "Markdown/mdGitNotes.md",
+        mdPythonNotes     = "Markdown/mdPythonNotes.md",
+        mdWslNotes        = "Markdown/mdWslNotes.md",
+        mdWin10Notes      = "Markdown/mdWin10Notes.md",
+        README            = "README.md";
 
-    var mdAbout, mdCNotes, mdNodeNotes, mdPowershellNotes, mdGitNotes,
-        mdPythonNotes, mdWslNotes, mdWin10Notes, README;
-
-    mdAbout           = "Markdown/mdAbout.md";
-    mdCNotes          = "Markdown/mdCNotes.md";
-    mdNodeNotes       = "Markdown/mdNodeNotes.md";
-    mdPowershellNotes = "Markdown/mdPowershellNotes.md";
-    mdGitNotes        = "Markdown/mdGitNotes.md";
-    mdPythonNotes     = "Markdown/mdPythonNotes.md";
-    mdWslNotes        = "Markdown/mdWslNotes.md";
-    mdWin10Notes      = "Markdown/mdWin10Notes.md";
-    README            = "README.md";
-
-    var mdPath = manualFilePath( mdAbout );
+    var mdPath = path.join( __dirname, README );
     var mdFile = fs.readFileSync( mdPath );
     document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
 
@@ -319,7 +234,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     if ( btn1 ) {
         btn1.addEventListener('click', function () {
-            var mdPath = manualFilePath( mdPowershellNotes );
+            var mdPath = path.join( __dirname, mdPowershellNotes );
             var mdFile = fs.readFileSync( mdPath );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
@@ -327,7 +242,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     if ( btn2 ) {
         btn2.addEventListener('click', function () {
-            var mdPath = manualFilePath( mdGitNotes );
+            var mdPath = path.join( __dirname, mdGitNotes );
             var mdFile = fs.readFileSync( mdPath );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
@@ -335,7 +250,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     if ( btn3 ) {
         btn3.addEventListener('click', function () {
-            var mdPath = manualFilePath( README );
+            var mdPath = path.join( __dirname, README );
             var mdFile = fs.readFileSync( mdPath );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
@@ -343,7 +258,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     if ( btn4 ) {
         btn4.addEventListener('click', function () {
-            var mdPath = manualFilePath( README );
+            var mdPath = path.join( __dirname, README );
             var mdFile = fs.readFileSync( mdPath );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
@@ -351,7 +266,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
     if ( btn5 ) {
         btn5.addEventListener('click', function () {
-            var mdPath = manualFilePath( README );
+            var mdPath = path.join( __dirname, README );
             var mdFile = fs.readFileSync( mdPath );
             document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
         });
@@ -467,11 +382,11 @@ function customKeybindings() {
 
 function main() {
 
-    const btnClose      = document.getElementById( 'btnClose' );
-    const htmlIndex     = document.getElementById( 'htmlIndex' );
-    const htmlScripts   = document.getElementById( 'htmlScripts' );
-    const htmlMarkdown  = document.getElementById( 'htmlMarkdown' );
-    const htmlBookmarks = document.getElementById( 'htmlBookmarks' );
+    const   btnClose      = document.getElementById( 'btnClose' ),
+            htmlIndex     = document.getElementById( 'htmlIndex' ),
+            htmlScripts   = document.getElementById( 'htmlScripts' ),
+            htmlMarkdown  = document.getElementById( 'htmlMarkdown' ),
+            htmlBookmarks = document.getElementById( 'htmlBookmarks' );
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
@@ -499,10 +414,9 @@ function main() {
     }
 
     customKeybindings();    // DOM Key bindings
-
 }
 
-//////////////////////////////////////////////
+/* -------------------------------------------------------------------------- */
 
 main();
 
