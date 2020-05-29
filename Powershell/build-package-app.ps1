@@ -67,13 +67,10 @@ function removePreviousBuild() {
     if ( Test-Path $packagePath ) {
         Remove-Item -Recurse -Force $packagePath -ErrorAction Ignore
         Remove-Item -Force $packagePath -ErrorAction Ignore
+        Remove-Item .\$packagePath\ -ErrorAction Ignore
 
         Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
-    } else {
-        Write-Host "Exiting because $packagePath1 and $packagePath2 was not detected by this script." -ForegroundColor Red
-        Start-Sleep 3
-        Exit
     }
 }
 
