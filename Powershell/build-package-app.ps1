@@ -52,12 +52,14 @@ function removePreviousBuild() {
     $archNo = $arch.substring($length -2)
 
     $packagePath1 = "bookmark-renderer-win32-x64"
-    $packagePath1 = "bookmark-renderer-win32-ia32"
+    $packagePath2 = "bookmark-renderer-win32-ia32"
 
     if ( $archNo = "64" ) {
         $packagePath = $packagePath1
     } elseif ( $archNo = "x86" ) {
         $packagePath = $packagePath2
+    } else {
+        Write-Host "Script did not detect a previous $packagePath1 or $packagePath2 package builds"
     }
 
     Write-Host "Deleting $packagePath ..." -ForegroundColor Cyan
@@ -87,7 +89,7 @@ function buildNewPackage() {
         Write-Host "Pause to allow built package to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
     } else {
-        Write-Host "The $packagePath1 or $packagePath2 should not exist, yet it does.`n`tManually delete them. Restart to computer too, just incase there are undetected hanging background npm stuff still running." -ForegroundColor Red
+        Write-Host "The $packagePath1 or $packagePath2 should not exist, yet it does.`n`tManually delete them.`n`tRestart to computer too, just incase there are undetected hanging background npm/electron stuff still running." -ForegroundColor Red
         #electron-packager . --overwrite
         explorer .
         Write-Host "Script exited" -ForegroundColor Red
