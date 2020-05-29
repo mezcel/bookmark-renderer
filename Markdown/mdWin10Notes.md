@@ -2,6 +2,11 @@
 
 > under construction
 
+## Desktop Window Manager Settings
+
+* Remove shadows and animations
+    * ```Control Panel\System and Security\System``` --> Advanced system settings --> System Properties --> Performance Settings
+
 ## Text Editors
 
 ### VS Code

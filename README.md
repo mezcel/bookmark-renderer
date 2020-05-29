@@ -41,7 +41,7 @@ npm run-script build    // build as a .exe, make desktop shortct, and make a sta
 
 ## Screenshots
 
-* Compressed ```.gif``` rendered [screenshots](screenshots\README.md)
+* Compressed ```.gif``` rendered [screenshots](screenshots/README.md)
 
 |||
 |:---:|:---:|
