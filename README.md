@@ -7,33 +7,34 @@ A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 
 ## Install
 ```js
-npm install     // install dependences
-npm build       // build as a .exe and make desktop and startup shorcut links
+npm install     // install all dependences
+npm build       // build as a .exe, make desktop shortct, and make a startup link
 ```
 
-## Electron features:
+## App features:
 
 * File Explorer
 * Markdown Reader
 * Launch shell scripts (```.bat```, ```.ps1```)
+    * Enable powershell scripts for current user
+    ```ps1
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    ```
 * Launch ```.exe``` apps
 * Web bookmarks
 
 ## Npm Dependencies
 
-* NodeJS [download]( https://nodejs.org )
-    * Work around for: *"npm does not support Node.js vXX.XX.X"* ```npm install npm@latest -g```
-* Electron [download]( https://www.electronjs.org/ )
-    * "electron": "^8.2.5" | ```win10```
-* marked [download]( https://www.npmjs.com/package/marked )
-    * ""marked": "^1.1.0" | ```markdown to html```
-* electron-packager [download]( https://www.npmjs.com/package/electron-packager )
-    * "electron-packager": "^14.2.1" | ```package as .exe```
-
+| Package | npm | About |
+|---|---|---|
+|NodeJS|[download]( https://nodejs.org )|Work around for: *"npm does not support Node.js vXX.XX.X"* ```npm install npm@latest -g```|
+|Electron|[download]( https://www.electronjs.org/ )|Windows 10|
+|marked|[download]( https://www.npmjs.com/package/marked )|markdown to html|
+|electron-packager|[download]( https://www.npmjs.com/package/electron-packager )|package electron app as an .exe|
 
 ---
 
-## CSS
+## CSS Styles
 
 * [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css )
 * [w3.css](https://www.w3schools.com/w3css/w3css_color_themes.asp)
