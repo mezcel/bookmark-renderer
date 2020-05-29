@@ -48,7 +48,7 @@ function colorTheme( cssTheme ) {
     require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
 }
 
-function domIndex() {       // event buttons for view\index.html
+function domIndex() {   // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
             btn5 = document.getElementById( 'btn5' ),
@@ -60,14 +60,14 @@ function domIndex() {       // event buttons for view\index.html
             btnStyle3 = document.getElementById( 'btnStyle3' ),
             btnStyle4 = document.getElementById( 'btnStyle4' );
 
-    if ( btn4 ) {
+    if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
             var gistDir = "gist.github/mezcel";
             openFileExplorer( gistDir );
         });
     }
 
-    if ( btn5 ) {
+    if ( btn5 ) {   // explorer git
         btn5.addEventListener( 'click', function () {
             var githubDir = "github/mezcel";
             openFileExplorer( githubDir );
@@ -454,10 +454,6 @@ function main() {
             htmlScripts   = document.getElementById( 'htmlScripts' ),
             htmlMarkdown  = document.getElementById( 'htmlMarkdown' ),
             htmlBookmarks = document.getElementById( 'htmlBookmarks' );
-
-    var cssTheme = require('electron').remote.getGlobal('GlobalTheme').css;
-
-    colorTheme( cssTheme );
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {

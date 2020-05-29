@@ -26,10 +26,19 @@ function createWindow () {
         height: 400,
         webPreferences: {
             preload: path.join( __dirname, 'preload.js' ),
-            nodeIntegration: true
+            nodeIntegration: true,
+            show: false
         },
         icon: faviconPath
-    });  /* nodeIntegration: true will enable renderer.js script */
+    });
+    /* BrowserWindow Notes:
+        nodeIntegration: true (will enable renderer.js script)
+        show: false (don't initially show)
+    */
+
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+    });
 
     const contextMenu = Menu.buildFromTemplate([
         {

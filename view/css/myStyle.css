@@ -84,3 +84,14 @@ div.w3-col > p > a {
         padding: 15px;
     }
 }
+
+/* page transition */
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+html {
+    animation: fadein 0.300s;
+}
