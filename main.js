@@ -40,11 +40,36 @@ function createWindow () {
         mainWindow.show();
     });
 
+    // taskbar icon right click menu
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'https://github.com/mezcel/bookmark-renderer.git',
+            label: 'Git: ' + app.name,
             click () {
                 shell.openExternal( 'https://github.com/mezcel/bookmark-renderer' );
+            }
+        },
+        { type: 'separator' },
+        {
+            label: 'Markdown Reader',
+            click () {
+                new BrowserWindow({
+                    width: 1100,
+                    height: 900,
+                    webPreferences: {
+                        preload: path.join( __dirname, 'preload.js' ),
+                        nodeIntegration: true,
+                        show: false
+                    }
+                }).loadURL(
+                    path.join( __dirname, 'view/html/markdown.html' )
+                );
+            }
+        },
+        { type: 'separator' },
+        {
+            label: 'Exit App',
+            click () {
+                mainWindow.close();
             }
         }
     ]);
