@@ -87,10 +87,11 @@ function buildNewPackage() {
         Write-Host "Pause to allow built package to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
     } else {
-        Write-Host "Overwriting existing build" -ForegroundColor DarkYellow
-        electron-packager . --overwrite
-
-        Start-Sleep 3
+        Write-Host "The $packagePath1 or $packagePath2 should not exist, yet it does.`n`tManually delete them. Restart to computer too, just incase there are undetected hanging background npm stuff still running." -ForegroundColor Red
+        #electron-packager . --overwrite
+        explorer .
+        Write-Host "Script exited" -ForegroundColor Red
+        Exit
     }
 
 }
@@ -116,7 +117,7 @@ function createShortcutLinks() {
     } elseif ( Test-Path $packagePath2 ) {
         $packagePath = $packagePath2
     } else {
-        Write-Host "Exiting script because $packagePath1 of $packagePath2 was not detected by this script." -ForegroundColor Red
+        Write-Host "Exiting script because $packagePath1 or $packagePath2 was not detected by this script." -ForegroundColor Red
         Start-Sleep 3
         exit
     }
