@@ -32,12 +32,33 @@ function launchBatScript( scriptPath ) {
     });
 }
 
+function colorTheme( cssTheme ) {
+    // Dynamically change css theme
+
+    var cssFile = "view/css/" + cssTheme;
+    var link    = document.createElement( "link" );
+
+    link.href   = path.join( __dirname, cssFile );
+	link.type   = "text/css";
+	link.rel    = "stylesheet";
+	link.media  = "screen,print";
+
+    document.getElementsByTagName( "head" )[0].appendChild( link );
+
+    require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
+}
+
 function domIndex() {       // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
             btn5 = document.getElementById( 'btn5' ),
             btn6 = document.getElementById( 'btn6' ),
             btn7 = document.getElementById( 'btn7' );
+
+    const   btnStyle1 = document.getElementById( 'btnStyle1' ),
+            btnStyle2 = document.getElementById( 'btnStyle2' ),
+            btnStyle3 = document.getElementById( 'btnStyle3' ),
+            btnStyle4 = document.getElementById( 'btnStyle4' );
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
@@ -66,6 +87,34 @@ function domIndex() {       // event buttons for view\index.html
         btn7.addEventListener( 'click', function () {
             scriptPath = path.join( __dirname, 'Batch/launchWT.bat' );
             launchBatScript( scriptPath );
+        });
+    }
+
+    if ( btnStyle1 ) {   // style 1
+
+        btnStyle1.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-blue-grey.css" );
+        });
+    }
+
+    if ( btnStyle2 ) {   // style 2
+
+        btnStyle2.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-brown.css" );
+        });
+    }
+
+    if ( btnStyle3 ) {   // style 3
+
+        btnStyle3.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-black.css" );
+        });
+    }
+
+    if ( btnStyle4 ) {   // style 4
+
+        btnStyle4.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-pink.css" );
         });
     }
 }
@@ -305,8 +354,23 @@ function customKeybindings() {
 
             case 39: // Rt Arrow
             case 76: // l
-            case 70: // f
                 history.forward();
+                break;
+
+            case 65: // a
+                document.getElementById( "btnStyle1" ).click();
+                break;
+
+            case 83: // s
+                document.getElementById( "btnStyle2" ).click();
+                break;
+
+            case 68: // d
+                document.getElementById( "btnStyle3" ).click();
+                break;
+
+            case 70: // f
+                document.getElementById( "btnStyle4" ).click();
                 break;
 
             case 27: // ESC
@@ -388,6 +452,10 @@ function main() {
             htmlScripts   = document.getElementById( 'htmlScripts' ),
             htmlMarkdown  = document.getElementById( 'htmlMarkdown' ),
             htmlBookmarks = document.getElementById( 'htmlBookmarks' );
+
+    var cssTheme = require('electron').remote.getGlobal('GlobalTheme').css;
+
+    colorTheme( cssTheme );
 
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {

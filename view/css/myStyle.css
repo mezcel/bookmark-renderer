@@ -2,19 +2,53 @@
     myStyles.css
 */
 
-/* style a column of links in a row as w3-btn */
+/* w3-btn */
 .w3-row > .w3-col > p a {
-    border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap; /* w3-btn */
-}
-
-.w3-row > .w3-col > p a:hover {
-    color:#fff !important; background-color:#607d8b !important; /* .w3-hover-theme:hover */
+    border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
 }
 
 /* grid buttons */
 
 div.w3-col > p > a {
     width: 95%;
+}
+
+/* Css Theme Buttons */
+
+.btnSelectBlueGrey {
+    color:#607d8b !important;
+    border-color:#4d636f !important;
+}
+.btnSelectBlueGrey:hover {
+    color:#000 !important;
+    background-color:#dfe5e8 !important;
+}
+
+.btnSelectBrown {
+    color:#795548 !important;
+    border-color:#795548 !important;
+}
+.btnSelectBrown:hover {
+    color:#000 !important;
+    background-color:#e7dcd7 !important;
+}
+
+.btnSelectBlack {
+    color:#000000 !important;
+    border-color:#000000 !important;
+}
+.btnSelectBlack:hover {
+    color:#000 !important;
+    background-color:#cccccc !important
+}
+
+.btnSelectPink {
+    color:#e91e63 !important;
+    border-color:#e91e63 !important;
+}
+.btnSelectPink:hover {
+    color:#000 !important;
+    background-color:#fbd2e0 !important;
 }
 
 /* markdown dom controls */

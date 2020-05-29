@@ -7,6 +7,13 @@ const path = require( 'path' );
 const url  = require( 'url' );
 const nativeImage = require('electron').nativeImage;
 
+// Global theme css variable
+global.GlobalTheme = {
+    css: "w3-theme-blue-grey.css"
+}
+
+/* -------------------------------------------------------------------------- */
+
 function createWindow () {
     Menu.setApplicationMenu( null ); // null menubar
 
