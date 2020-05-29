@@ -79,9 +79,9 @@ Start-Process "ms-settings:windowsupdate"
 
 ---
 
-# 4.0 Extras
+## 4.0 Extras
 
-## 4.1 Curl Weather
+### 4.1 Curl Weather
 
 ```ps1
 ## Region
