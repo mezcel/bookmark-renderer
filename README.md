@@ -5,7 +5,14 @@ A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 
 > It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
 
-Electron features:
+## Install
+```js
+npm install     // install dependences
+npm build       // build as a .exe
+npm shortcuts   // desktop and startup shorcut links
+```
+
+## Electron features:
 
 * File Explorer
 * Markdown Reader
@@ -18,10 +25,11 @@ Electron features:
 * NodeJS [download]( https://nodejs.org )
     * Work around for: *"npm does not support Node.js vXX.XX.X"* ```npm install npm@latest -g```
 * Electron [download]( https://www.electronjs.org/ )
-    * "electron": "^8.2.5" ```win10```
-    * "electron": "^3.0.13" ```Debian 32bit``` (n/a)
+    * "electron": "^8.2.5" | ```win10```
 * marked [download]( https://www.npmjs.com/package/marked )
-* electron-packager [download](https://www.npmjs.com/package/electron-packager)
+    * ""marked": "^1.1.0" | ```markdown to html```
+* electron-packager [download]( https://www.npmjs.com/package/electron-packager )
+    * "electron-packager": "^14.2.1" | ```package as .exe```
 
 ## Install
 
@@ -55,7 +63,6 @@ npm install -g electron-packager
     ```ps1
     Copy-Item -Path "<shortcut-link.lnk>" -Destination "$env:AppData\Microsoft\Windows\Start Menu\Programs\Startup"
     ```
-
 ---
 
 # community themes
