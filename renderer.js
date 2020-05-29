@@ -358,19 +358,23 @@ function customKeybindings() {
                 break;
 
             case 65: // a
-                document.getElementById( "btnStyle1" ).click();
+                //document.getElementById( "btnStyle1" ).click();
+                colorTheme( "w3-theme-blue-grey.css" );
                 break;
 
             case 83: // s
-                document.getElementById( "btnStyle2" ).click();
+                //document.getElementById( "btnStyle2" ).click();
+                colorTheme( "w3-theme-brown.css" );
                 break;
 
             case 68: // d
-                document.getElementById( "btnStyle3" ).click();
+                //document.getElementById( "btnStyle3" ).click();
+                colorTheme( "w3-theme-black.css" );
                 break;
 
             case 70: // f
-                document.getElementById( "btnStyle4" ).click();
+                //document.getElementById( "btnStyle4" ).click();
+                colorTheme( "w3-theme-pink.css" );
                 break;
 
             case 27: // ESC
