@@ -1,5 +1,8 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
+
+const path = require( 'path' );
+
 window.addEventListener('DOMContentLoaded', () => {
 	const replaceText = (selector, text) => {
 		const element = document.getElementById(selector)
@@ -11,10 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const archString = process.platform;
-	const cwdString = process.cwd();
+	const cdPath 	 = path.join( __dirname, '.' );
 
 	replaceText( `platform-arch`, archString );
-	replaceText( `cd`, cwdString );
+	replaceText( `cd`, cdPath );
 
 	require( 'dns' ).resolve( 'www.google.com', function( err ) {
 		if ( err ) {

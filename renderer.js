@@ -201,7 +201,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
         mdWin10Notes      = "Markdown/mdWin10Notes.md",
         README            = "README.md";
 
-    var mdPath = path.join( __dirname, README );
+    var mdPath = path.join( __dirname, mdAbout );
     var mdFile = fs.readFileSync( mdPath );
     document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
 
