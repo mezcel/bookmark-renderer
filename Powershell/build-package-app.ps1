@@ -15,7 +15,7 @@ $scriptName = $MyInvocation.MyCommand.Name
 
 function greetings() {
 
-    Write-Host "//////////////////////////////////////////////////////////////////////////////"
+    Write-Host "//////////////////////////////////////////////////////////////////////////////" -ForegroundColor Magenta
     Write-Host "# $scriptName"
     Write-Host "# "
     Write-Host "# About:"
@@ -30,8 +30,7 @@ function greetings() {
     Write-Host "# "
     Write-Host "# Script Path:"
     Write-Host "#`t$scriptParentDir\$scriptName"
-    Write-Host "//////////////////////////////////////////////////////////////////////////////"
-    Start-Sleep 3
+    Write-Host "//////////////////////////////////////////////////////////////////////////////" -ForegroundColor Magenta
 }
 
 function killRunningProcess() {
@@ -58,11 +57,16 @@ function removePreviousBuild() {
         $packagePath = "bookmark-renderer-win32-ia32"
     }
 
+    Write-Host "Deleting $packagePath ..." -ForegroundColor Cyan
+
     if ( Test-Path $packagePath ) {
         Remove-Item -Recurse -Force $packagePath -ErrorAction Ignore
         Remove-Item -Force $packagePath -ErrorAction Ignore
 
         Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
+        Start-Sleep 3
+    } else {
+        Write-Host "Exiting $packagePath1 and $packagePath2 was not detected by this script." -ForegroundColor Red
         Start-Sleep 3
     }
 }
@@ -75,9 +79,14 @@ function buildNewPackage() {
 
     Write-Host "Build a new package ..." -ForegroundColor Cyan
     if ( -Not ( Test-Path $packagePath2 ) -and -Not ( Test-Path $packagePath1 ) ) {
-        ## electron-packager . --force
         electron-packager .
+
         Write-Host "Pause to allow built package to settle in ..." -ForegroundColor DarkYellow
+        Start-Sleep 3
+    } else {
+        Write-Host "Overwriting existing build" -ForegroundColor DarkYellow
+        electron-packager . --force
+
         Start-Sleep 3
     }
 
@@ -99,18 +108,19 @@ function createShortcutLinks() {
     $packagePath1 = "bookmark-renderer-win32-x64"
     $packagePath2 = "bookmark-renderer-win32-ia32"
 
-    Write-Host "Build a new package ..." -ForegroundColor Cyan
-
     if ( Test-Path $packagePath1 ) {
         $packagePath = $packagePath1
     } elseif ( Test-Path $packagePath2 ) {
         $packagePath = $packagePath2
     } else {
+        Write-Host "Exiting script because $packagePath1 of $packagePath2 was not detected by this script." -ForegroundColor Red
+        Start-Sleep 3
         exit
     }
 
     ## Make a shortcut link
     Write-Host "Creating shortcut links..." -ForegroundColor Cyan
+    ## CD into dir
     Set-Location -Path $packagePath
 
     $verbosePath   = Get-Location
@@ -131,6 +141,7 @@ function createShortcutLinks() {
     set-shortcut $ShortcutFile3 $WorkingDir $TargetFile
     Write-Host "Created a start menu link ..." -ForegroundColor Cyan
 
+    ## CD up to parent dir
     Set-Location -Path ..\
 
 }

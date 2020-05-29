@@ -7,8 +7,8 @@ A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 
 ## Install
 ```js
-npm install     // install all dependences
-npm build       // build as a .exe, make desktop shortct, and make a startup link
+npm install             // install all dependences
+npm run-script build    // build as a .exe, make desktop shortct, and make a startup link
 ```
 
 ## App features:
