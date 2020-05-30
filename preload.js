@@ -16,7 +16,9 @@ function colorTheme( cssTheme ) {
 
 	var w3Theme = document.getElementById("w3Theme");
 	if ( w3Theme ) {
-		w3Theme.parentNode.removeChild( w3Theme );
+        if ( w3Theme.href !== link.href ) {
+            w3Theme.parentNode.removeChild( w3Theme );
+        }
 	}
 
     document.getElementsByTagName( "head" )[0].appendChild( link );
