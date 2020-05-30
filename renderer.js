@@ -320,6 +320,8 @@ function domMarkdown() {    // event buttons for view\html\notes.html
             dialog.showOpenDialog( filters ).then( result => {
                 var mdFile = fs.readFileSync( result.filePaths[0] );
                 document.getElementById( 'md' ).innerHTML = marked( mdFile.toString() );
+
+                btn0.classList.remove( "active" ); // rm hover effect css
             }).catch( err => {
                 console.log( "err", err )
             });
