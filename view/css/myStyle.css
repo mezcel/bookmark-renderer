@@ -24,7 +24,7 @@ div.w3-col > p > a {
     color:#607d8b !important;
     border-color:#4d636f !important;
 }
-.btnSelectBlueGrey:hover {
+.btnSelectBlueGrey:hover, .btnSelectBlueGrey.active {
     color:#607d8b !important;
     background-color:#f5f7f8 !important;
     font-weight: 500;
@@ -34,7 +34,7 @@ div.w3-col > p > a {
     color:#795548 !important;
     border-color:#795548 !important;
 }
-.btnSelectBrown:hover {
+.btnSelectBrown:hover, .btnSelectBrown.active {
     color:#795548 !important;
     background-color:#f8f4f3 !important;
     font-weight: 500;
@@ -44,7 +44,7 @@ div.w3-col > p > a {
     color:#000000 !important;
     border-color:#000000 !important;
 }
-.btnSelectBlack:hover {
+.btnSelectBlack:hover, .btnSelectBlack.active {
     color:#000 !important;
     background-color:#f0f0f0 !important;
     font-weight: 500;
@@ -54,7 +54,7 @@ div.w3-col > p > a {
     color:#e91e63 !important;
     border-color:#e91e63 !important;
 }
-.btnSelectPink:hover {
+.btnSelectPink:hover, .btnSelectPink.active {
     color:#e91e63 !important;
     background-color:#fef2f6 !important;
     font-weight: 500;
@@ -64,7 +64,7 @@ div.w3-col > p > a {
     color:#4caf50 !important;
     border-color:#4caf50 !important;
 }
-.btnSelectGreen:hover {
+.btnSelectGreen:hover, .btnSelectGreen.active {
     color:#4caf50 !important;
     background-color:#f4faf4 !important;
     font-weight: 500;
@@ -74,7 +74,7 @@ div.w3-col > p > a {
     color:#3f51b5 !important;
     border-color:#3f51b5 !important;
 }
-.btnSelectIndigo:hover {
+.btnSelectIndigo:hover, .btnSelectIndigo.active {
     color:#3f51b5 !important;
     background-color:#f3f4fb !important;
     font-weight: 500;
