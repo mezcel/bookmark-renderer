@@ -59,6 +59,8 @@ function domIndex() {   // event buttons for view\index.html
             btnStyle2 = document.getElementById( 'btnStyle2' ),
             btnStyle3 = document.getElementById( 'btnStyle3' ),
             btnStyle4 = document.getElementById( 'btnStyle4' );
+            btnStyle5 = document.getElementById( 'btnStyle5' );
+            btnStyle6 = document.getElementById( 'btnStyle6' );
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -115,6 +117,20 @@ function domIndex() {   // event buttons for view\index.html
 
         btnStyle4.addEventListener( 'click', function () {
             colorTheme( "w3-theme-pink.css" );
+        });
+    }
+
+    if ( btnStyle5 ) {   // style 5
+
+        btnStyle5.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-green.css" );
+        });
+    }
+
+    if ( btnStyle6 ) {   // style 6
+
+        btnStyle6.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-indigo.css" );
         });
     }
 }
@@ -240,6 +256,7 @@ function domMarkdown() {    // event buttons for view\html\notes.html
     const btn5     = document.getElementById( 'btn5' );
     const btnWidth = document.getElementById( 'btnWidth' );
     const btnTop   = document.getElementById( 'btnTop' );
+    const btnBottom   = document.getElementById( 'btnBottom' );
 
     var mdAbout           = "Markdown/mdAbout.md",
         mdCNotes          = "Markdown/mdCNotes.md",
@@ -265,6 +282,13 @@ function domMarkdown() {    // event buttons for view\html\notes.html
 
         btnTop.addEventListener( 'click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    if ( btnBottom ) {
+
+        btnBottom.addEventListener( 'click', function () {
+            window.scrollTo({ top: 100000, behavior: 'smooth' });
+            //window.scrollBy(100, window.innerHeight);
         });
     }
 
@@ -377,20 +401,34 @@ function customKeybindings() {
                 colorTheme( "w3-theme-pink.css" );
                 break;
 
+            case 71: // g
+                //document.getElementById( "btnStyle5" ).click();
+                colorTheme( "w3-theme-green.css" );
+                break;
+
+            case 90: // z
+                //document.getElementById( "btnStyle6" ).click();
+                colorTheme( "w3-theme-indigo.css" );
+                break;
+
             case 27: // ESC
             case 81: // q
-            case 88: // x
                 require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM
                 break;
 
-            case 71: // g
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            case 75: // k
+                //window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.getElementById( "btnTop" ).click();
                 break;
 
-            case 32: // spacebar
             case 74: // j
-            case 75: // k
-                markdownWindowSize();
+                //window.scrollTo({ top: 10000, behavior: 'smooth' });
+                document.getElementById( "btnBottom" ).click();
+                break;
+
+            case 190: // .
+                //markdownWindowSize();
+                document.getElementById( "btnWidth" ).click();
                 break;
 
             case 49: // 1

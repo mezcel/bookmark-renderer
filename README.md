@@ -39,7 +39,7 @@ npm run-script build    // build as a .exe, make desktop shortct, and make a sta
 * [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css )
 * [w3.css](https://www.w3schools.com/w3css/w3css_color_themes.asp)
 
-## Screenshots
+## Screenshots ( outdated )
 
 * Compressed ```.gif``` rendered [screenshots](screenshots/README.md)
 

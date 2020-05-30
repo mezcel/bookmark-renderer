@@ -20,8 +20,9 @@ div.w3-col > p > a {
     border-color:#4d636f !important;
 }
 .btnSelectBlueGrey:hover {
-    color:#000 !important;
-    background-color:#dfe5e8 !important;
+    color:#607d8b !important;
+    background-color:#f5f7f8 !important;
+    font-weight: 500;
 }
 
 .btnSelectBrown {
@@ -29,8 +30,9 @@ div.w3-col > p > a {
     border-color:#795548 !important;
 }
 .btnSelectBrown:hover {
-    color:#000 !important;
-    background-color:#e7dcd7 !important;
+    color:#795548 !important;
+    background-color:#f8f4f3 !important;
+    font-weight: 500;
 }
 
 .btnSelectBlack {
@@ -39,7 +41,8 @@ div.w3-col > p > a {
 }
 .btnSelectBlack:hover {
     color:#000 !important;
-    background-color:#cccccc !important
+    background-color:#f0f0f0 !important;
+    font-weight: 500;
 }
 
 .btnSelectPink {
@@ -47,8 +50,29 @@ div.w3-col > p > a {
     border-color:#e91e63 !important;
 }
 .btnSelectPink:hover {
-    color:#000 !important;
-    background-color:#fbd2e0 !important;
+    color:#e91e63 !important;
+    background-color:#fef2f6 !important;
+    font-weight: 500;
+}
+
+.btnSelectGreen {
+    color:#4caf50 !important;
+    border-color:#4caf50 !important;
+}
+.btnSelectGreen:hover {
+    color:#4caf50 !important;
+    background-color:#f4faf4 !important;
+    font-weight: 500;
+}
+
+.btnSelectIndigo {
+    color:#3f51b5 !important;
+    border-color:#3f51b5 !important;
+}
+.btnSelectIndigo:hover {
+    color:#3f51b5 !important;
+    background-color:#f3f4fb !important;
+    font-weight: 500;
 }
 
 /* markdown dom controls */
