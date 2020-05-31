@@ -78,9 +78,12 @@ function domIndex() {   // event buttons for view\index.html
     const   btnStyle1 = document.getElementById( 'btnStyle1' ),
             btnStyle2 = document.getElementById( 'btnStyle2' ),
             btnStyle3 = document.getElementById( 'btnStyle3' ),
-            btnStyle4 = document.getElementById( 'btnStyle4' );
-            btnStyle5 = document.getElementById( 'btnStyle5' );
-            btnStyle6 = document.getElementById( 'btnStyle6' );
+            btnStyle4 = document.getElementById( 'btnStyle4' ),
+            btnStyle5 = document.getElementById( 'btnStyle5' ),
+            btnStyle6 = document.getElementById( 'btnStyle6' ),
+            btnStyle7 = document.getElementById( 'btnStyle7' ),
+            btnStyle8 = document.getElementById( 'btnStyle8' ),
+            btnStyle9 = document.getElementById( 'btnStyle9' );
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -151,6 +154,27 @@ function domIndex() {   // event buttons for view\index.html
 
         btnStyle6.addEventListener( 'click', function () {
             colorTheme( "w3-theme-indigo.css" );
+        });
+    }
+
+    if ( btnStyle7 ) {   // style 6
+
+        btnStyle7.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-yellow.css" );
+        });
+    }
+
+    if ( btnStyle8 ) {   // style 6
+
+        btnStyle8.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-purple.css" );
+        });
+    }
+
+    if ( btnStyle9 ) {   // style 6
+
+        btnStyle9.addEventListener( 'click', function () {
+            colorTheme( "w3-theme-orange.css" );
         });
     }
 }
@@ -406,32 +430,38 @@ function customKeybindings() {
 
             case 65: // a
                 keyboardElemIdClick( "btnStyle1", "key:" + keyboardKey + " w3-theme-blue-grey.css" );
-                //colorTheme( "w3-theme-blue-grey.css" );
                 break;
 
             case 83: // s
                 keyboardElemIdClick( "btnStyle2", "key:" + keyboardKey + " w3-theme-brown.css" );
-                //colorTheme( "w3-theme-brown.css" );
                 break;
 
             case 68: // d
                 keyboardElemIdClick( "btnStyle3", "key:" + keyboardKey + " w3-theme-black.css" );
-                //colorTheme( "w3-theme-black.css" );
                 break;
 
             case 70: // f
                 keyboardElemIdClick( "btnStyle4", "key:" + keyboardKey + " w3-theme-pink.css" );
-                //colorTheme( "w3-theme-pink.css" );
                 break;
 
             case 71: // g
                 keyboardElemIdClick( "btnStyle5", "key:" + keyboardKey + " w3-theme-green.css" );
-                //colorTheme( "w3-theme-green.css" );
                 break;
 
             case 90: // z
                 keyboardElemIdClick( "btnStyle6", "key:" + keyboardKey + " w3-theme-indigo.css" );
-                //colorTheme( "w3-theme-indigo.css" );
+                break;
+
+            case 88: // x
+                keyboardElemIdClick( "btnStyle7", "key:" + keyboardKey + " w3-theme-yellow.css" );
+                break;
+
+            case 67: // c
+                keyboardElemIdClick( "btnStyle8", "key:" + keyboardKey + " w3-theme-purple.css" );
+                break;
+
+            case 86: // v
+                keyboardElemIdClick( "btnStyle9", "key:" + keyboardKey + " w3-theme-orange.css" );
                 break;
 
             case 27: // ESC

@@ -79,6 +79,37 @@ div.w3-col > p > a {
     background-color:#f3f4fb !important;
     font-weight: 500;
 }
+/** ******** ********* */
+
+.btnSelectYellow {
+    color:#ffeb3b !important;
+    border-color:#ffeb3b !important;
+}
+.btnSelectYellow:hover, .btnSelectYellow.active {
+    color:#ffeb3b !important;
+    background-color:#fffef3 !important;
+    font-weight: 500;
+}
+
+.btnSelectPurple {
+    color:#9c27b0 !important;
+    border-color:#9c27b0 !important;
+}
+.btnSelectPurple:hover, .btnSelectPurple.active {
+    color:#9c27b0 !important;
+    background-color:#faf0fc !important;
+    font-weight: 500;
+}
+
+.btnSelectOrange {
+    color:#ff9800 !important;
+    border-color:#ff9800 !important;
+}
+.btnSelectOrange:hover, .btnSelectOrange.active {
+    color:#ff9800 !important;
+    background-color:#fff9f0 !important;
+    font-weight: 500;
+}
 
 /* markdown dom controls */
 
