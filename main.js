@@ -36,20 +36,20 @@ function launchBatScript( scriptPath ) {
 function createWindow () {
     Menu.setApplicationMenu( null ); // null menubar
 
-    const faviconPath = path.join( __dirname, 'view/img/electron_favicon.ico' ),
-          favicon     = nativeImage.createFromPath( faviconPath ).resize({width:16});
+    const faviconPath = path.join( __dirname, 'view/img/favicon.ico' ),
+          favicon     = nativeImage.createFromPath( faviconPath ).resize( { width:16 } );
 
     const githubiconPath = path.join( __dirname, 'view/img/github.ico' ),
-          githubicon     = nativeImage.createFromPath( githubiconPath ).resize({width:16});
+          githubicon     = nativeImage.createFromPath( githubiconPath ).resize( { width:16 } );
 
     const mdiconPath = path.join( __dirname, 'view/img/md.ico' ),
-          mdicon     = nativeImage.createFromPath( mdiconPath ).resize({width:16});
+          mdicon     = nativeImage.createFromPath( mdiconPath ).resize( { width:16 } );
 
     const psiconPath = path.join( __dirname, 'view/img/ps.ico' ),
-          psicon     = nativeImage.createFromPath( psiconPath ).resize({width:16});
+          psicon     = nativeImage.createFromPath( psiconPath ).resize( { width:16 } );
 
     const closeiconPath = path.join( __dirname, 'view/img/close.ico' ),
-          closeicon     = nativeImage.createFromPath( closeiconPath ).resize({width:16});
+          closeicon     = nativeImage.createFromPath( closeiconPath ).resize( { width:16 } );
 
     // Create the browser window.
     const mainWindow = new BrowserWindow({
@@ -60,7 +60,7 @@ function createWindow () {
             nodeIntegration: true,
             show: false
         },
-        icon: faviconPath
+        icon: favicon
     });
     /* BrowserWindow Notes:
         nodeIntegration: true (will enable renderer.js script)
@@ -202,6 +202,7 @@ function createWindow () {
     const trayIcon = favicon.resize({ width: 16, height: 16 });
 
     mainWindow.tray = new Tray( trayIcon );
+    //mainWindow.tray = new Tray();
     mainWindow.tray.setToolTip( 'kiosk' );
     mainWindow.tray.setContextMenu( contextMenu );
 
