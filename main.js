@@ -11,8 +11,11 @@ const url         = require( 'url' );
 const nativeImage = require( 'electron' ).nativeImage;
 
 // Global theme css variable
+var defaultCssTheme = "w3-theme-blue-grey.css";
+//  defaultCssTheme = "w3-theme-indigo.css";
+
 global.GlobalTheme = {
-    css: "w3-theme-blue-grey.css"
+    css: defaultCssTheme
 }
 
 /* -------------------------------------------------------------------------- */
