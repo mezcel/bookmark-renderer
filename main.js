@@ -201,6 +201,8 @@ function createWindow () {
         })
     );
 
+    mainWindow.setThumbarButtons( { tooltip: 'kiosk', icon: favicon } );
+
     // start bar tray
     const trayIcon = favicon.resize({ width: 16, height: 16 });
 
