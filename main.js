@@ -54,6 +54,9 @@ function createWindow () {
     const closeiconPath = path.join( __dirname, 'view/img/close.ico' ),
           closeicon     = nativeImage.createFromPath( closeiconPath ).resize( { width: 16 } );
 
+    const stariconPath = path.join( __dirname, 'view/img/star.ico' ),
+          staricon     = nativeImage.createFromPath( stariconPath ).resize( { width: 16 } );
+
     Menu.setApplicationMenu( null ); // no browser menubar
 
     // Create the browser window.
@@ -65,12 +68,8 @@ function createWindow () {
             nodeIntegration: true,
             show: false
         },
-        icon: favicon
+        icon: faviconPath
     });
-    /* BrowserWindow Notes:
-        nodeIntegration: true (will enable renderer.js script)
-        show: false (don't initially show)
-    */
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
@@ -102,27 +101,32 @@ function createWindow () {
                     label: 'Github ',
                     click () {
                         shell.openExternal( 'https://github.com/mezcel' );
-                    }
+                    },
+                    icon: staricon
                 }, {
                     label: 'Gist',
                     click () {
                         shell.openExternal( 'https://gist.github.com/mezcel' );
-                    }
+                    },
+                    icon: staricon
                 }, {
                     label: 'Google',
                     click () {
                         shell.openExternal( 'https://google.com' );
-                    }
+                    },
+                    icon: staricon
                 }, {
                     label: 'Youtube',
                     click () {
                         shell.openExternal( 'https://www.youtube.com/channel/UCpNZc5SjrUzVwGgI9PDMHxg' );
-                    }
+                    },
+                    icon: staricon
                 }, {
                     label: 'Soundcloud',
                     click () {
                         shell.openExternal( 'https://soundcloud.com/mezcel' );
-                    }
+                    },
+                    icon: staricon
                 }
             ],
             icon: favicon
@@ -209,11 +213,44 @@ function createWindow () {
     mainWindow.tray.setToolTip( 'kiosk' );
     mainWindow.tray.setContextMenu( contextMenu );
 
-    // Suposed to be a taskbar thumb... but it doesent work in electron-packager
+    // A taskbar thumb menu ( just another menu accessible from the taskbar )
     mainWindow.setThumbarButtons([
         {
-            icon: favicon,
-            tooltip: 'kiosk'
+            tooltip: 'Bookmarks Menu',
+            click () {
+                mainWindow.loadURL( path.join( __dirname, 'view/html/bookmarks.html' ) );
+                mainWindow.restore();
+            },
+            icon: staricon
+        }, {
+            tooltip: 'Scripts Menu',
+            click() {
+                mainWindow.loadURL( path.join( __dirname, 'view/html/scripts.html' ) );
+                mainWindow.restore();
+            },
+            icon: psicon
+        }, {
+            tooltip: 'Markdown Reader',
+            click () {
+                new BrowserWindow({
+                    width: 1100,
+                    height: 900,
+                    webPreferences: {
+                        preload: path.join( __dirname, 'preload.js' ),
+                        nodeIntegration: true,
+                        show: false
+                    }
+                }).loadURL(
+                    path.join( __dirname, 'view/html/markdown.html' )
+                );
+            },
+            icon: mdicon
+        }, {
+            tooltip: 'Close App',
+            click () {
+                mainWindow.close();
+            },
+            icon: closeicon
         }
     ]);
 
