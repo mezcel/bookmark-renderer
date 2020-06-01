@@ -20,6 +20,14 @@ div.w3-col > p > a {
     border-top-right-radius: 3px;
 }
 
+.roundedTopRt {
+    border-top-right-radius: 4px !important;
+}
+
+.roundedTopLt {
+    border-top-left-radius: 4px !important;
+}
+
 .btnSelectBlueGrey {
     color:#607d8b !important;
     border-color:#4d636f !important;
@@ -79,7 +87,7 @@ div.w3-col > p > a {
     background-color:#f3f4fb !important;
     font-weight: 500;
 }
-/** ******** ********* */
+/** Style Switch buttons **/
 
 .btnSelectYellow {
     color:#ffeb3b !important;

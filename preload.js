@@ -6,22 +6,16 @@ const path = require( 'path' );
 function colorTheme( cssTheme ) {
 	// Dynamically change css theme
 
-    var cssFile 	= "view/css/" + cssTheme;
-    var link    	= document.createElement( "link" );
-		link.href	= path.join( __dirname, cssFile );
-		link.type   = "text/css";
-		link.rel    = "stylesheet";
-		link.media  = "screen,print";
-		link.id  	= "w3Theme";
+    var cssFile = "view/css/" + cssTheme;
+    var href    = path.join( __dirname, cssFile );
+    var w3Theme = document.getElementById("w3Theme");
 
-	var w3Theme = document.getElementById("w3Theme");
 	if ( w3Theme ) {
-        if ( w3Theme.href !== link.href ) {
-            w3Theme.parentNode.removeChild( w3Theme );
+        if ( w3Theme.href !== href ) {
+            w3Theme.href = href;
         }
 	}
 
-    document.getElementsByTagName( "head" )[0].appendChild( link );
     require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
 }
 

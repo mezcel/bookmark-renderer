@@ -37,22 +37,24 @@ function launchBatScript( scriptPath ) {
 }
 
 function createWindow () {
-    Menu.setApplicationMenu( null ); // null menubar
 
+    // Application Icons
     const faviconPath = path.join( __dirname, 'view/img/favicon.ico' ),
-          favicon     = nativeImage.createFromPath( faviconPath ).resize( { width:16 } );
+          favicon     = nativeImage.createFromPath( faviconPath ).resize( { width: 16 } );
 
     const githubiconPath = path.join( __dirname, 'view/img/github.ico' ),
-          githubicon     = nativeImage.createFromPath( githubiconPath ).resize( { width:16 } );
+          githubicon     = nativeImage.createFromPath( githubiconPath ).resize( { width: 16 } );
 
     const mdiconPath = path.join( __dirname, 'view/img/md.ico' ),
-          mdicon     = nativeImage.createFromPath( mdiconPath ).resize( { width:16 } );
+          mdicon     = nativeImage.createFromPath( mdiconPath ).resize( { width: 16 } );
 
     const psiconPath = path.join( __dirname, 'view/img/ps.ico' ),
-          psicon     = nativeImage.createFromPath( psiconPath ).resize( { width:16 } );
+          psicon     = nativeImage.createFromPath( psiconPath ).resize( { width: 16 } );
 
     const closeiconPath = path.join( __dirname, 'view/img/close.ico' ),
-          closeicon     = nativeImage.createFromPath( closeiconPath ).resize( { width:16 } );
+          closeicon     = nativeImage.createFromPath( closeiconPath ).resize( { width: 16 } );
+
+    Menu.setApplicationMenu( null ); // no browser menubar
 
     // Create the browser window.
     const mainWindow = new BrowserWindow({
@@ -201,15 +203,19 @@ function createWindow () {
         })
     );
 
-    mainWindow.setThumbarButtons( { tooltip: 'kiosk', icon: favicon } );
-
     // start bar tray
-    const trayIcon = favicon.resize({ width: 16, height: 16 });
 
-    mainWindow.tray = new Tray( trayIcon );
-    //mainWindow.tray = new Tray();
+    mainWindow.tray = new Tray( favicon );
     mainWindow.tray.setToolTip( 'kiosk' );
     mainWindow.tray.setContextMenu( contextMenu );
+
+    // Suposed to be a taskbar thumb... but it doesent work in electron-packager
+    mainWindow.setThumbarButtons([
+        {
+            icon: favicon,
+            tooltip: 'kiosk'
+        }
+    ]);
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
