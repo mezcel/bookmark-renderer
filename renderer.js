@@ -3,6 +3,7 @@
 // Launch Exe related
 const { execFile, spawn } = require( 'child_process' );
 const path = require( 'path' );
+//const url = require( 'url' );
 
 // Markdown related // dialog for Electron "^8.2.5"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
@@ -558,21 +559,32 @@ function main() {
     }
 
     if ( htmlIndex ) {
+        var faviconPath = path.join( __dirname, "view/img/favicon.ico" );
+        getCurrentWindow().setIcon( faviconPath );
+
         domIndex();         // event buttons for view\index.html
     }
 
     if ( htmlScripts ) {
+        var faviconPath = path.join( __dirname, "view/img/ps.ico" );
+        getCurrentWindow().setIcon( faviconPath );
+
         domScripts();       // event buttons for view\html\scripts.html
     }
 
     if ( htmlMarkdown ) {
+        var faviconPath = path.join( __dirname, "view/img/md.ico" );
         getCurrentWindow().center();
+        getCurrentWindow().setIcon( faviconPath );
 
         domMarkdown();      // event buttons for view\html\notes.html
         domBookmarks();     // open web links in a non-electron browser
     }
 
     if ( htmlBookmarks ) {
+        var faviconPath = path.join( __dirname, "view/img/star.ico" );
+        getCurrentWindow().setIcon( faviconPath );
+
         domBookmarks();     // event buttons for view\html\bookmarks.html
     }
 
