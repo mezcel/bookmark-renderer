@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const archString = process.platform;
-	const cdPath 	 = path.join( __dirname, '.' );
+	const cdPath 	 = path.join( __dirname, './' );
 
 	replaceText( `platform-arch`, archString );
 	replaceText( `cd`, cdPath );
