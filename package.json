@@ -15,15 +15,14 @@
     "keywords": [
         "welcome kiosk",
         "shortcuts",
-        "script laucher",
+        "script launcher",
         "markdown reader"
     ],
     "author": "Mezcel",
-    "devDependencies": {
-        "electron": "^8.2.5",
-        "electron-packager": "^14.2.1"
-    },
+    "devDependencies": {},
     "dependencies": {
+        "electron": "^6.1.11",
+        "electron-packager": "^14.2.1",
         "marked": "^1.1.0"
     },
     "private": true
