@@ -10,9 +10,10 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 
 /* -------------------------------------------------------------------------- */
 
+const isWin32 = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
+
 function openFileManager( dirPath ) {
 
-    var isWin32     = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
     var UserProfile = process.env.HOME;
     var filePath    = path.join( UserProfile, dirPath );
 
@@ -27,19 +28,21 @@ function openFileManager( dirPath ) {
 }
 
 function launchBatScript( scriptPath ) {
-    const bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
+    if ( isWin32 ) {
+        const bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
 
-    bat.stdout.on( 'data', ( data ) => {
-        console.log( data.toString() );
-    });
+        bat.stdout.on( 'data', ( data ) => {
+            console.log( data.toString() );
+        });
 
-    bat.stderr.on( 'data', ( data ) => {
-        console.log( "\n script path = " + scriptPath + " \n", data.toString() );
-    });
+        bat.stderr.on( 'data', ( data ) => {
+            console.log( "\n script path = " + scriptPath + " \n", data.toString() );
+        });
 
-    bat.on( 'exit', ( code ) => {
-        console.log( `Child exited with code ${code}` );
-    });
+        bat.on( 'exit', ( code ) => {
+            console.log( `Child exited with code ${code}` );
+        });
+    }
 }
 
 function colorTheme( cssTheme ) {
@@ -60,7 +63,6 @@ function colorTheme( cssTheme ) {
 
 function updateFavicon( faviconPath ) {
 
-    var isWin32 = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
     if ( isWin32 ) {
         getCurrentWindow().setIcon( faviconPath );
     }
