@@ -14,7 +14,7 @@ git branch: ```deb64```
 ```ps1
 npm install                 <#  ## install all dependencies
                                 npm install electron --save-dev
-                                npm install marked --save-dev
+                                npm install marked   --save-dev
                             #>
 
 npm run buildExe            ## just build as a .exe ( for --arch=x64 )
@@ -75,7 +75,7 @@ General functionality seems to work with electron@^6 up to electron@^9
 
 ### Sandbox Mode
 
-Newer version of Electron seem to work without errors or warning when outside of the security of a sandbox.
+Newer version of Electron seem to work without errors or warning when outside of the security of a sandbox in Debian linux.
 
 #### package.json
 

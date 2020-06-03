@@ -38,7 +38,6 @@ function removeActiveClass() {
 }
 
 function openFileManager( dirPath ) {
-
     var UserProfile = process.env.HOME;
     var filePath    = path.join( UserProfile, dirPath );
 
@@ -71,11 +70,9 @@ function launchBatScript( scriptPath ) {
 }
 
 function updateFavicon( faviconPath ) {
-
     if ( isWin32 ) {
         getCurrentWindow().setIcon( faviconPath );
     }
-
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
