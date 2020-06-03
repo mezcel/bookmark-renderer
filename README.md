@@ -2,6 +2,8 @@
 
 ## About
 
+git: ```branch deb64```
+
 A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 
 > It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
@@ -62,6 +64,11 @@ npm run-script buildExe2   // build as a .exe & make desktop shortcut along with
 ### Linux Workaround
 
 There are kernel specific permission regarding how Node interfaces with an OS. Therer are also  a lot userspace and (desktop environment/ window manager) settings to take into account with Linux and Electron.
+
+### no 32bit support
+
+* 32bit support stoped at Electron version 3.1. This app needs features availblle since v6.
+* The linux version has issues with taskbar and electron defined favicons.
 
 #### Error Msg
 
