@@ -12,6 +12,31 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 
 const isWin32 = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
 
+function colorTheme( cssTheme ) {
+    // Dynamically change css theme
+
+    var cssFile = "view/css/" + cssTheme;
+    var href    = path.join( __dirname, cssFile );
+    var w3Theme = document.getElementById("w3Theme");
+
+    if ( w3Theme ) {
+        if ( w3Theme.href !== href ) {
+            w3Theme.href = href;
+        }
+    }
+
+    require( 'electron' ).remote.getGlobal( 'GlobalVars' ).css = cssTheme;
+}
+
+function removeActiveClass() {
+    // Rem "active" class from keypress simulated hover
+
+    var elemActive = document.getElementsByClassName( "active" );
+    for ( var i = 0; i < elemActive.length; i++ ) {
+        elemActive[i].classList.remove( "active" );
+     }
+}
+
 function openFileManager( dirPath ) {
 
     var UserProfile = process.env.HOME;
@@ -43,22 +68,6 @@ function launchBatScript( scriptPath ) {
             console.log( `Child exited with code ${code}` );
         });
     }
-}
-
-function colorTheme( cssTheme ) {
-    // Dynamically change css theme
-
-    var cssFile = "view/css/" + cssTheme;
-    var href    = path.join( __dirname, cssFile );
-    var w3Theme = document.getElementById("w3Theme");
-
-    if ( w3Theme ) {
-        if ( w3Theme.href !== href ) {
-            w3Theme.href = href;
-        }
-    }
-
-    require( 'electron' ).remote.getGlobal( 'GlobalVars' ).css = cssTheme;
 }
 
 function updateFavicon( faviconPath ) {
@@ -274,7 +283,8 @@ function domScripts() {     // event buttons for view\html\scripts.html
 
             var scriptPath = path.join( __dirname, scriptPath8 );
             launchBatScript( scriptPath );
-            alert( "Killed processes. Check the log Console, (F12), to view kill status." );
+            alert( "Check the log Console, (F12), to view kill status." );
+            removeActiveClass();
         });
     }
 
@@ -556,11 +566,7 @@ function customKeybindings() {
     // Keyup
     document.addEventListener( "keyup", function (e) {
         // Rem "active" class from keypress simulated hover
-
-        var elemActive = document.getElementsByClassName( "active" );
-        for ( var i = 0; i < elemActive.length; i++ ) {
-            elemActive[i].classList.remove( "active" );
-         }
+        removeActiveClass();
     });
 
 }
