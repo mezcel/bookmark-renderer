@@ -2,7 +2,7 @@
 
 ## About
 
-A startup welcome kiosk for **Windows 10**. ( *[not cross platform](#-linux-workaround)* )
+A startup welcome kiosk for **Windows 10**. ( *[not cross platform](#linux-workaround)* )
 
 git branch: ```deb64```
 * just testing electron OS features
@@ -26,11 +26,11 @@ npm run-script buildExe2    ## build as a .exe & make desktop shortcut along wit
 
 * File Explorer
 * Markdown Reader
-* Launch shell scripts (```.bat```, ```.ps1```)
+* Launch shell scripts ( ```.bat```, ```.ps1``` )
     * Enable powershell scripts for current user
-    ```ps1
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    ```
+        ```ps1
+        Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+        ```
 * Launch ```.exe``` apps
 * Web bookmarks
 
@@ -61,25 +61,21 @@ npm run-script buildExe2    ## build as a .exe & make desktop shortcut along wit
 
 ---
 
-## OS and Version Workaround
+## Linux Workaround ( n/a )
 
-* Things seem to work with electron@^6 up to electron@^9
-    * The way images and dialog boxes are rendered have changed over the years within each respective OS.
+There are kernel specific permission regarding how Node interfaces with an OS. There are also  a lot userspace and ( desktop environment / window manager ) settings to take into account with Linux and Electron.
 
-### Linux Workaround
-
-There are kernel specific permission regarding how Node interfaces with an OS. There are also  a lot userspace and (desktop environment/ window manager) settings to take into account with Linux and Electron.
-
-### no 32bit support
+### Depreciated 32bit support
 
 * 32bit support stopped at Electron version 3.1. This app needs features available since v6.
 * The linux version has issues with taskbar and electron defined favicons.
 
-#### Error Msg
+General functionality seems to work with electron@^6 up to electron@^9
+* Image rendering, dialog boxes, and shell vary depending on which version is used.
 
-> Error Msg:
->
-> The SUID sandbox helper binary was found, but is not configured correctly. ... Make sure that .../chrome-sandbox is owned by root.
+### Sandbox Mode
+
+Newer version of Electron seem to work without errors or warning when outside of the security of a sandbox.
 
 #### package.json
 
