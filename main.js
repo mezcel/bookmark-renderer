@@ -6,16 +6,16 @@ const { app, BrowserWindow, shell, Menu, Tray } = require( 'electron' );
 
 const { execFile, spawn } = require( 'child_process' );
 
-const path        = require( 'path' );
-const url         = require( 'url' );
-const nativeImage = require( 'electron' ).nativeImage;
+const path         = require( 'path' );
+const url          = require( 'url' );
 
 // Global theme css variable
 var defaultCssTheme = "w3-theme-blue-grey.css";
 //  defaultCssTheme = "w3-theme-indigo.css";
 
-global.GlobalTheme = {
-    css: defaultCssTheme
+global.GlobalVars = {
+    css: defaultCssTheme,
+    isWin32: true
 }
 
 /* -------------------------------------------------------------------------- */
@@ -36,7 +36,9 @@ function launchBatScript( scriptPath ) {
     });
 }
 
-function createWindow () {
+function win10menus( mainWindow ) {
+
+    const nativeImage = require( 'electron' ).nativeImage;
 
     // Application Icons
     const faviconPath = path.join( __dirname, 'view/img/favicon.ico' ),
@@ -57,23 +59,6 @@ function createWindow () {
     const stariconPath = path.join( __dirname, 'view/img/star.ico' ),
           staricon     = nativeImage.createFromPath( stariconPath ).resize( { width: 16 } );
 
-    Menu.setApplicationMenu( null ); // no browser menubar
-
-    // Create the browser window.
-    const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 400,
-        webPreferences: {
-            preload: path.join( __dirname, 'preload.js' ),
-            nodeIntegration: true,
-            show: false
-        },
-        icon: favicon
-    });
-
-    mainWindow.once('ready-to-show', () => {
-        mainWindow.show();
-    });
 
     // taskbar icon right click menu
     const contextMenu = Menu.buildFromTemplate([
@@ -199,14 +184,6 @@ function createWindow () {
         }
     ]);
 
-    // and load the index.html of the app.
-    mainWindow.loadURL(
-        url.format({
-            pathname: path.join( __dirname, 'view/index.html' ),
-            protocol: 'file:'
-        })
-    );
-
     // start bar tray
 
     mainWindow.tray = new Tray( favicon );
@@ -254,6 +231,38 @@ function createWindow () {
         }
     ]);
 
+}
+
+function createWindow ( isWin32 ) {
+    Menu.setApplicationMenu( null ); // no browser menubar
+
+    // Create the browser window.
+    const mainWindow = new BrowserWindow({
+        width: 800,
+        height: 400,
+        webPreferences: {
+            preload: path.join( __dirname, 'preload.js' ),
+            nodeIntegration: true,
+            show: false
+        }
+    });
+
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+    });
+
+    // and load the index.html of the app.
+    mainWindow.loadURL(
+        url.format({
+            pathname: path.join( __dirname, 'view/index.html' ),
+            protocol: 'file:'
+        })
+    );
+
+    if ( isWin32 ) {
+        win10menus( mainWindow );
+    }
+
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
 }
@@ -261,4 +270,12 @@ function createWindow () {
 /* -------------------------------------------------------------------------- */
 
 // Run Main App
-app.whenReady().then( () => { createWindow(); } );
+app.whenReady().then( () => {
+
+    if ( process.platform !== "win32" ) {
+        global.GlobalVars.isWin32 = false;
+    }
+
+    createWindow( global.GlobalVars.isWin32 );
+
+} );

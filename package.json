@@ -4,7 +4,7 @@
     "description": "A welcome popup, markdown reader, taskbar, and bookmark container.",
     "main": "main.js",
     "scripts": {
-        "start": "electron .",
+        "start": "electron . --no-sandbox",
         "build": "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=view/img/favicon.ico --overwrite",
         "buildExe": "@powershell -File Powershell/build-package-app.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
     },
@@ -20,7 +20,7 @@
     ],
     "author": "Mezcel",
     "devDependencies": {
-        "electron": "^6.1.11"
+        "electron": "^9.0.2"
     },
     "dependencies": {
         "electron-packager": "^14.2.1",

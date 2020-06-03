@@ -34,19 +34,19 @@ function launchBatScript( scriptPath ) {
 }
 
 function colorTheme( cssTheme ) {
-	// Dynamically change css theme
+    // Dynamically change css theme
 
     var cssFile = "view/css/" + cssTheme;
     var href    = path.join( __dirname, cssFile );
     var w3Theme = document.getElementById("w3Theme");
 
-	if ( w3Theme ) {
+    if ( w3Theme ) {
         if ( w3Theme.href !== href ) {
             w3Theme.href = href;
         }
-	}
+    }
 
-    require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
+    require('electron').remote.getGlobal('GlobalVars').css = cssTheme;
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
@@ -544,6 +544,13 @@ function customKeybindings() {
 
 }
 
+function updateFavicon( faviconPath ) {
+    var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
+    if ( isWin32 ) {
+        getCurrentWindow().setIcon( faviconPath );
+    }
+}
+
 function main() {
 
     const   btnClose      = document.getElementById( 'btnClose' ),
@@ -559,31 +566,31 @@ function main() {
     }
 
     if ( htmlIndex ) {
-        var faviconPath = path.join( __dirname, "view/img/favicon.ico" );
-        getCurrentWindow().setIcon( faviconPath );
+        var faviconPath = "view/img/favicon.ico";
+        updateFavicon( faviconPath );
 
         domIndex();         // event buttons for view\index.html
     }
 
     if ( htmlScripts ) {
-        var faviconPath = path.join( __dirname, "view/img/ps.ico" );
-        getCurrentWindow().setIcon( faviconPath );
+        var faviconPath = "view/img/ps.ico";
+        updateFavicon( faviconPath );
 
         domScripts();       // event buttons for view\html\scripts.html
     }
 
     if ( htmlMarkdown ) {
-        var faviconPath = path.join( __dirname, "view/img/md.ico" );
+        var faviconPath = "view/img/md.ico";
         getCurrentWindow().center();
-        getCurrentWindow().setIcon( faviconPath );
+        updateFavicon( faviconPath );
 
         domMarkdown();      // event buttons for view\html\notes.html
         domBookmarks();     // open web links in a non-electron browser
     }
 
     if ( htmlBookmarks ) {
-        var faviconPath = path.join( __dirname, "view/img/star.ico" );
-        getCurrentWindow().setIcon( faviconPath );
+        var faviconPath = "view/img/star.ico";
+        updateFavicon( faviconPath );
 
         domBookmarks();     // event buttons for view\html\bookmarks.html
     }
