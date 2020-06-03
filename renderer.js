@@ -10,19 +10,20 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 
 /* -------------------------------------------------------------------------- */
 
-function openFileExplorer( dirPath ) {
-    var UserProfile = process.env.USERPROFILE;
-    var filePath = path.join( UserProfile, dirPath );
-    console.log( "Opening the " + filePath + " Directory." );
-    shell.openItem( filePath );
-}
-
 function openFileManager( dirPath ) {
+
+    var isWin32     = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
     var UserProfile = process.env.HOME;
-    var filePath = path.join( UserProfile, dirPath );
+    var filePath    = path.join( UserProfile, dirPath );
 
     console.log( "Opening the " + filePath + " Directory." );
-    shell.openPath( filePath );
+    if ( isWin32 ) {
+        shell.openItem( filePath );
+    } else {
+        dirPath  = "/" + dirPath;
+        filePath = path.join( UserProfile, dirPath );
+        shell.openPath( filePath );
+    }
 }
 
 function launchBatScript( scriptPath ) {
@@ -54,14 +55,16 @@ function colorTheme( cssTheme ) {
         }
     }
 
-    require('electron').remote.getGlobal('GlobalVars').css = cssTheme;
+    require( 'electron' ).remote.getGlobal( 'GlobalVars' ).css = cssTheme;
 }
 
 function updateFavicon( faviconPath ) {
-    var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
+
+    var isWin32 = require( 'electron' ).remote.getGlobal( 'GlobalVars' ).isWin32;
     if ( isWin32 ) {
         getCurrentWindow().setIcon( faviconPath );
     }
+
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
@@ -78,7 +81,7 @@ function keyboardElemIdClick( elementID, consoleNotes ) {
     }
 }
 
-function domIndex() {   // event buttons for view\index.html
+function domIndex() {       // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
             btn5 = document.getElementById( 'btn5' ),
@@ -97,28 +100,15 @@ function domIndex() {   // event buttons for view\index.html
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
-
             var gistDir = "gist.github/mezcel/";
-            var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
-            if ( isWin32 ) {
-                openFileExplorer( gistDir );
-            } else {
-                gistDir = "/" + gistDir
-                openFileManager( gistDir );
-            }
+            openFileManager( gistDir );
         });
     }
 
     if ( btn5 ) {   // explorer git
         btn5.addEventListener( 'click', function () {
             var githubDir = "github/mezcel/";
-            var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
-            if ( isWin32 ) {
-                openFileExplorer( githubDir );
-            } else {
-                gistDir = "/" + githubDir
-                openFileManager( githubDir );
-            }
+            openFileManager( githubDir );
         });
     }
 
@@ -203,7 +193,7 @@ function domIndex() {   // event buttons for view\index.html
 
 }
 
-function domScripts() { // event buttons for view\html\scripts.html
+function domScripts() {     // event buttons for view\html\scripts.html
 
     const   btn1 = document.getElementById( 'btn1' ),
             btn2 = document.getElementById( 'btn2' ),
