@@ -17,6 +17,14 @@ function openFileExplorer( dirPath ) {
     shell.openItem( filePath );
 }
 
+function openFileManager( dirPath ) {
+    var UserProfile = process.env.HOME;
+    var filePath = path.join( UserProfile, dirPath );
+
+    console.log( "Opening the " + filePath + " Directory." );
+    shell.openPath( filePath );
+}
+
 function launchBatScript( scriptPath ) {
     const bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
 
@@ -47,6 +55,13 @@ function colorTheme( cssTheme ) {
     }
 
     require('electron').remote.getGlobal('GlobalVars').css = cssTheme;
+}
+
+function updateFavicon( faviconPath ) {
+    var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
+    if ( isWin32 ) {
+        getCurrentWindow().setIcon( faviconPath );
+    }
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
@@ -82,15 +97,28 @@ function domIndex() {   // event buttons for view\index.html
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
-            var gistDir = "gist.github/mezcel";
-            openFileExplorer( gistDir );
+
+            var gistDir = "gist.github/mezcel/";
+            var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
+            if ( isWin32 ) {
+                openFileExplorer( gistDir );
+            } else {
+                gistDir = "/" + gistDir
+                openFileManager( gistDir );
+            }
         });
     }
 
     if ( btn5 ) {   // explorer git
         btn5.addEventListener( 'click', function () {
-            var githubDir = "github/mezcel";
-            openFileExplorer( githubDir );
+            var githubDir = "github/mezcel/";
+            var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
+            if ( isWin32 ) {
+                openFileExplorer( githubDir );
+            } else {
+                gistDir = "/" + githubDir
+                openFileManager( githubDir );
+            }
         });
     }
 
@@ -172,6 +200,7 @@ function domIndex() {   // event buttons for view\index.html
             colorTheme( "w3-theme-orange.css" );
         });
     }
+
 }
 
 function domScripts() { // event buttons for view\html\scripts.html
@@ -542,13 +571,6 @@ function customKeybindings() {
          }
     });
 
-}
-
-function updateFavicon( faviconPath ) {
-    var isWin32 = require('electron').remote.getGlobal('GlobalVars').isWin32;
-    if ( isWin32 ) {
-        getCurrentWindow().setIcon( faviconPath );
-    }
 }
 
 function main() {

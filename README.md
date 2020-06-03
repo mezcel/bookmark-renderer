@@ -11,7 +11,7 @@ A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
 ## Install
 
 ```js
-npm install                // install all dependences
+npm install                // install all dependencies
 npm run buildExe           // just build as a .exe ( for --arch=x64 )
 
 npm run-script buildExe2   // build as a .exe & make desktop shortcut along with a startup link
@@ -63,18 +63,18 @@ npm run-script buildExe2   // build as a .exe & make desktop shortcut along with
 
 ### Linux Workaround
 
-There are kernel specific permission regarding how Node interfaces with an OS. Therer are also  a lot userspace and (desktop environment/ window manager) settings to take into account with Linux and Electron.
+There are kernel specific permission regarding how Node interfaces with an OS. There are also  a lot userspace and (desktop environment/ window manager) settings to take into account with Linux and Electron.
 
 ### no 32bit support
 
-* 32bit support stoped at Electron version 3.1. This app needs features availblle since v6.
+* 32bit support stopped at Electron version 3.1. This app needs features available since v6.
 * The linux version has issues with taskbar and electron defined favicons.
 
 #### Error Msg
 
 > Error Msg:
 >
-> The SUID sandbox helper binary was found, but is not configured correctly. ... Maks sure that .../chrome-sandbox is owned by root.
+> The SUID sandbox helper binary was found, but is not configured correctly. ... Make sure that .../chrome-sandbox is owned by root.
 
 #### Linux Workaround
 
