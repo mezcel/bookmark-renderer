@@ -2,22 +2,24 @@
 
 ## About
 
-A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
-    * The Markdown reader button is handy to have on Linux though.
+A startup welcome kiosk for **Windows 10**. ( *[not cross platform](#-linux-workaround)* )
+
+git branch: ```deb64```
+* just testing electron OS features
 
 > It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
 
 ## Install
 
-```js
-npm install                 /* //install all dependencies
+```ps1
+npm install                 <#  ## install all dependencies
                                 npm install electron --save-dev
                                 npm install marked --save-dev
-                            */
+                            #>
 
-npm run buildExe            // just build as a .exe ( for --arch=x64 )
+npm run buildExe            ## just build as a .exe ( for --arch=x64 )
 
-npm run-script buildExe2    // build as a .exe & make desktop shortcut along with a startup link
+npm run-script buildExe2    ## build as a .exe & make desktop shortcut along with a startup link
 ```
 
 ## App features:
@@ -79,7 +81,7 @@ There are kernel specific permission regarding how Node interfaces with an OS. T
 >
 > The SUID sandbox helper binary was found, but is not configured correctly. ... Make sure that .../chrome-sandbox is owned by root.
 
-#### Linux Workaround
+#### package.json
 
 ```json
 "scripts": {
