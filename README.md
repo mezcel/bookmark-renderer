@@ -2,19 +2,22 @@
 
 ## About
 
-git: ```branch deb64```
-
 A startup welcome kiosk for **Windows 10**. ( *not cross platform* )
+    * The Markdown reader button is handy to have on Linux though.
 
 > It is basically just a bulky taskbar and markdown viewer. File paths and apps are based on the Win10 file system and application suite.
 
 ## Install
 
 ```js
-npm install                // install all dependencies
-npm run buildExe           // just build as a .exe ( for --arch=x64 )
+npm install                 /* //install all dependencies
+                                npm install electron --save-dev
+                                npm install marked --save-dev
+                            */
 
-npm run-script buildExe2   // build as a .exe & make desktop shortcut along with a startup link
+npm run buildExe            // just build as a .exe ( for --arch=x64 )
+
+npm run-script buildExe2    // build as a .exe & make desktop shortcut along with a startup link
 ```
 
 ## App features:
