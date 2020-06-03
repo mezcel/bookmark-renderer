@@ -68,7 +68,7 @@ function createWindow () {
             nodeIntegration: true,
             show: false
         },
-        icon: faviconPath
+        icon: favicon
     });
 
     mainWindow.once('ready-to-show', () => {
@@ -116,7 +116,7 @@ function createWindow () {
                     },
                     icon: staricon
                 }, {
-                    label: 'Youtube',
+                    label: 'YouTube',
                     click () {
                         shell.openExternal( 'https://www.youtube.com/channel/UCpNZc5SjrUzVwGgI9PDMHxg' );
                     },
@@ -255,7 +255,7 @@ function createWindow () {
     ]);
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools();
 }
 
 /* -------------------------------------------------------------------------- */
