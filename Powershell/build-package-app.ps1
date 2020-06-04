@@ -132,7 +132,7 @@ function createShortcutLinks() {
     $ShortcutFile2 = "$env:AppData\Microsoft\Windows\Start Menu\Programs\Startup\bookmark-renderer.lnk"
     $ShortcutFile3 = "$env:AppData\Microsoft\Windows\Start Menu\Programs\bookmark-renderer.lnk"
 
-    $WorkingDir = "$verbosePath"
+    $WorkingDir = "$verbosePath\"
     $TargetFile = "$verbosePath\bookmark-renderer.exe"
 
     ## desktop
