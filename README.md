@@ -2,10 +2,10 @@
 
 ## 1.0 About
 
-A startup welcome kiosk for **Windows 10**. ![icon.png](http://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/32/MetroUI-Folder-OS-Windows-8-icon.png)
+A startup welcome kiosk for **Windows 10**.
 
 > It is basically just a bulky taskbar and markdown viewer. ( *not cross platform* )
->
+
 > Experimental Linux branch: ```git checkout deb64```, ( Non-Sand boxed Debian x64 )
 
 ## 2.0 Install
@@ -19,15 +19,17 @@ npm run-script buildExe2   // build as a .exe & make desktop shortcut along with
 
 ## 3.0 Functional Features:
 
-* ![md.ico](view/img/github.ico) Repo File Explorer / Repo File Manager
-* ![md.ico](view/img/md.ico) Markdown Reader
-* ![md.ico](view/img/ps.ico) Launch shell scripts (```.bat```, ```.ps1```)
+![md.ico](view/img/github.ico) ![md.ico](view/img/md.ico) ![md.ico](view/img/ps.ico) ![md.ico](view/img/favicon.ico) ![md.ico](view/img/star.ico)
+
+* Repo File Explorer / Repo File Manager
+* Markdown Reader
+* Launch shell scripts (```.bat```, ```.ps1```)
     * Enable powershell scripts for current user
         ```ps1
         Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
         ```
-* ![md.ico](view/img/favicon.ico)Launch ```.exe``` apps
-* ![md.ico](view/img/star.ico) Web bookmarks
+* Launch ```.exe``` apps
+* Web bookmarks
 * Taskbar and Tray Menus
 
 ## 4.0 Dependencies

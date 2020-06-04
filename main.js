@@ -78,7 +78,7 @@ function createWindow () {
     // taskbar icon right click menu
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'Git: ' + app.name,
+            label: 'Git: bookmark-renderer.git',
             click () {
                 shell.openExternal( 'https://github.com/mezcel/bookmark-renderer' );
             },
@@ -143,6 +143,14 @@ function createWindow () {
                 },
                 { type: 'separator' },
                 {
+                    'label': 'Task Manager',
+                    click() {
+                        console.log("Connection Manager");
+                        var scriptPath = path.join( __dirname, "Batch/launchTaskManager.bat" );
+                        launchBatScript( scriptPath );
+                    },
+                    icon: psicon
+                }, {
                     'label': 'Connection Manager',
                     click() {
                         console.log("Connection Manager");
@@ -150,8 +158,7 @@ function createWindow () {
                         launchBatScript( scriptPath );
                     },
                     icon: psicon
-                },
-                {
+                }, {
                     'label': 'Kill Misc. Processes',
                     click() {
                         console.log("Kill Misc. Processes");
@@ -159,8 +166,7 @@ function createWindow () {
                         launchBatScript( scriptPath );
                     },
                     icon: psicon
-                },
-                {
+                }, {
                     'label': 'Shutdown',
                     click() {
                         var scriptPath = path.join( __dirname, "Batch/shutdownScript.bat" );
@@ -216,6 +222,13 @@ function createWindow () {
     // A taskbar thumb menu ( just another menu accessible from the taskbar )
     mainWindow.setThumbarButtons([
         {
+            tooltip: 'Home',
+            click () {
+                mainWindow.loadURL( path.join( __dirname, 'view/index.html' ) );
+                mainWindow.restore();
+            },
+            icon: favicon
+        }, {
             tooltip: 'Bookmarks Menu',
             click () {
                 mainWindow.loadURL( path.join( __dirname, 'view/html/bookmarks.html' ) );
