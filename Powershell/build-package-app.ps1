@@ -65,9 +65,10 @@ function removePreviousBuild() {
     Write-Host "Deleting $packagePath ..." -ForegroundColor Cyan
 
     if ( Test-Path $packagePath ) {
-        Remove-Item -Recurse -Force $packagePath -ErrorAction Ignore
-        Remove-Item -Force $packagePath -ErrorAction Ignore
-        Remove-Item .\$packagePath\ -ErrorAction Ignore
+        Remove-Item -Recurse -Force $packagePath\resources\app\dist\* -ErrorAction Ignore
+        Remove-Item -Recurse -Force $packagePath\resources\app* -ErrorAction Ignore
+        Remove-Item -Recurse -Force $packagePath\resources* -ErrorAction Ignore
+        Remove-Item -Recurse -Force $packagePath\* -ErrorAction Ignore
 
         Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
         Start-Sleep 3
@@ -109,8 +110,8 @@ function createShortcutLinks() {
     # Make a startup link and a desktop shortcut
     # The start menu shortcut does not work, but it is made as well
 
-    $packagePath1 = "bookmark-renderer-win32-x64"
-    $packagePath2 = "bookmark-renderer-win32-ia32"
+    $packagePath1 = "dist\win\bookmark-renderer-win32-x64"
+    $packagePath2 = "dist\win\bookmark-renderer-win32-ia32"
 
     if ( Test-Path $packagePath1 ) {
         $packagePath = $packagePath1
@@ -172,8 +173,8 @@ function main() {
     #getNpms
 
     killRunningProcess
-    removePreviousBuild
-    buildNewPackage
+    #removePreviousBuild
+    #buildNewPackage
     createShortcutLinks
 }
 
