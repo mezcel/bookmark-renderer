@@ -63,7 +63,7 @@ function keyboardElemIdClick( elementID, consoleNotes ) {
     }
 }
 
-function domIndex() {   // event buttons for view\index.html
+function domIndex() {       // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
             btn5 = document.getElementById( 'btn5' ),
@@ -174,7 +174,7 @@ function domIndex() {   // event buttons for view\index.html
     }
 }
 
-function domScripts() { // event buttons for view\html\scripts.html
+function domScripts() {     // event buttons for view\html\scripts.html
 
     const   btn1 = document.getElementById( 'btn1' ),
             btn2 = document.getElementById( 'btn2' ),
@@ -199,6 +199,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn1 ) {
         btn1.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath1 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }
@@ -206,6 +207,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn2 ) {
         btn2.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath2 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }
@@ -213,6 +215,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn3 ) {
         btn3.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath3 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }
@@ -220,6 +223,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath4 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }
@@ -227,6 +231,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn5 ) {
         btn5.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath5 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath4 );
         });
     }
@@ -234,6 +239,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn6 ) {
         btn6.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath6 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath5 );
         });
     }
@@ -241,6 +247,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn7 ) {
         btn7.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath7 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }
@@ -252,6 +259,7 @@ function domScripts() { // event buttons for view\html\scripts.html
             console.log( "\n:::::::::::::::::\nKill status\n:::::::::::::::::\n" );
 
             var scriptPath = path.join( __dirname, scriptPath8 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
             alert( "Killed processes. Check the log Console, (F12), to view kill status." );
         });
@@ -260,6 +268,7 @@ function domScripts() { // event buttons for view\html\scripts.html
     if ( btn9 ) {
         btn9.addEventListener( 'click', function () {
             var scriptPath = path.join( __dirname, scriptPath9 );
+            console.log("scriptPath:", scriptPath);
             launchBatScript( scriptPath );
         });
     }

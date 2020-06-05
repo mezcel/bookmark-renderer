@@ -5,8 +5,9 @@
 A startup welcome kiosk for **Windows 10**.
 
 > It is basically just a bulky taskbar and markdown viewer. ( *not cross platform* )
-
-> Experimental Linux branch: ```git checkout deb64```, ( Non-Sand boxed Debian x64 )
+> - Experimental Linux branch: ```git checkout deb64``` | ( Non-Sand boxed Debian x64 )
+> - Electron v6: ```git checkout electron6``` | ( win10 )
+> - Electron v9: ```git checkout electron9``` |  ( win10 )
 
 ## 2.0 Install
 
