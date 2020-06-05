@@ -18,7 +18,7 @@ npm install                 <#  ## install all dependencies
 
 npm run buildExe            ## just build as a .exe ( for --arch=x64 )
 
-npm run-script buildExe2    ## build as a .exe & make desktop shortcut along with a startup link
+npm run-script shortcuts    ## make desktop shortcut and startup link
 ```
 
 ## 3.0 Functional Features:

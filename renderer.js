@@ -5,7 +5,7 @@ const { execFile, spawn } = require( 'child_process' );
 const path = require( 'path' );
 //const url = require( 'url' );
 
-// Markdown related // dialog for Electron "^8.2.5"
+// Markdown related // dialog for Electron "^8.2.5 or greater"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 
 /* -------------------------------------------------------------------------- */
@@ -63,7 +63,7 @@ function keyboardElemIdClick( elementID, consoleNotes ) {
     }
 }
 
-function domIndex() {   // event buttons for view\index.html
+function domIndex() {       // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
             btn5 = document.getElementById( 'btn5' ),
@@ -174,7 +174,7 @@ function domIndex() {   // event buttons for view\index.html
     }
 }
 
-function domScripts() { // event buttons for view\html\scripts.html
+function domScripts() {     // event buttons for view\html\scripts.html
 
     const   btn1 = document.getElementById( 'btn1' ),
             btn2 = document.getElementById( 'btn2' ),
@@ -551,7 +551,6 @@ function main() {
             htmlScripts   = document.getElementById( 'htmlScripts' ),
             htmlMarkdown  = document.getElementById( 'htmlMarkdown' ),
             htmlBookmarks = document.getElementById( 'htmlBookmarks' );
-
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
             require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM

@@ -6,7 +6,7 @@
     "scripts": {
         "start": "electron .",
         "build": "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=view/img/favicon.ico --overwrite",
-        "buildExe": "@powershell -File Powershell/build-package-app.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        "shortcuts": "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
     },
     "repository": {
         "type": "git",
@@ -20,7 +20,7 @@
     ],
     "author": "Mezcel",
     "devDependencies": {
-        "electron": "^6.1.11"
+        "electron": "^9.0.2"
     },
     "dependencies": {
         "electron-packager": "^14.2.1",

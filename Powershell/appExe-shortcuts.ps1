@@ -19,82 +19,17 @@ function greetings() {
     Write-Host "# $scriptName"
     Write-Host "# "
     Write-Host "# About:"
-    Write-Host "#`tRemove previous build and package a new build."
     Write-Host "#`tMake a desktop shortcut and a startup shortcut."
     Write-Host "# "
     Write-Host "# By:"
     Write-Host "#`tMezcel ( https://github.com/mezcel/bookmark-renderer )"
     Write-Host "# "
     Write-Host "# Source:"
-    Write-Host "#`thttps://github.com/mezcel/bookmark-renderer/blob/master/Powershell/build-package-app.ps1"
+    Write-Host "#`thttps://github.com/mezcel/bookmark-renderer/Powershell/$scriptName"
     Write-Host "# "
     Write-Host "# Script Path:"
     Write-Host "#`t$scriptParentDir\$scriptName"
     Write-Host "//////////////////////////////////////////////////////////////////////////////" -ForegroundColor Magenta
-}
-
-function killRunningProcess() {
-    ## kill any running  processes
-
-    Write-Host "kill any running bookmark-renderer* processes ..." -ForegroundColor Cyan
-    Stop-Process -Name "bookmark-renderer*"
-
-    Write-Host "Pause to allow killed process to settle ..." -ForegroundColor DarkYellow
-    Start-Sleep 3
-}
-
-function removePreviousBuild() {
-    ## rm old build
-    Write-Host "Remove previous build ..." -ForegroundColor Cyan
-
-    $arch = $env:PROCESSOR_ARCHITECTURE
-    $length = $arch.length
-    $archNo = $arch.substring($length -2)
-
-    $packagePath1 = "bookmark-renderer-win32-x64"
-    $packagePath2 = "bookmark-renderer-win32-ia32"
-
-    if ( $archNo = "64" ) {
-        $packagePath = $packagePath1
-    } elseif ( $archNo = "x86" ) {
-        $packagePath = $packagePath2
-    } else {
-        Write-Host "Script did not detect a previous $packagePath1 or $packagePath2 package builds"
-    }
-
-    Write-Host "Deleting $packagePath ..." -ForegroundColor Cyan
-
-    if ( Test-Path $packagePath ) {
-        Remove-Item -Recurse -Force $packagePath\resources\app\dist\* -ErrorAction Ignore
-        Remove-Item -Recurse -Force $packagePath\resources\app* -ErrorAction Ignore
-        Remove-Item -Recurse -Force $packagePath\resources* -ErrorAction Ignore
-        Remove-Item -Recurse -Force $packagePath\* -ErrorAction Ignore
-
-        Write-Host "Pause to allow removal to settle in ..." -ForegroundColor DarkYellow
-        Start-Sleep 3
-    }
-}
-
-function buildNewPackage() {
-    ## build new package
-
-    $packagePath1 = "bookmark-renderer-win32-x64"
-    $packagePath2 = "bookmark-renderer-win32-ia32"
-
-    Write-Host "Build a new package ..." -ForegroundColor Cyan
-    if ( -Not ( Test-Path $packagePath2 ) -and -Not ( Test-Path $packagePath1 ) ) {
-        electron-packager .
-
-        Write-Host "Pause to allow built package to settle in ..." -ForegroundColor DarkYellow
-        Start-Sleep 3
-    } else {
-        Write-Host "The $packagePath1 or $packagePath2 should not exist, yet it does.`n`tManually delete them.`n`tRestart to computer too, just incase there are undetected hanging background npm/electron stuff still running." -ForegroundColor Red
-        #electron-packager . --overwrite
-        explorer .
-        Write-Host "Script exited" -ForegroundColor Red
-        Exit
-    }
-
 }
 
 function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$TargetFile ) {
@@ -109,7 +44,7 @@ function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$Targ
 function createShortcutLinks() {
     # Make a startup link and a desktop shortcut
     # The start menu shortcut does not work, but it is made as well
-
+    # dist\win\bookmark-renderer-win32-x64\resources\app\view\img\star.ico
     $packagePath1 = "dist\win\bookmark-renderer-win32-x64"
     $packagePath2 = "dist\win\bookmark-renderer-win32-ia32"
 
@@ -136,13 +71,13 @@ function createShortcutLinks() {
     $WorkingDir = "$verbosePath\"
     $TargetFile = "$verbosePath\bookmark-renderer.exe"
 
-    ## desktop
+    ## desktop .lnk
     set-shortcut $ShortcutFile1 $WorkingDir $TargetFile
     Write-Host "Created a desktop shortcut ..." -ForegroundColor Cyan
-    ## startup
+    ## startup .lnk
     set-shortcut $ShortcutFile2 $WorkingDir $TargetFile
     Write-Host "Created a startup link ..." -ForegroundColor Cyan
-    ## start menu
+    ## start menu .lnk
     set-shortcut $ShortcutFile3 $WorkingDir $TargetFile
     Write-Host "Created a start menu link ..." -ForegroundColor Cyan
 
@@ -168,13 +103,6 @@ function getNpms() {
 
 function main() {
     greetings
-
-    ## Install npm packages
-    #getNpms
-
-    killRunningProcess
-    #removePreviousBuild
-    #buildNewPackage
     createShortcutLinks
 }
 
