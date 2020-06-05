@@ -10,11 +10,15 @@ A startup welcome kiosk for **Windows 10**.
 
 ## 2.0 Install
 
-```js
-npm install                // install all dependences
-npm run buildExe           // just build as a .exe ( for --arch=x64 )
+```ps1
+npm install                 <#  ## install all dependencies
+                                npm install electron --save-dev
+                                npm install marked   --save-dev
+                            #>
 
-npm run-script buildExe2   // build as a .exe & make desktop shortcut along with a startup link
+npm run buildExe            ## just build as a .exe ( for --arch=x64 )
+
+npm run-script buildExe2    ## build as a .exe & make desktop shortcut along with a startup link
 ```
 
 ## 3.0 Functional Features:
@@ -38,8 +42,8 @@ npm run-script buildExe2   // build as a .exe & make desktop shortcut along with
 
 | Package | npm | About |
 |---|---|---|
-|NodeJS|[download]( https://nodejs.org )|Work around for: *"npm does not support Node.js vXX.XX.X"* ```npm install npm@latest -g```|
-|Electron|[download]( https://www.electronjs.org/ )|Windows 10|
+|NodeJS|[download]( https://nodejs.org )| ```npm install npm@latest -g```|
+|Electron|[download]( https://www.electronjs.org/ )|Windows 10 ( versions 6 - latest ) |
 |marked|[download]( https://www.npmjs.com/package/marked )|markdown to html|
 |electron-packager|[download]( https://www.npmjs.com/package/electron-packager )|package electron app as an .exe|
 

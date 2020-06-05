@@ -2,8 +2,11 @@
 .vscode
 
 ## ignore node generated dirs
+node_modules
+package-lock.json
+
+## ignore electron-packager generated dirs
+dist
 bookmark-renderer-win32-x64
 bookmark-renderer-win32-ia32
 bookmark-renderer-*
-node_modules
-package-lock.json
