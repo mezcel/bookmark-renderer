@@ -5,8 +5,9 @@
 A startup welcome kiosk for **Windows 10**.
 
 > It is basically just a bulky taskbar and markdown viewer. ( *not cross platform* )
-
-> Experimental Linux branch: ```git checkout deb64```, ( Non-Sand boxed Debian x64 )
+> - Experimental Linux branch: ```git checkout deb64``` | ( Non-Sand boxed Debian x64 )
+> - Electron v6: ```git checkout electron6``` | ( win10 )
+> - Electron v9: ```git checkout electron9``` |  ( win10 )
 
 ## 2.0 Install
 
@@ -23,11 +24,11 @@ npm run-script shortcuts    ## make desktop shortcut and startup link
 
 ## 3.0 Functional Features:
 
-![md.ico](view/img/github.ico) ![md.ico](view/img/md.ico) ![md.ico](view/img/ps.ico) ![md.ico](view/img/favicon.ico) ![md.ico](view/img/star.ico)
+![md.ico]( view/img/github.ico ) ![md.ico]( view/img/md.ico ) ![md.ico]( view/img/ps.ico ) ![md.ico]( view/img/favicon.ico ) ![md.ico]( view/img/star.ico )
 
 * Repo File Explorer / Repo File Manager
 * Markdown Reader
-* Launch shell scripts (```.bat```, ```.ps1```)
+* Launch shell scripts ( ```.bat```, ```.ps1``` )
     * Enable powershell scripts for current user
         ```ps1
         Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -52,11 +53,11 @@ npm run-script shortcuts    ## make desktop shortcut and startup link
 ### 4.1 CSS Styles
 
 * [github-markdown-css]( https://github.com/sindresorhus/github-markdown-css )
-* [w3.css](https://www.w3schools.com/w3css/w3css_color_themes.asp)
+* [w3.css]( https://www.w3schools.com/w3css/w3css_color_themes.asp )
 
 ## 5.0 Screenshots ( outdated )
 
-* Compressed ```.gif``` rendered [screenshots](screenshots/README.md)
+* Compressed ```.gif``` rendered [screenshots]( screenshots/README.md )
 * The latest version has more cosmetic conveniences:
     * more decorative color options
     * taksbar and tray menus
