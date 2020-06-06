@@ -33,7 +33,54 @@ function launchBatScript( scriptPath ) {
     });
 }
 
-function colorTheme( cssTheme ) {
+function toggleLightDark( isDark ) {
+
+    var l1 = "w3-theme-l1",
+        l2 = "w3-theme-l2",
+        l3 = "w3-theme-l3",
+        l4 = "w3-theme-l4",
+        l5 = "w3-theme-l5";
+
+    var d1 = "w3-theme-d1",
+        d2 = "w3-theme-d2",
+        d3 = "w3-theme-d3",
+        d4 = "w3-theme-d4",
+        d5 = "w3-theme-d5";
+
+
+    if ( isDark ) {
+
+        var eleml1 = document.querySelector( "." + l1 );
+        var eleml2 = document.querySelector( "." + l2 );
+        var eleml3 = document.querySelector( "." + l3 );
+        var eleml4 = document.querySelector( "." + l4 );
+        var eleml5 = document.querySelector( "." + l5 );
+
+        if ( eleml1 ) { eleml1.classList.replace( l1, d1 ); }
+        if ( eleml2 ) { eleml2.classList.replace( l2, d2 ); }
+        if ( eleml3 ) { eleml3.classList.replace( l3, d3 ); }
+        if ( eleml4 ) { eleml4.classList.replace( l4, d4 ); }
+        if ( eleml5 ) { eleml5.classList.replace( l5, d5 ); }
+
+    } else {
+
+        var elemd1 = document.querySelector( "." + d1 );
+        var elemd2 = document.querySelector( "." + d2 );
+        var elemd3 = document.querySelector( "." + d3 );
+        var elemd4 = document.querySelector( "." + d4 );
+        var elemd5 = document.querySelector( "." + d5 );
+
+        if ( elemd1 ) { elemd1.classList.replace( d1, l1 ); }
+        if ( elemd2 ) { elemd2.classList.replace( d2, l2 ); }
+        if ( elemd3 ) { elemd3.classList.replace( d3, l4 ); }
+        if ( elemd4 ) { elemd4.classList.replace( d4, l3 ); }
+        if ( elemd5 ) { elemd5.classList.replace( d5, l5 ); }
+
+    }
+    console.log( isDark );
+}
+
+function colorTheme( cssTheme, isDark ) {
 	// Dynamically change css theme
 
     var cssFile = "view/css/" + cssTheme;
@@ -41,12 +88,21 @@ function colorTheme( cssTheme ) {
     var w3Theme = document.getElementById("w3Theme");
 
 	if ( w3Theme ) {
+
+        if ( w3Theme.dark !== isDark ) {
+            w3Theme.isDark = isDark;
+            toggleLightDark( isDark );
+        }
+        w3Theme.isDark = isDark;
+
         if ( w3Theme.href !== href ) {
             w3Theme.href = href;
+			require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
         }
-	}
 
-    require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
+	}
+	console.log(  w3Theme.isDark, require('electron').remote.getGlobal('GlobalTheme').isDark, "renderer.js" );
+
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
@@ -78,7 +134,9 @@ function domIndex() {       // event buttons for view\index.html
             btnStyle6 = document.getElementById( 'btnStyle6' ),
             btnStyle7 = document.getElementById( 'btnStyle7' ),
             btnStyle8 = document.getElementById( 'btnStyle8' ),
-            btnStyle9 = document.getElementById( 'btnStyle9' );
+            btnStyle9 = document.getElementById( 'btnStyle9' ),
+            btnStyle10 = document.getElementById( 'btnStyle10'),
+            btnStyle11 = document.getElementById( 'btnStyle11' );
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -113,63 +171,89 @@ function domIndex() {       // event buttons for view\index.html
     if ( btnStyle1 ) {   // style 1
 
         btnStyle1.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-blue-grey.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-blue-grey.css", isDark );
         });
     }
 
     if ( btnStyle2 ) {   // style 2
 
         btnStyle2.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-brown.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-brown.css", isDark );
         });
     }
 
     if ( btnStyle3 ) {   // style 3
 
         btnStyle3.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-black.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-black.css", isDark );
         });
     }
 
     if ( btnStyle4 ) {   // style 4
 
         btnStyle4.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-pink.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-pink.css", isDark );
         });
     }
 
     if ( btnStyle5 ) {   // style 5
 
         btnStyle5.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-green.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-green.css", isDark );
         });
     }
 
     if ( btnStyle6 ) {   // style 6
 
         btnStyle6.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-indigo.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-indigo.css", isDark );
         });
     }
 
-    if ( btnStyle7 ) {   // style 6
+    if ( btnStyle7 ) {   // style 7
 
         btnStyle7.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-yellow.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-yellow.css", isDark );
         });
     }
 
-    if ( btnStyle8 ) {   // style 6
+    if ( btnStyle8 ) {   // style 8
 
         btnStyle8.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-purple.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-purple.css", isDark );
         });
     }
 
-    if ( btnStyle9 ) {   // style 6
+    if ( btnStyle9 ) {   // style 9
 
         btnStyle9.addEventListener( 'click', function () {
-            colorTheme( "w3-theme-orange.css" );
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-orange.css", isDark );
+        });
+    }
+
+    if ( btnStyle10 ) {   // style 10
+
+        btnStyle10.addEventListener( 'click', function () {
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            colorTheme( "w3-theme-teal.css", isDark );
+        });
+    }
+
+    if ( btnStyle11 ) {   // toggle light/dark
+
+        btnStyle11.addEventListener( 'click', function () {
+            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+            require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
+            toggleLightDark( !isDark );
         });
     }
 }
@@ -413,7 +497,6 @@ function customKeybindings() {
 
             case 37: // Lt Arrow
             case 72: // h
-            case 66: // b
                 keyboardElemIdClick( "btnBack", "nav history back" );
                 break;
 
@@ -457,6 +540,14 @@ function customKeybindings() {
 
             case 86: // v
                 keyboardElemIdClick( "btnStyle9", "key:" + keyboardKey + " w3-theme-orange.css" );
+                break;
+
+            case 66: // b
+                keyboardElemIdClick( "btnStyle10", "key:" + keyboardKey + " w3-theme-teal.css" );
+                break;
+
+            case 16: // left shift
+                keyboardElemIdClick( "btnStyle11", "key:" + keyboardKey + " light/dark toggle" );
                 break;
 
             case 27: // ESC

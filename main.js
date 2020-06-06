@@ -12,10 +12,11 @@ const nativeImage = require( 'electron' ).nativeImage;
 
 // Global theme css variable
 var defaultCssTheme = "w3-theme-blue-grey.css";
-//  defaultCssTheme = "w3-theme-indigo.css";
+var isDark = false;
 
 global.GlobalTheme = {
-    css: defaultCssTheme
+    css: defaultCssTheme,
+    isDark: isDark
 }
 
 /* -------------------------------------------------------------------------- */
@@ -269,7 +270,7 @@ function createWindow () {
     ]);
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 }
 
 /* -------------------------------------------------------------------------- */
