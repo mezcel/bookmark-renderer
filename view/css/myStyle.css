@@ -119,6 +119,16 @@ div.w3-col > p > a {
     font-weight: 500;
 }
 
+.btnSelectTeal {
+    color:#009688 !important;
+    border-color:#009688 !important;
+}
+.btnSelectTeal:hover, .btnSelectTeal.active {
+    color:#009688 !important;
+    background-color:#e9fffd !important;
+    font-weight: 500;
+}
+
 /* markdown dom controls */
 
 .ctrlBottomLeft {
