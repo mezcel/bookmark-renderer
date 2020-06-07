@@ -13,7 +13,7 @@ div.w3-col > p > a {
     width: 95%;
 }
 
-/* Css Theme Buttons */
+/* **************** Css Theme Buttons **************** */
 
 .roundedTop {
     border-top-left-radius: 3px;
@@ -26,6 +26,19 @@ div.w3-col > p > a {
 
 .roundedTopLt {
     border-top-left-radius: 4px !important;
+}
+
+/* **************** Style Switch buttons **************** */
+
+.btnSelectShift {
+    color:#626969 !important;
+    border-color:#000000 !important;
+    background-color:#eff0f0 !important;
+}
+.btnSelectShift:hover, .btnSelectShift.active {
+    color:#f0f0f0 !important;
+    background-color:#696e6e !important;
+    font-weight: 500;
 }
 
 .btnSelectBlueGrey {
@@ -87,7 +100,6 @@ div.w3-col > p > a {
     background-color:#f3f4fb !important;
     font-weight: 500;
 }
-/** Style Switch buttons **/
 
 .btnSelectYellow {
     color:#ffeb3b !important;
@@ -129,7 +141,119 @@ div.w3-col > p > a {
     font-weight: 500;
 }
 
-/* markdown dom controls */
+/**************/
+
+.btnSelectAmber {
+    color:#ffc107 !important;
+    border-color:#ffc107 !important;
+}
+.btnSelectAmber:hover, .btnSelectAmber.active {
+    color:#ffc107 !important;
+    background-color:#fffbf0 !important;
+    font-weight: 500;
+}
+
+.btnSelectCyan {
+    color:#00bcd4 !important;
+    border-color:#00bcd4 !important;
+}
+.btnSelectCyan:hover, .btnSelectCyan.active {
+    color:#00bcd4 !important;
+    background-color:#edfdff !important;
+    font-weight: 500;
+}
+
+.btnSelectDarkGrey {
+    color:#616161 !important;
+    border-color:#616161 !important;
+}
+.btnSelectDarkGrey:hover, .btnSelectDarkGrey.active {
+    color:#616161 !important;
+    background-color:#f6f6f6 !important;
+    font-weight: 500;
+}
+
+.btnSelectDeepOrange {
+    color:#ff5722 !important;
+    border-color:#ff5722 !important;
+}
+.btnSelectDeepOrange:hover, .btnSelectDeepOrange.active {
+    color:#ff5722 !important;
+    background-color:#fff5f2 !important;
+    font-weight: 500;
+}
+
+.btnSelectDeepPurple {
+    color:#673ab7 !important;
+    border-color:#673ab7 !important;
+}
+.btnSelectDeepPurple:hover, .btnSelectDeepPurple.active {
+    color:#673ab7 !important;
+    background-color:#f6f3fb !important;
+    font-weight: 500;
+}
+
+.btnSelectGrey {
+    color:#9e9e9e !important;
+    border-color:#9e9e9e !important;
+}
+.btnSelectGrey:hover, .btnSelectGrey.active {
+    color:#9e9e9e !important;
+    background-color:#f9f9f9 !important;
+    font-weight: 500;
+}
+
+.btnSelectKhaki {
+    color:#f0e68c !important;
+    border-color:#f0e68c !important;
+}
+.btnSelectKhaki:hover, .btnSelectKhaki.active {
+    color:#f0e68c !important;
+    background-color:#fefef8 !important;
+    font-weight: 500;
+}
+
+.btnSelectLightBlue {
+    color:#87ceeb !important;
+    border-color:#87ceeb !important;
+}
+.btnSelectLightBlue:hover, .btnSelectLightBlue.active {
+    color:#87ceeb !important;
+    background-color:#f8fcfe !important;
+    font-weight: 500;
+}
+
+.btnSelectLightGreen {
+    color:#8bc34a !important;
+    border-color:#8bc34a !important;
+}
+.btnSelectLightGreen:hover, .btnSelectLightGreen.active {
+    color:#8bc34a !important;
+    background-color:#f8fbf4 !important;
+    font-weight: 500;
+}
+
+.btnSelectLime {
+    color:#cddc39 !important;
+    border-color:#cddc39 !important;
+}
+.btnSelectLime:hover, .btnSelectLime.active {
+    color:#cddc39 !important;
+    background-color:#fcfdf3 !important;
+    font-weight: 500;
+}
+
+.btnSelectRed {
+    color:#f44336 !important;
+    border-color:#f44336 !important;
+}
+.btnSelectRed:hover, .btnSelectRed.active {
+    color:#f44336 !important;
+    background-color:#fef4f3 !important;
+    font-weight: 500;
+}
+
+/* **************** markdown dom controls **************** */
 
 .ctrlBottomLeft {
     float    : left;
