@@ -56,11 +56,11 @@ function toggleLightDark( isDark ) {
         var eleml4 = document.querySelector( "." + l4 );
         var eleml5 = document.querySelector( "." + l5 );
 
-        if ( eleml1 ) { eleml1.classList.replace( l1, d1 ); }
-        if ( eleml2 ) { eleml2.classList.replace( l2, d2 ); }
-        if ( eleml3 ) { eleml3.classList.replace( l3, d3 ); }
-        if ( eleml4 ) { eleml4.classList.replace( l4, d4 ); }
         if ( eleml5 ) { eleml5.classList.replace( l5, d5 ); }
+        if ( eleml4 ) { eleml4.classList.replace( l4, d4 ); }
+        if ( eleml3 ) { eleml3.classList.replace( l3, d3 ); }
+        if ( eleml2 ) { eleml2.classList.replace( l2, d2 ); }
+        if ( eleml1 ) { eleml1.classList.replace( l1, d1 ); }
 
     } else {
 
@@ -70,11 +70,11 @@ function toggleLightDark( isDark ) {
         var elemd4 = document.querySelector( "." + d4 );
         var elemd5 = document.querySelector( "." + d5 );
 
-        if ( elemd1 ) { elemd1.classList.replace( d1, l1 ); }
-        if ( elemd2 ) { elemd2.classList.replace( d2, l2 ); }
-        if ( elemd3 ) { elemd3.classList.replace( d3, l4 ); }
-        if ( elemd4 ) { elemd4.classList.replace( d4, l3 ); }
         if ( elemd5 ) { elemd5.classList.replace( d5, l5 ); }
+        if ( elemd4 ) { elemd4.classList.replace( d4, l4 ); }
+        if ( elemd3 ) { elemd3.classList.replace( d3, l3 ); }
+        if ( elemd2 ) { elemd2.classList.replace( d2, l2 ); }
+        if ( elemd1 ) { elemd1.classList.replace( d1, l1 ); }
 
     }
     console.log( isDark );

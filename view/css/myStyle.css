@@ -141,8 +141,9 @@ div.w3-col > p > a {
     font-weight: 500;
 }
 
-/**************/
+/* **************** Extra Style Switch buttons **************** */
 
+/*
 .btnSelectAmber {
     color:#ffc107 !important;
     border-color:#ffc107 !important;
@@ -252,6 +253,7 @@ div.w3-col > p > a {
     background-color:#fef4f3 !important;
     font-weight: 500;
 }
+*/
 
 /* **************** markdown dom controls **************** */
 
