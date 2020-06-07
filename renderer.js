@@ -188,7 +188,7 @@ function domIndex() {       // event buttons for view\index.html
 
         btnStyle3.addEventListener( 'click', function () {
             var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-black.css", isDark );
+            colorTheme( "w3-theme-dark-grey.css", isDark );
         });
     }
 
@@ -515,7 +515,7 @@ function customKeybindings() {
                 break;
 
             case 68: // d
-                keyboardElemIdClick( "btnStyle3", "key:" + keyboardKey + " w3-theme-black.css" );
+                keyboardElemIdClick( "btnStyle3", "key:" + keyboardKey + " w3-theme-dark-grey.css" );
                 break;
 
             case 70: // f

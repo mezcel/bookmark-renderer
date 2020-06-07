@@ -47,7 +47,7 @@ div.w3-col > p > a {
 }
 .btnSelectBlueGrey:hover, .btnSelectBlueGrey.active {
     color:#607d8b !important;
-    background-color:#f5f7f8 !important;
+    background-color:#dfe5e8 !important;
     font-weight: 500;
 }
 
@@ -57,7 +57,7 @@ div.w3-col > p > a {
 }
 .btnSelectBrown:hover, .btnSelectBrown.active {
     color:#795548 !important;
-    background-color:#f8f4f3 !important;
+    background-color:#e7dcd7 !important;
     font-weight: 500;
 }
 
@@ -67,7 +67,7 @@ div.w3-col > p > a {
 }
 .btnSelectBlack:hover, .btnSelectBlack.active {
     color:#000 !important;
-    background-color:#f0f0f0 !important;
+    background-color:#cccccc !important;
     font-weight: 500;
 }
 
@@ -77,7 +77,7 @@ div.w3-col > p > a {
 }
 .btnSelectPink:hover, .btnSelectPink.active {
     color:#e91e63 !important;
-    background-color:#fef2f6 !important;
+    background-color:#fbd2e0 !important;
     font-weight: 500;
 }
 
@@ -87,7 +87,7 @@ div.w3-col > p > a {
 }
 .btnSelectGreen:hover, .btnSelectGreen.active {
     color:#4caf50 !important;
-    background-color:#f4faf4 !important;
+    background-color:#dbefdc !important;
     font-weight: 500;
 }
 
@@ -97,7 +97,7 @@ div.w3-col > p > a {
 }
 .btnSelectIndigo:hover, .btnSelectIndigo.active {
     color:#3f51b5 !important;
-    background-color:#f3f4fb !important;
+    background-color:#d8dcf1 !important;
     font-weight: 500;
 }
 
@@ -107,7 +107,7 @@ div.w3-col > p > a {
 }
 .btnSelectYellow:hover, .btnSelectYellow.active {
     color:#ffeb3b !important;
-    background-color:#fffef3 !important;
+    background-color:#fffbd8 !important;
     font-weight: 500;
 }
 
@@ -117,7 +117,7 @@ div.w3-col > p > a {
 }
 .btnSelectPurple:hover, .btnSelectPurple.active {
     color:#9c27b0 !important;
-    background-color:#faf0fc !important;
+    background-color:#efcef4 !important;
     font-weight: 500;
 }
 
@@ -127,7 +127,7 @@ div.w3-col > p > a {
 }
 .btnSelectOrange:hover, .btnSelectOrange.active {
     color:#ff9800 !important;
-    background-color:#fff9f0 !important;
+    background-color:#ffebcc !important;
     font-weight: 500;
 }
 
@@ -137,7 +137,7 @@ div.w3-col > p > a {
 }
 .btnSelectTeal:hover, .btnSelectTeal.active {
     color:#009688 !important;
-    background-color:#e9fffd !important;
+    background-color:#b7fff8 !important;
     font-weight: 500;
 }
 
