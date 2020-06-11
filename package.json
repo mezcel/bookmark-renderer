@@ -1,7 +1,7 @@
 {
     "name": "bookmark-renderer",
-    "version": "0.1.4",
-    "description": "A welcome popup, markdown reader, taskbar, and bookmark container.",
+    "version": "0.1.5",
+    "description": "A welcome popup, markdown reader, taskbar, and bookmark container. This app was developed for and on a Win10 x64 computer.",
     "main": "main.js",
     "scripts": {
         "start": "electron .",

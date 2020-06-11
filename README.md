@@ -7,7 +7,7 @@ A startup welcome kiosk for **Windows 10**.
 > It is basically just a bulky taskbar and markdown viewer. ( *not cross platform* )
 > - Experimental Linux branch: ```git checkout deb64``` | ( Non-Sand boxed Debian x64 )
 > - Electron v6: ```git checkout electron6``` | ( win10 )
-> - Electron v9: ```git checkout electron9``` |  ( win10 )
+> - Electron v9: ```git checkout electron9``` |  ( win10 ) Primary
 
 ## 2.0 Install
 
@@ -68,3 +68,16 @@ npm run-script shortcuts    ## make desktop shortcut and startup link
 |:---:|:---:|
 |![screenshots\group-colors-600x329.gif](screenshots/group-colors-600x329.gif)|![screenshots\bookmarks.gif](screenshots/bookmarks.gif)|
 |![screenshots\scripts.gif](screenshots/scripts.gif)|![screenshots\kiosk-md.gif](screenshots/kiosk-md.gif)|
+
+---
+
+## 6.0 Misc.
+
+```ps1
+<#
+    fix error msg.
+    unexpected end of json input...
+#>
+
+npm cache clean --force
+```
