@@ -102,11 +102,11 @@ div.w3-col > p > a {
 }
 
 .btnSelectYellow {
-    color:#ffeb3b !important;
-    border-color:#ffeb3b !important;
+    color:#ddc700 !important;
+    border-color:#ddc700 !important;
 }
 .btnSelectYellow:hover, .btnSelectYellow.active {
-    color:#ffeb3b !important;
+    color:#ddc700 !important;
     background-color:#fffbd8 !important;
     font-weight: 500;
 }
@@ -290,7 +290,7 @@ div.w3-col > p > a {
 }
 
 /* page transition */
-
+/*
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -299,3 +299,4 @@ div.w3-col > p > a {
 html {
     animation: fadein 0.300s;
 }
+*/
