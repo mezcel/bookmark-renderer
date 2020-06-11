@@ -14,7 +14,7 @@ function openFileExplorer( dirPath ) {
     var UserProfile = process.env.USERPROFILE;
     var filePath = path.join( UserProfile, dirPath );
     console.log( "Opening the " + filePath + " Directory." );
-    shell.openItem( filePath );
+    shell.openPath( filePath );
 }
 
 function launchBatScript( scriptPath ) {
