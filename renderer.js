@@ -33,6 +33,18 @@ function launchBatScript( scriptPath ) {
     });
 }
 
+function replaceThemeClass( themeElem, strInitClass, strNewClass ) {
+
+    if ( themeElem ) {
+        var i = 0;
+
+        for ( i = 0; i < themeElem.length; ++i ) {
+            themeElem[i].classList.replace( strInitClass, strNewClass );
+        }
+    }
+
+}
+
 function toggleLightDark( isDark ) {
 
     var l1 = "w3-theme-l1",
@@ -47,37 +59,46 @@ function toggleLightDark( isDark ) {
         d4 = "w3-theme-d4",
         d5 = "w3-theme-d5";
 
+    var eleml1 = 0,
+        eleml2 = 0,
+        eleml3 = 0,
+        eleml4 = 0,
+        eleml5 = 0;
+
+
+    //var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+    //require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
 
     if ( isDark ) {
 
-        var eleml1 = document.querySelector( "." + l1 );
-        var eleml2 = document.querySelector( "." + l2 );
-        var eleml3 = document.querySelector( "." + l3 );
-        var eleml4 = document.querySelector( "." + l4 );
-        var eleml5 = document.querySelector( "." + l5 );
+        eleml1 = document.querySelectorAll( "." + l1 );
+        eleml2 = document.querySelectorAll( "." + l2 );
+        eleml3 = document.querySelectorAll( "." + l3 );
+        eleml4 = document.querySelectorAll( "." + l4 );
+        eleml5 = document.querySelectorAll( "." + l5 );
 
-        if ( eleml5 ) { eleml5.classList.replace( l5, d5 ); }
-        if ( eleml4 ) { eleml4.classList.replace( l4, d4 ); }
-        if ( eleml3 ) { eleml3.classList.replace( l3, d3 ); }
-        if ( eleml2 ) { eleml2.classList.replace( l2, d2 ); }
-        if ( eleml1 ) { eleml1.classList.replace( l1, d1 ); }
-
+        replaceThemeClass( eleml5, l5, d5 );
+        replaceThemeClass( eleml4, l4, d4 );
+        replaceThemeClass( eleml3, l3, d3 );
+        replaceThemeClass( eleml2, l2, d2 );
+        replaceThemeClass( eleml1, l1, d1 );
     } else {
 
-        var elemd1 = document.querySelector( "." + d1 );
-        var elemd2 = document.querySelector( "." + d2 );
-        var elemd3 = document.querySelector( "." + d3 );
-        var elemd4 = document.querySelector( "." + d4 );
-        var elemd5 = document.querySelector( "." + d5 );
+        elemd1 = document.querySelectorAll( "." + d1 );
+        elemd2 = document.querySelectorAll( "." + d2 );
+        elemd3 = document.querySelectorAll( "." + d3 );
+        elemd4 = document.querySelectorAll( "." + d4 );
+        elemd5 = document.querySelectorAll( "." + d5 );
 
-        if ( elemd5 ) { elemd5.classList.replace( d5, l5 ); }
-        if ( elemd4 ) { elemd4.classList.replace( d4, l4 ); }
-        if ( elemd3 ) { elemd3.classList.replace( d3, l3 ); }
-        if ( elemd2 ) { elemd2.classList.replace( d2, l2 ); }
-        if ( elemd1 ) { elemd1.classList.replace( d1, l1 ); }
+        replaceThemeClass( eleml5, d5, l5 );
+        replaceThemeClass( eleml4, d4, l4 );
+        replaceThemeClass( eleml3, d3, l3 );
+        replaceThemeClass( eleml2, d2, l2 );
+        replaceThemeClass( eleml1, d1, l1 );
 
     }
-    console.log( isDark );
+    //require( 'electron' ).remote.getCurrentWindow().reload()
+    console.log( "Dark Mode:", isDark );
 }
 
 function colorTheme( cssTheme, isDark ) {
@@ -198,7 +219,9 @@ function customKeybindings() {
                 // Toggle Light/Dark Color Theme
                 var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
                 require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
-                toggleLightDark( !isDark );
+
+                toggleLightDark( isDark );
+                require( 'electron' ).remote.getCurrentWindow().reload();
 
                 break;
 
@@ -282,7 +305,7 @@ function customKeybindings() {
         var elemActive = document.getElementsByClassName( "active" );
         for ( var i = 0; i < elemActive.length; i++ ) {
             elemActive[i].classList.remove( "active" );
-         }
+        }
     });
 
 }
