@@ -119,6 +119,176 @@ function keyboardElemIdClick( elementID, consoleNotes ) {
     }
 }
 
+function customKeybindings() {
+    // Keydown
+    document.addEventListener( "keydown", function (e) {
+        var keyboardKey = e.which;
+
+        switch( keyboardKey ) {
+            case 123: // F12
+                console.log( keyboardKey, "toggle dev tools" );
+                require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
+                break;
+
+            case 122: // F11
+                console.log( keyboardKey, "toggle fullscreen" );
+                var isFullScreen = require( 'electron' ).remote.getCurrentWindow().isFullScreen();
+                require( 'electron' ).remote.getCurrentWindow().setFullScreen(!isFullScreen);
+                break;
+
+            case 116: // F5
+                console.log( keyboardKey, "reload browser" );
+                location.reload();
+                break;
+
+            case 37: // Lt Arrow
+            case 72: // h
+                keyboardElemIdClick( "btnBack", "nav history back" );
+                break;
+
+            case 39: // Rt Arrow
+            case 76: // l
+                console.log( keyboardKey, "nav history fwd" );
+                history.forward();
+                break;
+
+            case 65: // a
+                keyboardElemIdClick( "btnStyle1", "key:" + keyboardKey + " w3-theme-blue-grey.css" );
+                break;
+
+            case 83: // s
+                keyboardElemIdClick( "btnStyle2", "key:" + keyboardKey + " w3-theme-brown.css" );
+                break;
+
+            case 68: // d
+                keyboardElemIdClick( "btnStyle3", "key:" + keyboardKey + " w3-theme-dark-grey.css" );
+                break;
+
+            case 70: // f
+                keyboardElemIdClick( "btnStyle4", "key:" + keyboardKey + " w3-theme-pink.css" );
+                break;
+
+            case 71: // g
+                keyboardElemIdClick( "btnStyle5", "key:" + keyboardKey + " w3-theme-green.css" );
+                break;
+
+            case 90: // z
+                keyboardElemIdClick( "btnStyle6", "key:" + keyboardKey + " w3-theme-indigo.css" );
+                break;
+
+            case 88: // x
+                keyboardElemIdClick( "btnStyle7", "key:" + keyboardKey + " w3-theme-yellow.css" );
+                break;
+
+            case 67: // c
+                keyboardElemIdClick( "btnStyle8", "key:" + keyboardKey + " w3-theme-purple.css" );
+                break;
+
+            case 86: // v
+                keyboardElemIdClick( "btnStyle9", "key:" + keyboardKey + " w3-theme-orange.css" );
+                break;
+
+            case 66: // b
+                keyboardElemIdClick( "btnStyle10", "key:" + keyboardKey + " w3-theme-teal.css" );
+                break;
+
+            case 16: // shift key
+                // keyboardElemIdClick( "btnStyle11", "key:" + keyboardKey + " light/dark toggle" );
+
+                // Toggle Light/Dark Color Theme
+                var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+                require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
+                toggleLightDark( !isDark );
+
+                break;
+
+            case 27: // ESC
+            case 81: // q
+                keyboardElemIdClick( "btnClose", "Close Window" );
+                break;
+
+            case 75: // k
+                keyboardElemIdClick( "btnTop", "Scroll to top" );
+                break;
+
+            case 74: // j
+                keyboardElemIdClick( "btnBottom", "Scroll to bottom" );
+                break;
+
+            case 190: // .
+                keyboardElemIdClick( "btnWidth", "Resize to set dimensions" );
+                break;
+
+            case 49: // 1
+            case 97:
+                keyboardElemIdClick( "btn1", "Clicked btn1" );
+                break;
+
+            case 50: // 2
+            case 98:
+                keyboardElemIdClick( "btn2", "Clicked btn2" );
+                break;
+
+            case 51: // 3
+            case 99:
+                keyboardElemIdClick( "btn3", "Clicked btn3" );
+                break;
+
+            case 52: // 4
+            case 100:
+                keyboardElemIdClick( "btn4", "Clicked btn4" );
+                break;
+
+            case 53: // 5
+            case 101:
+                keyboardElemIdClick( "btn5", "Clicked btn5" );
+                break;
+
+            case 54: // 6
+            case 102:
+                keyboardElemIdClick( "btn6", "Clicked btn6" );
+                break;
+
+            case 55: // 7
+            case 103:
+                keyboardElemIdClick( "btn7", "Clicked btn7" );
+                break;
+
+            case 56: // 8
+            case 104:
+                keyboardElemIdClick( "btn8", "Clicked btn8" );
+                break;
+
+            case 57: // 9
+            case 105:
+                keyboardElemIdClick( "btn9", "Clicked btn9" );
+                break;
+
+            case 48: // 0
+            case 96:
+                keyboardElemIdClick( "btn0", "Clicked btn0" );
+                break;
+
+            default:
+                console.log( "keyboardKey:", keyboardKey );
+        }
+
+    });
+
+    // Keyup
+    document.addEventListener( "keyup", function (e) {
+        // Rem "active" class from keypress simulated hover
+
+        var elemActive = document.getElementsByClassName( "active" );
+        for ( var i = 0; i < elemActive.length; i++ ) {
+            elemActive[i].classList.remove( "active" );
+         }
+    });
+
+}
+
+/* -------------------------------------------------------------------------- */
+
 function domIndex() {       // event buttons for view\index.html
 
     const   btn4 = document.getElementById( 'btn4' ),
@@ -135,8 +305,8 @@ function domIndex() {       // event buttons for view\index.html
             btnStyle7 = document.getElementById( 'btnStyle7' ),
             btnStyle8 = document.getElementById( 'btnStyle8' ),
             btnStyle9 = document.getElementById( 'btnStyle9' ),
-            btnStyle10 = document.getElementById( 'btnStyle10'),
-            btnStyle11 = document.getElementById( 'btnStyle11' );
+            btnStyle10 = document.getElementById( 'btnStyle10');
+    //const   btnStyle11 = document.getElementById( 'btnStyle11' );
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -248,6 +418,7 @@ function domIndex() {       // event buttons for view\index.html
         });
     }
 
+    /*
     if ( btnStyle11 ) {   // toggle light/dark
 
         btnStyle11.addEventListener( 'click', function () {
@@ -256,6 +427,7 @@ function domIndex() {       // event buttons for view\index.html
             toggleLightDark( !isDark );
         });
     }
+    */
 }
 
 function domScripts() {     // event buttons for view\html\scripts.html
@@ -471,168 +643,6 @@ function domMarkdown() {    // event buttons for view\html\notes.html
         });
 
     }
-}
-
-function customKeybindings() {
-    // Keydown
-    document.addEventListener( "keydown", function (e) {
-        var keyboardKey = e.which;
-
-        switch( keyboardKey ) {
-            case 123: // F12
-                console.log( keyboardKey, "toggle dev tools" );
-                require( 'electron' ).remote.getCurrentWindow().toggleDevTools();
-                break;
-
-            case 122: // F11
-                console.log( keyboardKey, "toggle fullscreen" );
-                var isFullScreen = require( 'electron' ).remote.getCurrentWindow().isFullScreen();
-                require( 'electron' ).remote.getCurrentWindow().setFullScreen(!isFullScreen);
-                break;
-
-            case 116: // F5
-                console.log( keyboardKey, "reload browser" );
-                location.reload();
-                break;
-
-            case 37: // Lt Arrow
-            case 72: // h
-                keyboardElemIdClick( "btnBack", "nav history back" );
-                break;
-
-            case 39: // Rt Arrow
-            case 76: // l
-                console.log( keyboardKey, "nav history fwd" );
-                history.forward();
-                break;
-
-            case 65: // a
-                keyboardElemIdClick( "btnStyle1", "key:" + keyboardKey + " w3-theme-blue-grey.css" );
-                break;
-
-            case 83: // s
-                keyboardElemIdClick( "btnStyle2", "key:" + keyboardKey + " w3-theme-brown.css" );
-                break;
-
-            case 68: // d
-                keyboardElemIdClick( "btnStyle3", "key:" + keyboardKey + " w3-theme-dark-grey.css" );
-                break;
-
-            case 70: // f
-                keyboardElemIdClick( "btnStyle4", "key:" + keyboardKey + " w3-theme-pink.css" );
-                break;
-
-            case 71: // g
-                keyboardElemIdClick( "btnStyle5", "key:" + keyboardKey + " w3-theme-green.css" );
-                break;
-
-            case 90: // z
-                keyboardElemIdClick( "btnStyle6", "key:" + keyboardKey + " w3-theme-indigo.css" );
-                break;
-
-            case 88: // x
-                keyboardElemIdClick( "btnStyle7", "key:" + keyboardKey + " w3-theme-yellow.css" );
-                break;
-
-            case 67: // c
-                keyboardElemIdClick( "btnStyle8", "key:" + keyboardKey + " w3-theme-purple.css" );
-                break;
-
-            case 86: // v
-                keyboardElemIdClick( "btnStyle9", "key:" + keyboardKey + " w3-theme-orange.css" );
-                break;
-
-            case 66: // b
-                keyboardElemIdClick( "btnStyle10", "key:" + keyboardKey + " w3-theme-teal.css" );
-                break;
-
-            case 16: // left shift
-                keyboardElemIdClick( "btnStyle11", "key:" + keyboardKey + " light/dark toggle" );
-                break;
-
-            case 27: // ESC
-            case 81: // q
-                keyboardElemIdClick( "btnClose", "Close Window" );
-                break;
-
-            case 75: // k
-                keyboardElemIdClick( "btnTop", "Scroll to top" );
-                break;
-
-            case 74: // j
-                keyboardElemIdClick( "btnBottom", "Scroll to bottom" );
-                break;
-
-            case 190: // .
-                keyboardElemIdClick( "btnWidth", "Resize to set dimensions" );
-                break;
-
-            case 49: // 1
-            case 97:
-                keyboardElemIdClick( "btn1", "Clicked btn1" );
-                break;
-
-            case 50: // 2
-            case 98:
-                keyboardElemIdClick( "btn2", "Clicked btn2" );
-                break;
-
-            case 51: // 3
-            case 99:
-                keyboardElemIdClick( "btn3", "Clicked btn3" );
-                break;
-
-            case 52: // 4
-            case 100:
-                keyboardElemIdClick( "btn4", "Clicked btn4" );
-                break;
-
-            case 53: // 5
-            case 101:
-                keyboardElemIdClick( "btn5", "Clicked btn5" );
-                break;
-
-            case 54: // 6
-            case 102:
-                keyboardElemIdClick( "btn6", "Clicked btn6" );
-                break;
-
-            case 55: // 7
-            case 103:
-                keyboardElemIdClick( "btn7", "Clicked btn7" );
-                break;
-
-            case 56: // 8
-            case 104:
-                keyboardElemIdClick( "btn8", "Clicked btn8" );
-                break;
-
-            case 57: // 9
-            case 105:
-                keyboardElemIdClick( "btn9", "Clicked btn9" );
-                break;
-
-            case 48: // 0
-            case 96:
-                keyboardElemIdClick( "btn0", "Clicked btn0" );
-                break;
-
-            default:
-                console.log( "keyboardKey:", keyboardKey );
-        }
-
-    });
-
-    // Keyup
-    document.addEventListener( "keyup", function (e) {
-        // Rem "active" class from keypress simulated hover
-
-        var elemActive = document.getElementsByClassName( "active" );
-        for ( var i = 0; i < elemActive.length; i++ ) {
-            elemActive[i].classList.remove( "active" );
-         }
-    });
-
 }
 
 function main() {
