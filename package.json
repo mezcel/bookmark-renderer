@@ -20,9 +20,11 @@
     ],
     "author": "Mezcel",
     "devDependencies": {
-        "electron": "^9.0.2"
+        "electron": "^9.0.2",
+        "marked": "^1.1.0"
     },
     "dependencies": {
+        "electron": "^9.0.2",
         "electron-packager": "^14.2.1",
         "marked": "^1.1.0"
     },
