@@ -39,15 +39,14 @@ function colorTheme( cssTheme ) {
     var href    = path.join( __dirname, cssFile );
     var w3Theme = document.getElementById("w3Theme");
 
-	if ( w3Theme ) {
-
+    if ( w3Theme ) {
         if ( w3Theme.href !== href ) {
             w3Theme.href = href;
-			require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
+            require('electron').remote.getGlobal('GlobalTheme').css = cssTheme;
         }
+    }
 
-	}
-	console.log(  w3Theme.isDark, require('electron').remote.getGlobal('GlobalTheme').isDark, "renderer.js" );
+	console.log( cssTheme );
 
 }
 
