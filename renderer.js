@@ -3,7 +3,6 @@
 // Launch Exe related
 const { execFile, spawn } = require( 'child_process' );
 const path = require( 'path' );
-//const url = require( 'url' );
 
 // Markdown related // dialog for Electron "^8.2.5 or greater"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
@@ -33,75 +32,7 @@ function launchBatScript( scriptPath ) {
     });
 }
 
-function replaceThemeClass( themeElem, strInitClass, strNewClass ) {
-
-    if ( themeElem ) {
-        var i = 0;
-
-        for ( i = 0; i < themeElem.length; ++i ) {
-            themeElem[i].classList.replace( strInitClass, strNewClass );
-        }
-    }
-
-}
-
-function toggleLightDark( isDark ) {
-
-    var l1 = "w3-theme-l1",
-        l2 = "w3-theme-l2",
-        l3 = "w3-theme-l3",
-        l4 = "w3-theme-l4",
-        l5 = "w3-theme-l5";
-
-    var d1 = "w3-theme-d1",
-        d2 = "w3-theme-d2",
-        d3 = "w3-theme-d3",
-        d4 = "w3-theme-d4",
-        d5 = "w3-theme-d5";
-
-    var eleml1 = 0,
-        eleml2 = 0,
-        eleml3 = 0,
-        eleml4 = 0,
-        eleml5 = 0;
-
-
-    //var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-    //require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
-
-    if ( isDark ) {
-
-        eleml1 = document.querySelectorAll( "." + l1 );
-        eleml2 = document.querySelectorAll( "." + l2 );
-        eleml3 = document.querySelectorAll( "." + l3 );
-        eleml4 = document.querySelectorAll( "." + l4 );
-        eleml5 = document.querySelectorAll( "." + l5 );
-
-        replaceThemeClass( eleml5, l5, d5 );
-        replaceThemeClass( eleml4, l4, d4 );
-        replaceThemeClass( eleml3, l3, d3 );
-        replaceThemeClass( eleml2, l2, d2 );
-        replaceThemeClass( eleml1, l1, d1 );
-    } else {
-
-        elemd1 = document.querySelectorAll( "." + d1 );
-        elemd2 = document.querySelectorAll( "." + d2 );
-        elemd3 = document.querySelectorAll( "." + d3 );
-        elemd4 = document.querySelectorAll( "." + d4 );
-        elemd5 = document.querySelectorAll( "." + d5 );
-
-        replaceThemeClass( eleml5, d5, l5 );
-        replaceThemeClass( eleml4, d4, l4 );
-        replaceThemeClass( eleml3, d3, l3 );
-        replaceThemeClass( eleml2, d2, l2 );
-        replaceThemeClass( eleml1, d1, l1 );
-
-    }
-    //require( 'electron' ).remote.getCurrentWindow().reload()
-    console.log( "Dark Mode:", isDark );
-}
-
-function colorTheme( cssTheme, isDark ) {
+function colorTheme( cssTheme ) {
 	// Dynamically change css theme
 
     var cssFile = "view/css/" + cssTheme;
@@ -109,12 +40,6 @@ function colorTheme( cssTheme, isDark ) {
     var w3Theme = document.getElementById("w3Theme");
 
 	if ( w3Theme ) {
-
-        if ( w3Theme.dark !== isDark ) {
-            w3Theme.isDark = isDark;
-            toggleLightDark( isDark );
-        }
-        w3Theme.isDark = isDark;
 
         if ( w3Theme.href !== href ) {
             w3Theme.href = href;
@@ -127,14 +52,10 @@ function colorTheme( cssTheme, isDark ) {
 }
 
 function keyboardElemIdClick( elementID, consoleNotes ) {
-    // keypress decoration
-    // simulate a hover event by calling a user defined active style class
-    // used only in btnStyle1 - btnStyle6
-
     var clickedButton = document.getElementById( elementID );
 
     if ( clickedButton ) {
-        clickedButton.classList.add("active");
+        clickedButton.classList.add( "active" );
         clickedButton.click();
         console.log( consoleNotes );
     }
@@ -214,13 +135,11 @@ function customKeybindings() {
                 break;
 
             case 16: // shift key
-                // keyboardElemIdClick( "btnStyle11", "key:" + keyboardKey + " light/dark toggle" );
 
                 // Toggle Light/Dark Color Theme
                 var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
                 require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
 
-                toggleLightDark( isDark );
                 require( 'electron' ).remote.getCurrentWindow().reload();
 
                 break;
@@ -329,7 +248,6 @@ function domIndex() {       // event buttons for view\index.html
             btnStyle8 = document.getElementById( 'btnStyle8' ),
             btnStyle9 = document.getElementById( 'btnStyle9' ),
             btnStyle10 = document.getElementById( 'btnStyle10');
-    //const   btnStyle11 = document.getElementById( 'btnStyle11' );
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -364,93 +282,72 @@ function domIndex() {       // event buttons for view\index.html
     if ( btnStyle1 ) {   // style 1
 
         btnStyle1.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-blue-grey.css", isDark );
+            colorTheme( "w3-theme-blue-grey.css" );
         });
     }
 
     if ( btnStyle2 ) {   // style 2
 
         btnStyle2.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-brown.css", isDark );
+            colorTheme( "w3-theme-brown.css" );
         });
     }
 
     if ( btnStyle3 ) {   // style 3
 
         btnStyle3.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-dark-grey.css", isDark );
+            colorTheme( "w3-theme-dark-grey.css" );
         });
     }
 
     if ( btnStyle4 ) {   // style 4
 
         btnStyle4.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-pink.css", isDark );
+            colorTheme( "w3-theme-pink.css" );
         });
     }
 
     if ( btnStyle5 ) {   // style 5
 
         btnStyle5.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-green.css", isDark );
+            colorTheme( "w3-theme-green.css" );
         });
     }
 
     if ( btnStyle6 ) {   // style 6
 
         btnStyle6.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-indigo.css", isDark );
+            colorTheme( "w3-theme-indigo.css" );
         });
     }
 
     if ( btnStyle7 ) {   // style 7
 
         btnStyle7.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-yellow.css", isDark );
+            colorTheme( "w3-theme-yellow.css" );
         });
     }
 
     if ( btnStyle8 ) {   // style 8
 
         btnStyle8.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-purple.css", isDark );
+            colorTheme( "w3-theme-purple.css" );
         });
     }
 
     if ( btnStyle9 ) {   // style 9
 
         btnStyle9.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-orange.css", isDark );
+            colorTheme( "w3-theme-orange.css" );
         });
     }
 
     if ( btnStyle10 ) {   // style 10
 
         btnStyle10.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            colorTheme( "w3-theme-teal.css", isDark );
+            colorTheme( "w3-theme-teal.css" );
         });
     }
-
-    /*
-    if ( btnStyle11 ) {   // toggle light/dark
-
-        btnStyle11.addEventListener( 'click', function () {
-            var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-            require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
-            toggleLightDark( !isDark );
-        });
-    }
-    */
 }
 
 function domScripts() {     // event buttons for view\html\scripts.html
@@ -718,4 +615,4 @@ function main() {
 
 main();
 
-console.log("loaded renderer.js");
+console.log( "loaded renderer.js" );
