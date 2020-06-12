@@ -101,19 +101,22 @@ window.addEventListener( 'DOMContentLoaded', () => {
     colorTheme( cssTheme, isDark );
 
 	const replaceText = ( selector, text ) => {
-		const element = document.getElementById(selector)
-		if (element) element.innerText = text
+		const element = document.getElementById( selector );
+        if (element) {
+            element.innerText = text;
+        }
 	}
 
 	for ( const type of ['chrome', 'node', 'electron'] ) {
-		replaceText(`${type}-version`, process.versions[type])
+		replaceText( `${type}-version`, process.versions[type] );
 	}
 
     const archString = process.platform;
 	replaceText( `platform-arch`, archString );
 	replaceText( `cd`, cdPath );
 
-	require( 'dns' ).resolve( 'www.google.com', function( err ) {
+	require( 'dns' ).resolve( '8.8.8.8', function( err ) {
+        // ping google-public-dns-a.google.com
 		if ( err ) {
 			replaceText( `isOnline`, "offline" );
 		} else {

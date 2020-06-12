@@ -56,12 +56,12 @@ div.w3-col > p > a {
     font-weight: 500;
 }
 
-.btnSelectBlack {
-    color:#000000 !important;
-    border-color:#000000 !important;
+.btnSelectGrey {
+    color:#4e4e4e !important;
+    border-color:#4e4e4e !important;
 }
-.btnSelectBlack:hover, .btnSelectBlack.active {
-    color:#000 !important;
+.btnSelectGrey:hover, .btnSelectGrey.active {
+    color:#4e4e4e !important;
     background-color:#cccccc !important;
     font-weight: 500;
 }
@@ -283,15 +283,3 @@ div.w3-col > p > a {
         padding: 15px;
     }
 }
-
-/* page transition */
-/*
-@keyframes fadein {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-html {
-    animation: fadein 0.300s;
-}
-*/
