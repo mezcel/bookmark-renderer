@@ -3,6 +3,7 @@
 // Launch Exe related
 const { execFile, spawn } = require( 'child_process' );
 const path = require( 'path' );
+const fs = require( 'fs' );
 
 // Markdown related // dialog for Electron "^8.2.5 or greater"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
@@ -10,26 +11,41 @@ const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
 /* -------------------------------------------------------------------------- */
 
 function openFileExplorer( dirPath ) {
-    var UserProfile = process.env.USERPROFILE;
+    var UserProfile = process.env.USERPROFILE; // Win10 user home dir
     var filePath = path.join( UserProfile, dirPath );
-    console.log( "Opening the " + filePath + " Directory." );
+        filePath = path.resolve( filePath );
+    console.log( "%c Opening the " + filePath + " Directory.", "background: green; color: black;" );
     shell.openPath( filePath );
 }
 
-function launchBatScript( scriptPath ) {
-    const bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
+function launchBatScript( relativePath ) {
 
-    bat.stdout.on( 'data', ( data ) => {
-        console.log( data.toString() );
-    });
+    var scriptPath = path.join( process.cwd(), relativePath );
+        scriptPath = path.resolve( scriptPath ); // clean up path housekeeping
+        console.log("%c" + scriptPath, "background: orange;");
 
-    bat.stderr.on( 'data', ( data ) => {
-        console.log( "\n script path = " + scriptPath + " \n", data.toString() );
-    });
+    try {
+        if ( fs.existsSync( scriptPath ) ) {
+            var bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
 
-    bat.on( 'exit', ( code ) => {
-        console.log( `Child exited with code ${code}` );
-    });
+            bat.stdout.on( 'data', ( data ) => {
+                console.log( data.toString() );
+            });
+
+            bat.stderr.on( 'data', ( data ) => {
+                console.log( "\n script path = " + scriptPath + " \n", data.toString() );
+            });
+
+            bat.on( 'exit', ( code ) => {
+                console.log( `Child exited with code ${code}` );
+            });
+        } else {
+            console.log(
+                "%cScript path " + scriptPath + " not found.",
+                "background: black; color: red;"
+            );
+        }
+    } catch( err ) { console.error( err); }
 }
 
 function colorTheme( cssTheme ) {
@@ -46,7 +62,7 @@ function colorTheme( cssTheme ) {
         }
     }
 
-	console.log( cssTheme );
+	console.log( "%c" + cssTheme, "background: orange;" );
 
 }
 
@@ -56,7 +72,7 @@ function keyboardElemIdClick( elementID, consoleNotes ) {
     if ( clickedButton ) {
         clickedButton.classList.add( "active" );
         clickedButton.click();
-        console.log( consoleNotes );
+        console.log( " %c" + consoleNotes, "background: grey; color: white;" );
     }
 }
 
@@ -228,6 +244,8 @@ function customKeybindings() {
 
 }
 
+
+
 /* -------------------------------------------------------------------------- */
 
 function domIndex() {       // event buttons for view\index.html
@@ -361,6 +379,7 @@ function domScripts() {     // event buttons for view\html\scripts.html
             btn8 = document.getElementById( 'btn8' ),
             btn9 = document.getElementById( 'btn9' );
 
+    // relative paths
     var scriptPath1 = "Batch/launchTaskManager.bat",
         scriptPath2 = "Batch/pullGithubRepos.bat",
         scriptPath3 = "",
@@ -373,50 +392,45 @@ function domScripts() {     // event buttons for view\html\scripts.html
 
     if ( btn1 ) {
         btn1.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath1 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath1 );
         });
     }
 
     if ( btn2 ) {
         btn2.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath2 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath2 );
+            require( 'electron' ).remote.getCurrentWindow().webContents.openDevTools();
         });
     }
 
     if ( btn3 ) {
         btn3.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath3 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath3 );
+            require( 'electron' ).remote.getCurrentWindow().webContents.openDevTools();
         });
     }
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath4 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath4 );
         });
     }
 
     if ( btn5 ) {
         btn5.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath5 );
-            launchBatScript( scriptPath4 );
+            launchBatScript( scriptPath5 );
         });
     }
 
     if ( btn6 ) {
         btn6.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath6 );
-            launchBatScript( scriptPath5 );
+            launchBatScript( scriptPath6 );
         });
     }
 
     if ( btn7 ) {
         btn7.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath7 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath7 );
         });
     }
 
@@ -426,16 +440,14 @@ function domScripts() {     // event buttons for view\html\scripts.html
             console.clear();
             console.log( "\n:::::::::::::::::\nKill status\n:::::::::::::::::\n" );
 
-            var scriptPath = path.join( __dirname, scriptPath8 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath8 );
             alert( "Killed processes. Check the log Console, (F12), to view kill status." );
         });
     }
 
     if ( btn9 ) {
         btn9.addEventListener( 'click', function () {
-            var scriptPath = path.join( __dirname, scriptPath9 );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath9 );
         });
     }
 
