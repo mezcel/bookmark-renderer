@@ -2,20 +2,7 @@
 :: pullGithubRepos.bat
 ::
 
-::@ECHO off
-
-:ps1Script
-    set filePath1="..\Powershell\clone-my-github.ps1"
-    set filePath2=".\Powershell\clone-my-github.ps1"
-
-    if EXIST %filePath1% (
-        start powershell -Command %filePath1%
-    ) else (
-        start powershell -Command %filePath2%
-    )
-
-    GOTO:EOF
-
+@ECHO off
 
 :batScript
 
@@ -74,3 +61,5 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://github.com/mezcel/bookmark-renderer.git "%homeGithub%\bookmark-renderer.git"
 
 :EOF
+    ECHO.
+    ECHO Done pulling repos.
