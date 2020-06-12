@@ -155,3 +155,6 @@ function main {
 ##############
 
 main
+
+Write-Host "`n`nPress any key to continue...";
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');

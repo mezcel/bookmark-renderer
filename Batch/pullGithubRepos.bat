@@ -2,11 +2,18 @@
 :: pullGithubRepos.bat
 ::
 
-@ECHO off
+::@ECHO off
 
 :ps1Script
-    cd ..\Powershell
-    start powershell -Command ".\clone-my-github.ps1"
+    set filePath1="..\Powershell\clone-my-github.ps1"
+    set filePath2=".\Powershell\clone-my-github.ps1"
+
+    if EXIST %filePath1% (
+        start powershell -Command %filePath1%
+    ) else (
+        start powershell -Command %filePath2%
+    )
+
     GOTO:EOF
 
 
