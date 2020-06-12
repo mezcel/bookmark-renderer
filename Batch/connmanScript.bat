@@ -15,6 +15,8 @@ set filePath2=".\Powershell\interface_con.ps1"
 
 if EXIST %filePath1% (
     start powershell -Command %filePath1%
+    echo "Launched and ran %filePath1%"
 ) else (
     start powershell -Command %filePath2%
+    echo "Launched and ran %filePath2%"
 )
