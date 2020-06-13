@@ -1,9 +1,7 @@
 /* renderer.js */
 
 // Launch Exe related
-const { execFile, spawn } = require( 'child_process' );
 const path = require( 'path' );
-const fs = require( 'fs' );
 
 // Markdown related // dialog for Electron "^8.2.5 or greater"
 const { getCurrentWindow, dialog, shell } = require( 'electron' ).remote;
@@ -19,7 +17,8 @@ function openFileExplorer( dirPath ) {
 }
 
 function launchBatScript( relativePath , externalFlag ) {
-
+    const { execFile, spawn } = require( 'child_process' );
+    const fs = require( 'fs' );
     var scriptPathNpm = path.join( process.cwd(), relativePath );
 
     var exeDir        = "resources\\app\\" + relativePath;
@@ -393,7 +392,6 @@ function domIndex() {       // event buttons for view\index.html
 }
 
 function domScripts() {     // event buttons for view\html\scripts.html
-
     const   btn1 = document.getElementById( 'btn1' ),
             btn2 = document.getElementById( 'btn2' ),
             btn3 = document.getElementById( 'btn3' ),
@@ -491,7 +489,6 @@ function markdownWindowSize() {
 }
 
 function domMarkdown() {    // event buttons for view\html\notes.html
-
     const fs     = require( 'fs' );
     const marked = require( 'marked' );
 
