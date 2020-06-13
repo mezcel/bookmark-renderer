@@ -13,7 +13,6 @@ set homeGist=%USERPROFILE%\gist.github\mezcel
 if not exist %homeGithub% NUL ( mkdir %homeGithub% )
 if not exist %homeGist% NUL ( mkdir %homeGist% )
 
-
 :pullRepos
     ECHO.
     ECHO Pull gist.github.com/mezcel
