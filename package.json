@@ -1,6 +1,6 @@
 {
     "name"          : "bookmark-renderer",
-    "version"       : "0.1.5",
+    "version"       : "0.1.6",
     "description"   : "A welcome popup, markdown reader, taskbar, and bookmark container. Developed for a Win10 computer.",
     "main"          : "main.js",
     "scripts": {
@@ -22,13 +22,13 @@
                     ],
     "author"        : "Mezcel",
     "devDependencies": {
-                        "electron" : "^9.0.2",
-                        "marked"   : "^1.1.0"
+                        "electron" : "^9",
+                        "marked"   : "^1"
                     },
     "dependencies"  : {
-                        "electron"          : "^9.0.2",
-                        "electron-packager" : "^14.2.1",
-                        "marked"            : "^1.1.0"
+                        "electron"          : "^9",
+                        "electron-packager" : "^14",
+                        "marked"            : "^1"
                     },
     "private"       : true
 }
