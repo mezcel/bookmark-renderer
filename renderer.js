@@ -20,9 +20,25 @@ function openFileExplorer( dirPath ) {
 
 function launchBatScript( relativePath ) {
 
-    var scriptPath = path.join( process.cwd(), relativePath );
-        scriptPath = path.resolve( scriptPath ); // clean up path housekeeping
-        console.log("%c" + scriptPath, "background: orange;");
+    var scriptPathNpm = path.join( process.cwd(), relativePath );
+
+    var exeDir = "resources\\app\\" + relativePath;
+    var scriptPathExe = path.join( process.cwd(), exeDir );
+
+    var scriptPath = "";
+    try {
+        if ( fs.existsSync( scriptPathExe ) ) {
+            scriptPath = scriptPathExe;
+        } else if ( scriptPathNpm ) {
+            scriptPath = scriptPathNpm;
+        } else {
+            return;
+        }
+    } catch( err ) { console.error( err); }
+
+    if ( scriptPath === "" ) {
+        return;
+    }
 
     try {
         if ( fs.existsSync( scriptPath ) ) {
@@ -46,6 +62,7 @@ function launchBatScript( relativePath ) {
             );
         }
     } catch( err ) { console.error( err); }
+
 }
 
 function colorTheme( cssTheme ) {
