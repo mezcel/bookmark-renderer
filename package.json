@@ -1,32 +1,34 @@
 {
-    "name": "bookmark-renderer",
-    "version": "0.1.5",
-    "description": "A welcome popup, markdown reader, taskbar, and bookmark container. This app was developed for and on a Win10 x64 computer.",
-    "main": "main.js",
+    "name"          : "bookmark-renderer",
+    "version"       : "0.1.5",
+    "description"   : "A welcome popup, markdown reader, taskbar, and bookmark container. Developed for a Win10 computer.",
+    "main"          : "main.js",
     "scripts": {
-        "start": "electron .",
-        "build": "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=view/img/favicon.ico --overwrite",
-        "shortcuts": "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        "start"     : "electron .",
+        "build"     : "electron-packager . --out=dist/win --icon=view/img/favicon.ico --overwrite",
+        "build64"   : "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=view/img/favicon.ico --overwrite",
+        "build32"   : "electron-packager . --out=dist/win --platform=win32 --arch=ia32 --icon=view/img/favicon.ico --overwrite",
+        "shortcuts" : "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mezcel/bookmark-renderer.git"
+    "repository"    : {
+        "type"      : "git",
+        "url"       : "https://github.com/mezcel/bookmark-renderer.git"
     },
-    "keywords": [
-        "welcome kiosk",
-        "shortcuts",
-        "script launcher",
-        "markdown reader"
-    ],
-    "author": "Mezcel",
+    "keywords"      : [
+                        "welcome kiosk",
+                        "shortcuts",
+                        "script launcher",
+                        "markdown reader"
+                    ],
+    "author"        : "Mezcel",
     "devDependencies": {
-        "electron": "^9.0.2",
-        "marked": "^1.1.0"
-    },
-    "dependencies": {
-        "electron": "^9.0.2",
-        "electron-packager": "^14.2.1",
-        "marked": "^1.1.0"
-    },
-    "private": true
+                        "electron" : "^9.0.2",
+                        "marked"   : "^1.1.0"
+                    },
+    "dependencies"  : {
+                        "electron"          : "^9.0.2",
+                        "electron-packager" : "^14.2.1",
+                        "marked"            : "^1.1.0"
+                    },
+    "private"       : true
 }
