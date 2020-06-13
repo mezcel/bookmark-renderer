@@ -18,20 +18,22 @@ function openFileExplorer( dirPath ) {
     shell.openPath( filePath );
 }
 
-function launchBatScript( relativePath ) {
+function launchBatScript( relativePath , externalFlag ) {
 
     var scriptPathNpm = path.join( process.cwd(), relativePath );
 
-    var exeDir = "resources\\app\\" + relativePath;
+    var exeDir        = "resources\\app\\" + relativePath;
     var scriptPathExe = path.join( process.cwd(), exeDir );
+    var scriptPath    = "";
 
-    var scriptPath = "";
+    // Verify paths
     try {
         if ( fs.existsSync( scriptPathExe ) ) {
             scriptPath = scriptPathExe;
-        } else if ( scriptPathNpm ) {
+        } else if ( fs.existsSync( scriptPathNpm ) ) {
             scriptPath = scriptPathNpm;
         } else {
+            console.log( "%c Problem with path: " + scriptPath, "background: red; color: black;" );
             return;
         }
     } catch( err ) { console.error( err); }
@@ -40,21 +42,29 @@ function launchBatScript( relativePath ) {
         return;
     }
 
+    // Run scripts
     try {
         if ( fs.existsSync( scriptPath ) ) {
-            var bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
+            if ( externalFlag ) {
+                // Launch script in an external window
+                shell.openExternal( scriptPath );
+            } else {
+                // run script as background. display in console
+                var bat = spawn( 'cmd.exe', [ '/c', scriptPath ]);
 
-            bat.stdout.on( 'data', ( data ) => {
-                console.log( data.toString() );
-            });
+                bat.stdout.on( 'data', ( data ) => {
+                    console.log( data.toString() );
+                });
 
-            bat.stderr.on( 'data', ( data ) => {
-                console.log( "\n script path = " + scriptPath + " \n", data.toString() );
-            });
+                bat.stderr.on( 'data', ( data ) => {
+                    console.log( "\n script path = " + scriptPath + " \n", data.toString() );
+                });
 
-            bat.on( 'exit', ( code ) => {
-                console.log( `Child exited with code ${code}` );
-            });
+                bat.on( 'exit', ( code ) => {
+                    console.log( `Child exited with code ${code}` );
+                });
+
+            }
         } else {
             console.log(
                 "%cScript path " + scriptPath + " not found.",
@@ -261,8 +271,6 @@ function customKeybindings() {
 
 }
 
-
-
 /* -------------------------------------------------------------------------- */
 
 function domIndex() {       // event buttons for view\index.html
@@ -301,7 +309,7 @@ function domIndex() {       // event buttons for view\index.html
 
         btn6.addEventListener( 'click', function () {
             scriptPath = path.join( __dirname, 'Batch/launchVSCode.bat' );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath, false );
         });
     }
 
@@ -309,7 +317,7 @@ function domIndex() {       // event buttons for view\index.html
 
         btn7.addEventListener( 'click', function () {
             scriptPath = path.join( __dirname, 'Batch/launchWT.bat' );
-            launchBatScript( scriptPath );
+            launchBatScript( scriptPath, false );
         });
     }
 
@@ -409,62 +417,58 @@ function domScripts() {     // event buttons for view\html\scripts.html
 
     if ( btn1 ) {
         btn1.addEventListener( 'click', function () {
-            launchBatScript( scriptPath1 );
+            launchBatScript( scriptPath1, false );
         });
     }
 
     if ( btn2 ) {
         btn2.addEventListener( 'click', function () {
-            launchBatScript( scriptPath2 );
-            require( 'electron' ).remote.getCurrentWindow().webContents.openDevTools();
+            launchBatScript( scriptPath2, true );
         });
     }
 
     if ( btn3 ) {
         btn3.addEventListener( 'click', function () {
-            launchBatScript( scriptPath3 );
-            require( 'electron' ).remote.getCurrentWindow().webContents.openDevTools();
+            launchBatScript( scriptPath3, false );
         });
     }
 
     if ( btn4 ) {
         btn4.addEventListener( 'click', function () {
-            launchBatScript( scriptPath4 );
+            launchBatScript( scriptPath4, false );
         });
     }
 
     if ( btn5 ) {
         btn5.addEventListener( 'click', function () {
-            launchBatScript( scriptPath5 );
+            launchBatScript( scriptPath5, false );
         });
     }
 
     if ( btn6 ) {
         btn6.addEventListener( 'click', function () {
-            launchBatScript( scriptPath6 );
+            launchBatScript( scriptPath6, false );
         });
     }
 
     if ( btn7 ) {
         btn7.addEventListener( 'click', function () {
-            launchBatScript( scriptPath7 );
+            launchBatScript( scriptPath7, true );
         });
     }
 
     if ( btn8 ) {
         btn8.addEventListener( 'click', function () {
-
-            console.clear();
             console.log( "\n:::::::::::::::::\nKill status\n:::::::::::::::::\n" );
 
-            launchBatScript( scriptPath8 );
+            launchBatScript( scriptPath8, false );
             alert( "Killed processes. Check the log Console, (F12), to view kill status." );
         });
     }
 
     if ( btn9 ) {
         btn9.addEventListener( 'click', function () {
-            launchBatScript( scriptPath9 );
+            launchBatScript( scriptPath9, false );
         });
     }
 
