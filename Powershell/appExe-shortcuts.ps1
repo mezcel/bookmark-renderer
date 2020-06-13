@@ -9,7 +9,6 @@
         Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 #>
 
-
 $scriptParentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $scriptName = $MyInvocation.MyCommand.Name
 
@@ -36,24 +35,25 @@ function set-shortcut( [string]$ShortcutFile, [string]$WorkingDir, [string]$Targ
     # Make a shortcut file .lnk
 
     $WScriptShell = New-Object -ComObject WScript.Shell
-    $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
+    $Shortcut     = $WScriptShell.CreateShortcut($ShortcutFile)
     $Shortcut.TargetPath = $TargetFile
     $Shortcut.WorkingDirectory = $WorkingDir
     $Shortcut.Save()
 }
-function createShortcutLinks() {
-    # Make a startup link and a desktop shortcut
-    # The start menu shortcut does not work, but it is made as well
-    # dist\win\bookmark-renderer-win32-x64\resources\app\view\img\star.ico
-    $packagePath1 = "dist\win\bookmark-renderer-win32-x64"
-    $packagePath2 = "dist\win\bookmark-renderer-win32-ia32"
 
-    if ( Test-Path $packagePath1 ) {
-        $packagePath = $packagePath1
-    } elseif ( Test-Path $packagePath2 ) {
-        $packagePath = $packagePath2
+function createShortcutLinks() {
+    ## Make a startup link and a desktop shortcut
+    ## The start menu shortcut does not work, but it is made as well
+    ## dist\win\bookmark-renderer-win32-x64\bookmark-renderer.exe
+    $packagePathia32 = "dist\win\bookmark-renderer-win32-ia32"
+    $packagePathx64  = "dist\win\bookmark-renderer-win32-x64"
+
+    if ( Test-Path .\$packagePathia32 ) {
+        $packagePath = $packagePathia32
+    } elseif ( Test-Path .\$packagePath2 ) {
+        $packagePath = $packagePathx64
     } else {
-        Write-Host "Exiting script because $packagePath1 or $packagePath2 was not detected by this script." -ForegroundColor Red
+        Write-Host "Exiting script because $packagePathia32 or $packagePathx64 was not detected by this script." -ForegroundColor Red
         Start-Sleep 3
         exit
     }
