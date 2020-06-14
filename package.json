@@ -6,9 +6,8 @@
     "scripts": {
         "start"     : "electron .",
         "build"     : "electron-packager . --out=dist/win --icon=view/img/favicon.ico --overwrite",
-        "build64"   : "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=view/img/favicon.ico --overwrite",
-        "build32"   : "electron-packager . --out=dist/win --platform=win32 --arch=ia32 --icon=view/img/favicon.ico --overwrite",
-        "shortcuts" : "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        "shortcuts" : "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser",
+        "uninstall" : "RMDIR /s /q dist"
     },
     "repository"    : {
         "type"      : "git",
