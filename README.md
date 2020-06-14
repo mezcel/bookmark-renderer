@@ -12,16 +12,16 @@ A startup welcome kiosk for **Windows 10**.
 ## 2.0 Install
 
 ```ps1
-npm install     <#  ## install all dependencies
-                    npm install electron --save-dev
-                    npm install marked   --save-dev
-                #>
+npm install                 <#  ## install all dependencies
+                                npm install electron --save-dev
+                                npm install marked   --save-dev
+                            #>
 
-npm run build   <#  ## package as an .exe
-                    electron-packager . --out=dist/win --platform=win32
-                        --arch=x64  --icon=view/img/favicon.ico --overwrite
-                        --arch=ia32 --icon=view/img/favicon.ico --overwrite
-                #>
+npm run build               <#  ## package as an .exe
+                                electron-packager . --out=dist/win --platform=win32
+                                    --arch=x64  --icon=view/img/favicon.ico --overwrite
+                                    --arch=ia32 --icon=view/img/favicon.ico --overwrite
+                            #>
 
 npm run-script shortcuts    ## make desktop shortcut and startup link
 
