@@ -305,86 +305,74 @@ function domIndex() {       // event buttons for view\index.html
     }
 
     if ( btn6 ) {   // Launch VS Code
-
         btn6.addEventListener( 'click', function () {
-            scriptPath = path.join( __dirname, 'Batch/launchVSCode.bat' );
+            var scriptPath = "Batch/launchVSCode.bat";
             launchBatScript( scriptPath, false );
         });
     }
 
     if ( btn7 ) {   // launch Windows Terminal
-
         btn7.addEventListener( 'click', function () {
-            scriptPath = path.join( __dirname, 'Batch/launchWT.bat' );
+            var scriptPath = "Batch/launchWT.bat";
             launchBatScript( scriptPath, false );
         });
     }
 
     if ( btnStyle1 ) {   // style 1
-
         btnStyle1.addEventListener( 'click', function () {
             colorTheme( "w3-theme-blue-grey.css" );
         });
     }
 
     if ( btnStyle2 ) {   // style 2
-
         btnStyle2.addEventListener( 'click', function () {
             colorTheme( "w3-theme-brown.css" );
         });
     }
 
     if ( btnStyle3 ) {   // style 3
-
         btnStyle3.addEventListener( 'click', function () {
             colorTheme( "w3-theme-dark-grey.css" );
         });
     }
 
     if ( btnStyle4 ) {   // style 4
-
         btnStyle4.addEventListener( 'click', function () {
             colorTheme( "w3-theme-pink.css" );
         });
     }
 
     if ( btnStyle5 ) {   // style 5
-
         btnStyle5.addEventListener( 'click', function () {
             colorTheme( "w3-theme-green.css" );
         });
     }
 
     if ( btnStyle6 ) {   // style 6
-
         btnStyle6.addEventListener( 'click', function () {
             colorTheme( "w3-theme-indigo.css" );
         });
     }
 
     if ( btnStyle7 ) {   // style 7
-
         btnStyle7.addEventListener( 'click', function () {
             colorTheme( "w3-theme-yellow.css" );
         });
     }
 
     if ( btnStyle8 ) {   // style 8
-
         btnStyle8.addEventListener( 'click', function () {
             colorTheme( "w3-theme-purple.css" );
         });
     }
 
     if ( btnStyle9 ) {   // style 9
-
         btnStyle9.addEventListener( 'click', function () {
             colorTheme( "w3-theme-orange.css" );
         });
     }
 
     if ( btnStyle10 ) {   // style 10
-
         btnStyle10.addEventListener( 'click', function () {
             colorTheme( "w3-theme-teal.css" );
         });
@@ -601,6 +589,7 @@ function main() {
             htmlScripts   = document.getElementById( 'htmlScripts' ),
             htmlMarkdown  = document.getElementById( 'htmlMarkdown' ),
             htmlBookmarks = document.getElementById( 'htmlBookmarks' );
+
     if ( btnClose ) {
         btnClose.addEventListener('click', function () {
             require( 'electron' ).remote.getCurrentWindow().close(); // closes DOM
