@@ -24,6 +24,24 @@ REM Make an array of available SSID's
         )
     )
 
+REM Check string parse
+:PARSECHECK
+    IF !list[0]!==Infrastructure GOTO :DISPARSERROR
+    IF !list[0]!==WPA2-Personal GOTO :DISPARSERROR
+    IF !list[0]!==CCMP GOTO :DISPARSERROR
+
+    REM Display array of ssid names
+    GOTO :DISPARRAY
+
+REM Parsing error display message
+:DISPARSERROR
+    ECHO There was a parsing error.
+    ECHO Check your wifi on/off state and try again in a moment.
+    ECHO.
+    ECHO [Press enter to continue]
+    PAUSE
+    GOTO :EOL
+
 REM List array of SSID names
 :DISPARRAY
     setlocal enableextensions enabledelayedexpansion
@@ -33,6 +51,11 @@ REM List array of SSID names
         SET /a i+=1
     )
     SET /a i-=1
+
+    REM if !i!==0 (
+    REM     ECHO "You are likely connected to !list[%i%]!"
+    REM     GOTO :PINGTEST
+    REM )
 
 REM Select a SSID Name
 :SELSSID
@@ -61,7 +84,9 @@ REM Connect to SSID
 :CONNECTSSID
     netsh wlan connect name=!list[%ssidNo%]!
 
-    REM Ping google
+REM Ping google
+:PINGTEST
+    ECHO Pinging google at 8.8.8.8 ...
     Ping 8.8.8.8
 
 :EOL
