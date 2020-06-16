@@ -1,5 +1,8 @@
 /*  main.js */
 
+/* v8-compile-cache attaches a require hook to use V8's code cache to speed up instantiation time. The "code cache" is the work of parsing and compiling done by V8. */
+require('v8-compile-cache');
+
 // Modules to control application life and create native browser window
 
 const { app, BrowserWindow, shell, Menu, Tray } = require( 'electron' );

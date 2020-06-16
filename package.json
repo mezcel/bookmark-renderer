@@ -1,33 +1,35 @@
 {
-    "name"          : "bookmark-renderer",
-    "version"       : "0.1.6",
-    "description"   : "A welcome popup, markdown reader, taskbar, and bookmark container. Developed for a Win10 computer.",
-    "main"          : "main.js",
+    "name": "bookmark-renderer",
+    "version": "0.1.6",
+    "description": "A welcome popup, markdown reader, taskbar, and bookmark container. Developed for a Win10 computer.",
+    "main": "main.js",
     "scripts": {
-        "start"     : "electron .",
-        "build"     : "electron-packager . --out=dist/win --icon=view/img/favicon.ico --overwrite",
-        "shortcuts" : "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser",
-        "uninstall" : "RMDIR /s /q dist"
+        "start": "electron .",
+        "build": "electron-packager . --out=dist/win --icon=view/img/favicon.ico --overwrite",
+        "shortcuts": "@powershell -File Powershell/appExe-shortcuts.ps1 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser",
+        "uninstall": "RMDIR /s /q dist"
     },
-    "repository"    : {
-        "type"      : "git",
-        "url"       : "https://github.com/mezcel/bookmark-renderer.git"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mezcel/bookmark-renderer.git"
     },
-    "keywords"      : [
-                        "welcome kiosk",
-                        "shortcuts",
-                        "script launcher",
-                        "markdown reader"
-                    ],
-    "author"        : "Mezcel",
+    "keywords": [
+        "welcome kiosk",
+        "shortcuts",
+        "script launcher",
+        "markdown reader"
+    ],
+    "author": "Mezcel",
     "devDependencies": {
-                        "electron" : "^9",
-                        "marked"   : "^1"
-                    },
-    "dependencies"  : {
-                        "electron"          : "^9",
-                        "electron-packager" : "^14",
-                        "marked"            : "^1"
-                    },
-    "private"       : true
+        "electron": "^9",
+        "marked": "^1",
+        "v8-compile-cache": "^2"
+    },
+    "dependencies": {
+        "electron": "^9",
+        "electron-packager": "^14",
+        "marked": "^1",
+        "v8-compile-cache": "^2"
+    },
+    "private": true
 }
