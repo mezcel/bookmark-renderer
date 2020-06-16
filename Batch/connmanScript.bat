@@ -44,10 +44,13 @@ REM Parsing error display message
 
 REM List array of SSID names
 :DISPARRAY
+    ECHO List of available SSID's:
+    ECHO.
+
     setlocal enableextensions enabledelayedexpansion
     SET /a i=0
     FOR /F "tokens=2 delims==" %%s IN ('set list[') DO (
-        ECHO !i! %%s
+        ECHO    !i! %%s
         SET /a i+=1
     )
     SET /a i-=1
