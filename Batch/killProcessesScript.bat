@@ -15,7 +15,8 @@ set appExe="GameBar.exe"
 taskkill /f /im %appExe% 2> nul
 
 :::: Kill ms-edge
-set appExe="MicrosoftEdge.exe"
+::set appExe="MicrosoftEdge.exe"
+set appExe="msedge.exe"
 taskkill /f /im %appExe% /t 2> nul
 set appExe="MicrosoftEdgeCP.exe"
 taskkill /f /im %appExe% /t 2> nul
