@@ -59,6 +59,7 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://github.com/mezcel/terminal-profile.git "%homeGithub%\terminal-profile.git"
     git clone https://github.com/mezcel/keyboard-layout.git "%homeGithub%\keyboard-layout.git"
     git clone https://github.com/mezcel/bookmark-renderer.git "%homeGithub%\bookmark-renderer.git"
+    git clone https://github.com/mezcel/struct-fmt.git "%homeGithub%\struct-fmt.git"
 
 :EOF
     ECHO.
