@@ -56,6 +56,7 @@ function cloneGists {
     git clone https://gist.github.com/34895a5ae768873a26e762e068394a84.git "$myGistDir\powershell-notes.gist"
     git clone https://gist.github.com/4be2de2cb400dd7f781c721c19e3b99b.git "$myGistDir\vscode-notes.gist"
     git clone https://gist.github.com/247eda1319b9e1815cad7b955fdcc379.git "$myGistDir\notepadpp-notes.gist"
+    git clone https://gist.github.com/b6be6bd5bd78d20bbd51af94af4d6ad4.git "$myGistDir\golang-notes.gist"
 
     Write-Host "`nDone cloneing gists." -ForegroundColor Cyan
 }
@@ -82,6 +83,7 @@ function cloneGithub {
     git clone https://github.com/mezcel/terminal-profile.git "$myGistDir\terminal-profile.git"
     git clone https://github.com/mezcel/keyboard-layout.git "$myGistDir\keyboard-layout.git"
     git clone https://github.com/mezcel/bookmark-renderer.git "$myGistDir\bookmark-renderer.git"
+    git clone https://github.com/mezcel/struct-fmt.git "$myGistDir\struct-fmt.git"
 
     Write-Host "`nDone cloneing github." -ForegroundColor Cyan
 }
