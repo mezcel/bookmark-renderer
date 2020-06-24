@@ -21,15 +21,13 @@
     ],
     "author": "Mezcel",
     "devDependencies": {
-        "electron": "^9",
-        "marked": "^1",
-        "v8-compile-cache": "^2"
+        "electron": "^9.0.5",
+        "electron-packager": "^14.2.1",
+        "marked": "^1.1.0"
     },
     "dependencies": {
-        "electron": "^9",
-        "electron-packager": "^14",
-        "marked": "^1",
-        "v8-compile-cache": "^2"
+        "electron-packager": "^14.2.1",
+        "v8-compile-cache": "^2.1.1"
     },
     "private": true
 }
