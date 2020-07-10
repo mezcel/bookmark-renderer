@@ -43,6 +43,7 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://gist.github.com/4be2de2cb400dd7f781c721c19e3b99b.git "%homeGist%\vscode-notes.gist"
     git clone https://gist.github.com/247eda1319b9e1815cad7b955fdcc379.git "%homeGist%\notepadpp-notes.gist"
     git clone https://gist.github.com/b6be6bd5bd78d20bbd51af94af4d6ad4.git "%homeGist%\golang-notes.gist"
+    git clone https://gist.github.com/22682a865a4e9d8a2c02877cf1cb7374.git "%homeGist%\ProjectEuler.gist"
 
 :cloneGithubs
     ECHO.
