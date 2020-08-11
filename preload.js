@@ -115,13 +115,16 @@ window.addEventListener( 'DOMContentLoaded', () => {
 	replaceText( `platform-arch`, archString );
 	replaceText( `cd`, cdPath );
 
-	require( 'dns' ).resolve( '8.8.8.8', function( err ) {
-        // ping google-public-dns-a.google.com
-		if ( err ) {
-			replaceText( `isOnline`, "offline" );
-		} else {
-			replaceText( `isOnline`, "online" );
-		}
-    });
+    if ( archString !== "win32" ) {
+        // idk why but ping doesnt work by default in win32
+        require( 'dns' ).resolve( '8.8.8.8', function( err ) {
+            // ping google-public-dns-a.google.com
+            if ( err ) {
+                replaceText( `isOnline`, "offline" );
+            } else {
+                replaceText( `isOnline`, "online" );
+            }
+        });
+    }
 
 });
