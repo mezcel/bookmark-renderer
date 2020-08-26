@@ -92,6 +92,15 @@ function colorTheme( cssTheme ) {
 
 }
 
+function toggleTheme() {
+    // Toggle Light/Dark Color Theme
+
+    var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
+    require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
+
+    require( 'electron' ).remote.getCurrentWindow().reload();
+}
+
 function keyboardElemIdClick( elementID, consoleNotes ) {
     var clickedButton = document.getElementById( elementID );
 
@@ -178,10 +187,7 @@ function customKeybindings() {
             case 16: // shift key
 
                 // Toggle Light/Dark Color Theme
-                var isDark = require('electron').remote.getGlobal('GlobalTheme').isDark;
-                require('electron').remote.getGlobal('GlobalTheme').isDark = !isDark;
-
-                require( 'electron' ).remote.getCurrentWindow().reload();
+                toggleTheme();
 
                 break;
 
@@ -289,6 +295,7 @@ function domIndex() {       // event buttons for view\index.html
             btnStyle8 = document.getElementById( 'btnStyle8' ),
             btnStyle9 = document.getElementById( 'btnStyle9' ),
             btnStyle10 = document.getElementById( 'btnStyle10');
+    const   btnStyle11 = document.getElementById( 'btnStyle11');
 
     if ( btn4 ) {   // explorer gist
         btn4.addEventListener( 'click', function () {
@@ -375,6 +382,12 @@ function domIndex() {       // event buttons for view\index.html
     if ( btnStyle10 ) {   // style 10
         btnStyle10.addEventListener( 'click', function () {
             colorTheme( "w3-theme-teal.css" );
+        });
+    }
+
+    if ( btnStyle11 ) {   // style 11 Toggle light/dark
+        btnStyle11.addEventListener( 'click', function () {
+            toggleTheme();
         });
     }
 }
