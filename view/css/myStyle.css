@@ -25,6 +25,7 @@ div.w3-col > p > a {
 
 /* **************** Style Switch buttons **************** */
 
+/*
 .btnSelectShift {
     color:#626969 !important;
     border-color:#000000 !important;
@@ -35,6 +36,7 @@ div.w3-col > p > a {
     background-color:#696e6e !important;
     font-weight: 500;
 }
+*/
 
 .btnSelectBlueGrey {
     color:#607d8b !important;
