@@ -8,6 +8,17 @@ div.w3-col > p > a {
     width: 95%;
 }
 
+/* wallpaper skin */
+
+.ginsengSkin {
+	background: url("../img/ginseng-skin.jpg");
+	background-repeat: no-repeat;
+	background-size: auto;
+	/*background-size: 1000px;*/
+	background-size: 100%;
+
+}
+
 /* **************** Css Theme Buttons **************** */
 
 .roundedTop {
