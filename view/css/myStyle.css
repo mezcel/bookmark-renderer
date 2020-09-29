@@ -2,6 +2,15 @@
     myStyles.css
 */
 
+
+/* wallpaper skin for just the index.html page */
+.ginsengSkin {
+	background: url("../img/ginseng-skin.jpg");
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-size: 100%;
+}
+
 /* grid buttons */
 
 div.w3-col > p > a {

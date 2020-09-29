@@ -15,6 +15,8 @@ const nativeImage = require( 'electron' ).nativeImage;
 
 // Global theme css variable
 var defaultCssTheme = "w3-theme-blue-grey.css";
+defaultCssTheme = "w3-theme-teal.css";
+
 var isDark = false;
 
 global.GlobalTheme = {
