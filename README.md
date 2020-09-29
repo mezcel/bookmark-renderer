@@ -72,7 +72,7 @@ npm run-script uninstall    ## delete directories containing the .exe build
 
 |||
 |:---:|:---:|
-|![screenshots\group-colors-600x329.gif](screenshots/group-colors-600x329.gif)|![screenshots\bookmarks.gif](screenshots/bookmarks.gif)|
+| <img src="screenshots/group-colors-600x329.gif" height="200px"> <a href="https://gist.github.com/mezcel/4de4493be820be7529efe75d89bf9176" target="_blank" title="99-cents"><img src="https://gist.githubusercontent.com/mezcel/4de4493be820be7529efe75d89bf9176/raw/f333bd11e9e1969f0f7fa1098c4369690225b304/kiosk-example-2.jpg" height="200px"></a>|![screenshots\bookmarks.gif](screenshots/bookmarks.gif)|
 |![screenshots\scripts.gif](screenshots/scripts.gif)|![screenshots\kiosk-md.gif](screenshots/kiosk-md.gif)|
 
 ---
