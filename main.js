@@ -50,7 +50,7 @@ function createWindow () {
 
     const githubiconPath = path.join( __dirname, 'view/img/github.ico' ),
           githubicon     = nativeImage.createFromPath( githubiconPath ).resize( { width: 16 } );
-
+		  
     const mdiconPath = path.join( __dirname, 'view/img/md.ico' ),
           mdicon     = nativeImage.createFromPath( mdiconPath ).resize( { width: 16 } );
 

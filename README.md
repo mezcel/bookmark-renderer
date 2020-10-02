@@ -28,6 +28,12 @@ npm run-script shortcuts    ## make desktop shortcut and startup link
 npm run-script uninstall    ## delete directories containing the .exe build
 ```
 
+> Remember to uninstall and rebuild after editing anything
+
+```sh
+npm run-script uninstall; npm run build; npm run-script shortcuts
+```
+
 ## 3.0 Functional Features:
 
 ![md.ico]( view/img/github.ico ) ![md.ico]( view/img/md.ico ) ![md.ico]( view/img/ps.ico ) ![md.ico]( view/img/favicon.ico ) ![md.ico]( view/img/star.ico )
