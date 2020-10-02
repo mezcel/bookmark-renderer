@@ -311,9 +311,10 @@ function domIndex() {       // event buttons for view\index.html
         });
     }
 
-    if ( btn6 ) {   // Launch VS Code
+    if ( btn6 ) {   // Launch a text editor
         btn6.addEventListener( 'click', function () {
-            var scriptPath = "Batch/launchVSCode.bat";
+            //var scriptPath = "Batch/launchVSCode.bat";
+            var scriptPath = "Batch/launchNotepadpp.bat";
             launchBatScript( scriptPath, false );
         });
     }
