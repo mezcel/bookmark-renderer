@@ -47,6 +47,9 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://gist.github.com/ff833a444f2671879b22e76aa4ed61c5.git "%homeGist%\alpine-notes.gist"
     git clone https://gist.github.com/c8d4759203ce958692fc960b92eda960.git "%homeGist%\tc-notes.gist"
     git clone https://gist.github.com/a08c54294ff806d52cd722ed786bcf9e.git "%homeGist%\fl11-theme.gist"
+    git clone https://gist.github.com/82b46eb373ab49815bf5a516c43a85b7.git "%homeGist%\notepadpp-notes.gist"
+    git clone https://gist.github.com/4de4493be820be7529efe75d89bf9176.git "%homeGist%\99-cents.gist"
+    git clone https://gist.github.com/b4ce7f783597fb0ee97dfe66a9239175.git "%homeGist%\terminal-profile-extras.gist"
 
 :cloneGithubs
     ECHO.
@@ -64,6 +67,8 @@ if not exist %homeGist% NUL ( mkdir %homeGist% )
     git clone https://github.com/mezcel/keyboard-layout.git "%homeGithub%\keyboard-layout.git"
     git clone https://github.com/mezcel/bookmark-renderer.git "%homeGithub%\bookmark-renderer.git"
     git clone https://github.com/mezcel/struct-fmt.git "%homeGithub%\struct-fmt.git"
+    git clone https://github.com/mezcel/fs-path.git  "%homeGithub%\fs-path.git"
+    git clone https://github.com/mezcel/headless-host.git  "%homeGithub%\headless-host.git"
 
 :EOF
     ECHO.
